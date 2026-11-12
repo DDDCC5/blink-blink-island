@@ -1,0 +1,32 @@
+{
+  "status": "DESIGN REVIEW: native import, comfort and performance unverified",
+  "source": "scripts/generate_review_3d.py; original procedural meshes",
+  "license": "Original project-authored geometry; no imported third-party models",
+  "coordinates": "metres, right-handed, Y up",
+  "animation": "SlowWingFlap: 2 seconds, independent hinge quaternion tracks; preview loops clip",
+  "editorStatus": "Managed editor runs cancelled before model production; these independent GLBs are not an accepted Editor bundle",
+  "assets": [
+    {
+      "file": "review/3d/butterfly.glb",
+      "bytes": 56288,
+      "triangles": 648,
+      "nodes": 9,
+      "meshes": 6,
+      "animations": [
+        "SlowWingFlap"
+      ],
+      "sha256": "4f465555c6db981edfa7525d6d53be3e9a0042f741933e4a4ecedb76f1dbea4e"
+    },
+    {
+      "file": "review/3d/island-scene.glb",
+      "bytes": 198000,
+      "triangles": 2384,
+      "nodes": 24,
+      "meshes": 13,
+      "animations": [
+        "SlowWingFlap"
+      ],
+      "sha256": "ea785b40e1784f28623ec978f0dc61cd657dc84cf65cec2695ccc561de83bf8a"
+    }
+  ]
+}

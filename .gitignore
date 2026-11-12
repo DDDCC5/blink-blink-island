@@ -1,0 +1,50 @@
+# Host-specific PICO/agent integration (recreated by the CLI on each machine)
+/.agents/
+/.codex/
+/.pico/
+/.pico-env.json
+/AGENTS.md
+/PICO-*.AGENTS.md
+/scripts/pico-mcp.mjs
+
+# Generated build/tool caches and local configuration
+**/.gradle/
+**/.kotlin/
+**/.scratch/
+**/.idea/
+**/build/
+**/builds/
+**/captures/
+**/.externalNativeBuild/
+**/.cxx/
+**/.CacheData/
+**/UserSettings/
+**/__pycache__/
+**/.venv/
+**/node_modules/
+**/local.properties
+**/.DS_Store
+*.iml
+*.hprof
+
+# Credentials and signing material
+.env
+.env.*
+*.pem
+*.key
+*.jks
+*.keystore
+google-services.json
+
+# Downloadable build artifacts go to GitHub Releases, not source history
+/deliverables/
+*.apk
+*.aab
+*.zip
+*.aiff
+
+# Keep written verification reports; omit raw host/device dumps and screenshots
+/reports/**/*
+!/reports/**/
+!/reports/**/*.md
+!/reports/DEVICE_OBSERVATIONS.json

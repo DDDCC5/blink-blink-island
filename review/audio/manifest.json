@@ -1,0 +1,330 @@
+{
+  "status": "DESIGN REVIEW ONLY",
+  "voiceSource": "macOS built-in Tingting / Samantha; commercial distribution clearance pending",
+  "assets": [
+    {
+      "id": "intro_blink",
+      "language": "zh",
+      "text": "请完整闭上眼睛，轻轻收紧眼睑，保持三秒。不要按压眼球。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_intro_blink.wav",
+      "durationSeconds": 6.774,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "88682a22e73e998d2c18f78be5a402037c943a04c8cdf94bab6098d1449cc6ec"
+    },
+    {
+      "id": "intro_blink",
+      "language": "en",
+      "text": "Close your eyes fully and gently squeeze your eyelids for three seconds. Do not press on your eyes.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_intro_blink.wav",
+      "durationSeconds": 5.638,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "18aaafa3c3c54e1183f9576c673c4d05f6e23f807fcbe91bc74432536ec80f2d"
+    },
+    {
+      "id": "closed",
+      "language": "zh",
+      "text": "已闭眼，保持一会儿。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_closed.wav",
+      "durationSeconds": 2.117,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "f33316b0022a35bc56eebd456c3b53880e0c4d215ea31d971b07e54ab68a8fe1"
+    },
+    {
+      "id": "closed",
+      "language": "en",
+      "text": "Eyes closed. Hold gently.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_closed.wav",
+      "durationSeconds": 2.142,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "24a7a0a78cd9b20a88a65d444cc17a922d6923fe027f63efaeb237ab437c0067"
+    },
+    {
+      "id": "count_3",
+      "language": "zh",
+      "text": "三。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_count_3.wav",
+      "durationSeconds": 0.571,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "35dd47cc835c1059749401377b86a82f97164db5ef5aa671f60b616e29c4649c"
+    },
+    {
+      "id": "count_3",
+      "language": "en",
+      "text": "Three.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_count_3.wav",
+      "durationSeconds": 0.66,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "b945ef1efdd0fa6fc26b059231e482ae4d565c506d4bb7ef05091c6a63ad074b"
+    },
+    {
+      "id": "count_2",
+      "language": "zh",
+      "text": "二。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_count_2.wav",
+      "durationSeconds": 0.467,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "2b4492cdc30eb3311e6c6926bf605a5ca9a7ff7682bf7ba2bc7e171d62f13e39"
+    },
+    {
+      "id": "count_2",
+      "language": "en",
+      "text": "Two.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_count_2.wav",
+      "durationSeconds": 0.604,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "e03c9c42fa33d97ad0015a81b6df2cb14fe1a83d833cf98a8db70f95bb9feb9c"
+    },
+    {
+      "id": "count_1",
+      "language": "zh",
+      "text": "一。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_count_1.wav",
+      "durationSeconds": 0.432,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "0dd420bf7f2f3e58000aa65d43471c0d3d9216cd631fb97aa320b801de5043a5"
+    },
+    {
+      "id": "count_1",
+      "language": "en",
+      "text": "One.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_count_1.wav",
+      "durationSeconds": 0.65,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "bdac33208a6355b3ecaace4eed6c010d5440b23c8faf91c0e4de8b4ae62b720d"
+    },
+    {
+      "id": "open",
+      "language": "zh",
+      "text": "现在可以睁开眼睛。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_open.wav",
+      "durationSeconds": 2.127,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "36c1279c8bf1c87e1789f8dc309561559c546f4533b294b43eb261624f034e3e"
+    },
+    {
+      "id": "open",
+      "language": "en",
+      "text": "You can open your eyes now.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_open.wav",
+      "durationSeconds": 1.744,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "402f9fc61a5f03a24445ce4a65562822646da45b48da22e702df0b81af056276"
+    },
+    {
+      "id": "butterfly",
+      "language": "zh",
+      "text": "保持头部自然稳定，用视线慢慢跟随蝴蝶。可以自然眨眼。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_butterfly.wav",
+      "durationSeconds": 5.84,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "776b6a5872b22df837153c170fc06a7991950e165085c694ea5f2fa3779b2241"
+    },
+    {
+      "id": "butterfly",
+      "language": "en",
+      "text": "Keep your head comfortably steady and follow the butterfly with your eyes. Blink naturally.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_butterfly.wav",
+      "durationSeconds": 5.498,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "2face0d1522464003b297cf307649b856b6b63edfc7800b1fb80bcf33ef3ed5d"
+    },
+    {
+      "id": "gaze_left_right",
+      "language": "zh",
+      "text": "看向左边，再看向右边，然后回到左边。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_gaze_left_right.wav",
+      "durationSeconds": 4.718,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "4767b23f43f9960f4c1d6e1d4afd086c5f3320abedd0a6fd81c4f6d9a4fcc0ae"
+    },
+    {
+      "id": "gaze_left_right",
+      "language": "en",
+      "text": "Look left, then right, then back left.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_gaze_left_right.wav",
+      "durationSeconds": 3.008,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "54af9ba93ddeb7016c04cbbb0144bc24a53345b65fb4cf01572b5b608e49e05e"
+    },
+    {
+      "id": "gaze_up_down",
+      "language": "zh",
+      "text": "看向上方，再看向下方，然后回到上方。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_gaze_up_down.wav",
+      "durationSeconds": 4.729,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "10ae57d32b13d48c2a655778957e018fde49cf26836ccb280f6ba716f895907f"
+    },
+    {
+      "id": "gaze_up_down",
+      "language": "en",
+      "text": "Look up, then down, then back up.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_gaze_up_down.wav",
+      "durationSeconds": 2.636,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "0bf6e047871a9ca0444c4dce8826c1f0c666f6853f9fee9664be7f54a15f268f"
+    },
+    {
+      "id": "gaze_clockwise",
+      "language": "zh",
+      "text": "顺时针看完一整圈。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_gaze_clockwise.wav",
+      "durationSeconds": 2.207,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "a8d8f3c29bcbd4da51220d1f82dbe3dcdf76f39a84e78085709c24c466d0a96d"
+    },
+    {
+      "id": "gaze_clockwise",
+      "language": "en",
+      "text": "Follow one full clockwise circle.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_gaze_clockwise.wav",
+      "durationSeconds": 2.425,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "08359bfcf76caeafad746e00f833c8aca8b3402354ec79810903b9b98ae576b8"
+    },
+    {
+      "id": "gaze_counter",
+      "language": "zh",
+      "text": "逆时针看完一整圈。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_gaze_counter.wav",
+      "durationSeconds": 2.108,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "f1f8b01ea9f62d42ea2856a0a75dd05936ab7369aaae4728c7c91dd961e62915"
+    },
+    {
+      "id": "gaze_counter",
+      "language": "en",
+      "text": "Follow one full counterclockwise circle.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_gaze_counter.wav",
+      "durationSeconds": 2.867,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "0449cecf28ec545379d98d5540ae5ad953d072f97c790801d1fa3f1ba99ddca1"
+    },
+    {
+      "id": "incomplete",
+      "language": "zh",
+      "text": "这次动作还没有完成，可以重试或跳过。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_incomplete.wav",
+      "durationSeconds": 4.143,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "3009d7c7a95d2352478565d28aac032fb97caea6e0bfb371779a7c9b2b2b28bb"
+    },
+    {
+      "id": "incomplete",
+      "language": "en",
+      "text": "This move was not completed. Retry or skip.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_incomplete.wav",
+      "durationSeconds": 3.224,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "c70691784980770cc8a57b3d63d534d39ee83882d69ba4a1da947d3cb2efea1b"
+    },
+    {
+      "id": "tracking_paused",
+      "language": "zh",
+      "text": "训练已暂停，请检查设备的佩戴或眼动追踪状态。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_tracking_paused.wav",
+      "durationSeconds": 5.264,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "594fb11c66ba8595a4dfc08017b94d84d29ba3610846e6c264c19b7cd19905ab"
+    },
+    {
+      "id": "tracking_paused",
+      "language": "en",
+      "text": "Session paused. Check your headset fit or eye tracking.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_tracking_paused.wav",
+      "durationSeconds": 3.669,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "f4d7afc1f33690cf87969e45fa48eb82370392154884a0e6addbae954d3026a4"
+    },
+    {
+      "id": "finish",
+      "language": "zh",
+      "text": "这次休息训练完成了。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_finish.wav",
+      "durationSeconds": 2.17,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "568f63a895c2b4eb830aca969c8a2c63e4fa9962bc63ac1f3439a7f8db246b1f"
+    },
+    {
+      "id": "finish",
+      "language": "en",
+      "text": "Your break is complete.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_finish.wav",
+      "durationSeconds": 1.546,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "770a00e9103dca6f2a559b02109286198064fbcaa0076bef54eea2c82afb7a8d"
+    },
+    {
+      "id": "discomfort",
+      "language": "zh",
+      "text": "如果感到疼痛、眩晕或不适，请停止并摘下头显休息。",
+      "voice": "Tingting",
+      "path": "audio/voice/voice_zh_discomfort.wav",
+      "durationSeconds": 5.973,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "3a762633ef6a2eac11899eb6f91d3a41bbb7547d3ef91a57196998b2b1cc901e"
+    },
+    {
+      "id": "discomfort",
+      "language": "en",
+      "text": "If you feel pain, dizziness, or discomfort, stop and remove the headset to rest.",
+      "voice": "Samantha",
+      "path": "audio/voice/voice_en_discomfort.wav",
+      "durationSeconds": 5.928,
+      "releaseLicenseStatus": "PENDING: review draft only",
+      "sha256": "1d0b84248261d65984e1f9e8d200f5a1d5709e6cb56e7a20d936e21878800b6d"
+    },
+    {
+      "id": "bgm_island_loop",
+      "path": "audio/bgm_island_loop_96s_review.wav",
+      "durationSeconds": 96,
+      "rmsDbfs": -28.0,
+      "peakDbfs": -15.19,
+      "status": "review mix; headset loudness and loop seam pending"
+    },
+    {
+      "id": "amb_wind_loop",
+      "path": "audio/amb_wind_loop_96s_review.wav",
+      "durationSeconds": 96,
+      "rmsDbfs": -35.0,
+      "peakDbfs": -25.92,
+      "status": "review mix; headset loudness and loop seam pending"
+    },
+    {
+      "id": "amb_water_loop",
+      "path": "audio/amb_water_loop_96s_review.wav",
+      "durationSeconds": 96,
+      "rmsDbfs": -33.0,
+      "peakDbfs": -20.59,
+      "status": "review mix; headset loudness and loop seam pending"
+    }
+  ]
+}

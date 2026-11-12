@@ -1,0 +1,54 @@
+{
+  "format": "PCM 16-bit mono 22050 Hz WAV",
+  "status": "Generated synthetic reference sounds; final mix and listening test required on Swan. Voice recordings are scripts only, not included.",
+  "files": [
+    {
+      "id": "bgm_island_loop",
+      "file": "assets/audio/bgm_island_loop.wav"
+    },
+    {
+      "id": "amb_wind_loop",
+      "file": "assets/audio/amb_wind_loop.wav"
+    },
+    {
+      "id": "amb_water_loop",
+      "file": "assets/audio/amb_water_loop.wav"
+    },
+    {
+      "id": "sfx_count_tick",
+      "file": "assets/audio/sfx_count_tick.wav"
+    },
+    {
+      "id": "sfx_eyes_closed",
+      "file": "assets/audio/sfx_eyes_closed.wav"
+    },
+    {
+      "id": "sfx_eyes_open",
+      "file": "assets/audio/sfx_eyes_open.wav"
+    },
+    {
+      "id": "sfx_success",
+      "file": "assets/audio/sfx_success.wav"
+    },
+    {
+      "id": "sfx_incomplete",
+      "file": "assets/audio/sfx_incomplete.wav"
+    },
+    {
+      "id": "sfx_tracking_pause",
+      "file": "assets/audio/sfx_tracking_pause.wav"
+    },
+    {
+      "id": "sfx_reminder",
+      "file": "assets/audio/sfx_reminder.wav"
+    },
+    {
+      "id": "sfx_session_complete",
+      "file": "assets/audio/sfx_session_complete.wav"
+    },
+    {
+      "id": "sfx_eyes_holding_loop",
+      "file": "assets/audio/sfx_eyes_holding_loop.wav"
+    }
+  ]
+}
