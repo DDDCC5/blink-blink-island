@@ -1,7 +1,9 @@
 package com.example.blinkblinkisland.dev.ui.island.components
 
 import androidx.compose.foundation.layout.*
+import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.shape.RoundedCornerShape
 import com.example.blinkblinkisland.dev.ui.theme.IslandColors
 import androidx.compose.runtime.*
@@ -10,36 +12,57 @@ import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.painterResource
+import com.example.blinkblinkisland.dev.R
 import com.pico.spatial.ui.design.*
 import com.example.blinkblinkisland.dev.domain.model.*
 import com.example.blinkblinkisland.dev.ui.island.*
 import com.example.blinkblinkisland.dev.ui.navigation.Page
 
 @Composable
-fun IslandContent(s:IslandUiState,event:(IslandEvent)->Unit,permissions:()->Unit,previewSound:()->Unit){
+fun IslandContent(s:IslandUiState,event:(IslandEvent)->Unit,permissions:()->Unit,previewSound:()->Unit,recenter:()->Unit={},placementCountdown:Int=0,placementBusy:Boolean=false){
  var contentBounds:Rect? by remember{mutableStateOf(null)}
  val zh=s.settings.language=="zh"
  fun l(a:String,b:String)=if(zh)a else b
- @Composable fun action(a:String,b:String,enabled:Boolean=true,click:()->Unit){IslandActionButton(l(a,b),enabled,click)}
+ @Composable fun action(a:String,b:String,enabled:Boolean=true,primary:Boolean=false,quiet:Boolean=false,click:()->Unit){IslandActionButton(l(a,b),enabled,primary=primary,quiet=quiet,onClick=click)}
  @Composable fun body(a:String,b:String){PanelText(l(a,b))}
  @Composable fun heading(a:String,b:String){PanelHeading(l(a,b))}
+ val panelShape=remember{RoundedCornerShape(36.dp)}
+ // Transparent inset keeps every rounded edge inside the attachment's raster boundary.
+ Box(Modifier.width(1100.dp).height(1120.dp).onGloballyPositioned{Log.i("BlinkIsland","panel_root size=${it.size} bounds=${it.boundsInRoot()}")}.padding(8.dp)){
  // design-style: opaque-root Stage attachment has no system glass; DESIGN_SPEC cream content card
- Column(Modifier.width(1100.dp).height(1120.dp).background(IslandColors.Cream,RoundedCornerShape(28.dp)).padding(30.dp),verticalArrangement=Arrangement.spacedBy(12.dp)){
-  Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween){Text(l("眨眨岛","Blink Blink Island"),style=PicoTheme.typography.titleLarge.copy(fontSize=32.sp,lineHeight=40.sp),color=PicoTheme.colorScheme.labelPrimary);if(s.page in listOf(Page.WELCOME,Page.HOME))action("English","中文",!s.busy){event(IslandEvent.ToggleLanguage)}}
+ Column(Modifier.fillMaxSize().clip(panelShape).background(IslandColors.Cream,panelShape).padding(32.dp),verticalArrangement=Arrangement.spacedBy(16.dp)){
+  Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically){
+   Row(Modifier.weight(1f),horizontalArrangement=Arrangement.spacedBy(16.dp),verticalAlignment=Alignment.CenterVertically){
+    Image(painterResource(R.drawable.local_avatar),contentDescription=null,modifier=Modifier.size(56.dp))
+    Column{
+     Text(l("眨眨岛","Blink Blink Island"),style=PicoTheme.typography.titleLarge.copy(fontSize=34.sp,lineHeight=44.sp),color=PicoTheme.colorScheme.labelPrimary)
+     PanelNote(l("一座让眼睛休息的小岛","A little island for a gentle break"))
+    }
+   }
+   if(s.page in listOf(Page.WELCOME,Page.HOME))Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){
+    IslandActionButton(l("摆正位置","Recenter"),!placementBusy,quiet=true){recenter()}
+    IslandActionButton(l("English","中文"),!s.busy&&!placementBusy,quiet=true){event(IslandEvent.ToggleLanguage)}
+   }
+   else IslandActionButton(l("返回","Back"),!s.busy&&!placementBusy,quiet=true){event(IslandEvent.Navigate(if(s.page==Page.DELETE_CONFIRM)Page.HISTORY else Page.HOME))}
+  }
+  if(placementCountdown>0)PanelText(l("${placementCountdown}秒后摆正位置，请平视前方。","Repositioning in $placementCountdown. Look straight ahead."))
+  else if(placementBusy)PanelNote(l("正在摆正位置，请稍等。","Repositioning. Just a moment."))
   if(s.busy){body("正在读取本机数据…","Loading local data…");return@Column}
   if(s.error!=null||s.savePending)Row(horizontalArrangement=Arrangement.spacedBy(12.dp),verticalAlignment=Alignment.CenterVertically){
    PanelText(if(s.error!=null)l("暂时无法完成操作，请稍后重试。","Unable to finish this action. Please try again.") else l("正在保存这次休息。","Saving your session."),Modifier.weight(1f))
    if(s.savePending&&s.error!=null)action("重试保存","Retry save"){event(IslandEvent.RetrySave)}
   }
-  Column(Modifier.fillMaxWidth().weight(1f).onGloballyPositioned{contentBounds=it.boundsInRoot()},verticalArrangement=Arrangement.spacedBy(12.dp)){
+  Column(Modifier.fillMaxWidth().weight(1f).onGloballyPositioned{contentBounds=it.boundsInRoot()},verticalArrangement=Arrangement.spacedBy(16.dp)){
   CompositionLocalProvider(LocalPanelArea provides contentBounds,LocalPanelPage provides s.page.name){
   when(s.page){
-   Page.WELCOME->{heading("让眼睛休息一下","A gentle place to pause");body("先选择语言。训练需要眼动权限；提醒需要通知权限。你可以拒绝权限并查看本地记录。","Choose a language. Eye tracking and notifications need your permission; local records remain available if you decline.");body("如有疼痛、眩晕或不适，请停止并摘下头显。虚拟远近不代表真实调焦；本应用不测闭眼力度。","Stop and remove the headset if uncomfortable. Virtual depth is not real accommodation. Eyelid force is not measured.");action("了解并继续","Continue"){event(IslandEvent.AcceptWelcome)}}
+   Page.WELCOME->{heading("让眼睛休息一下","A gentle place to pause");body("先选择语言。训练需要眼动权限；提醒需要通知权限。你可以拒绝权限并查看本地记录。","Choose a language. Eye tracking and notifications need your permission; local records remain available if you decline.");body("如有疼痛、眩晕或不适，请停止并摘下头显。虚拟远近不代表真实调焦；本应用不测闭眼力度。","Stop and remove the headset if uncomfortable. Virtual depth is not real accommodation. Eyelid force is not measured.");action("了解并继续","Continue",primary=true){event(IslandEvent.AcceptWelcome)}}
    Page.HOME->HomePanel(s,event)
    Page.TRAINING->TrainingPanel(s,event,permissions)
-   Page.SUMMARY->{heading("这次休息的记录","Session result");body("完成 ${s.completed} · 未完成 ${s.incomplete} · 跳过 ${s.skipped} · 中断 ${s.interruptions}","Completed ${s.completed} · incomplete ${s.incomplete} · skipped ${s.skipped} · interrupted ${s.interruptions}");body(if(s.savePending)"正在保存这次休息。" else "这次休息已保存在本机。",if(s.savePending)"Saving your session." else "Your session is saved on this device.");action("查看记录","View history"){event(IslandEvent.Navigate(Page.HISTORY))}}
+   Page.SUMMARY->SummaryPanel(s,event)
    Page.HISTORY->HistoryPanel(s,event)
    Page.DELETE_CONFIRM->{heading("删除全部训练记录？","Delete all activity records?");body("确认后将删除本机全部训练记录；语言和音量设置保留。此操作无法从应用内撤销。","This deletes all local activity records and keeps language/audio settings. There is no in-app undo.");action("确认删除训练记录","Confirm deletion"){event(IslandEvent.DeleteRecords)};action("取消","Cancel"){event(IslandEvent.Navigate(Page.HISTORY))}}
    Page.SETTINGS->SettingsPanel(s,event,previewSound)
@@ -48,9 +71,9 @@ fun IslandContent(s:IslandUiState,event:(IslandEvent)->Unit,permissions:()->Unit
   }
   }
   Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(20.dp),verticalAlignment=Alignment.CenterVertically){
-   if(s.page !in listOf(Page.HOME,Page.WELCOME,Page.TRAINING,Page.DELETE_CONFIRM))action("返回首页","Home"){event(IslandEvent.Navigate(Page.HOME))}
-   PanelText(l("不适请立即停止，并摘下头显休息。","Stop and remove the headset if you feel discomfort."),Modifier.weight(1f))
+   PanelNote(l("感到不适时，请停下来，摘下头显休息。","If you feel discomfort, stop and remove the headset."),Modifier.weight(1f))
   }
+ }
  }
 }
 

@@ -36,9 +36,9 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def source_rows():
+def source_rows(script_path):
     rows = []
-    for line in (ROOT / "handoff/content/VOICE_SCRIPT.md").read_text().splitlines():
+    for line in script_path.read_text().splitlines():
         cells = [v.strip() for v in line.strip().strip("|").split("|")]
         if line.startswith("|") and len(cells) == 3 and cells[0] not in ("id", "---"):
             rows.append(cells)
@@ -65,12 +65,15 @@ def prepare_audio(samples):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--models", type=Path, required=True)
+    parser.add_argument("--script", type=Path, default=ROOT / "content/VOICE_SCRIPT_V2.md", help="Bilingual Markdown table; defaults to the current app V2 narration script")
     args = parser.parse_args()
+    script_path = args.script.resolve()
+    script_label = str(script_path.relative_to(ROOT)) if script_path.is_relative_to(ROOT) else str(script_path)
     output = ROOT / "review/audio/voice-natural"
     output.mkdir(parents=True, exist_ok=True)
     EspeakWrapper.set_library(espeakng_loader.get_library_path())
     os.environ["ESPEAK_DATA_PATH"] = espeakng_loader.get_data_path()
-    rows = source_rows()
+    rows = source_rows(script_path)
     assets = []
     sources = {}
     for lang, cfg in CONFIG.items():
@@ -109,7 +112,7 @@ def main():
             assert check.ndim == 1 and sr == SR and peak < .9 and np.isfinite(check).all()
             assets.append({"id": ident, "language": lang, "text": text, "voice": cfg["voice"], "speed": cfg["speed"], "model": cfg["model"], "path": str(target.relative_to(ROOT)), "sampleRate": sr, "channels": 1, "format": "WAV PCM_16", "durationSeconds": round(len(check) / sr, 4), "peakDbfs": round(20 * np.log10(peak), 3), "rmsDbfs": round(float(20 * np.log10(np.sqrt(np.mean(check * check)))), 3), "clippedSamples": int(np.count_nonzero(np.abs(check) >= .999)), "sha256": sha(target)})
             print(lang, ident, assets[-1]["durationSeconds"], flush=True)
-    manifest = {"status": "GENERATED_AND_WAVEFORM_VALIDATED; subjective listening pending", "engine": "Kokoro ONNX 0.6.1, CPU", "license": "Apache-2.0 models; see official model cards", "voiceCloning": False, "script": "handoff/content/VOICE_SCRIPT.md", "scriptSha256": sha(ROOT / "handoff/content/VOICE_SCRIPT.md"), "processing": {"sentenceGapSeconds": .22, "leadingPadSeconds": .08, "trailingPadSeconds": .18, "speed": {k: v["speed"] for k, v in CONFIG.items()}, "targetSpeechRmsDbfs": -21, "peakCeilingDbfs": -3.5, "reverb": False}, "sources": sources, "assets": assets}
+    manifest = {"status": "GENERATED_AND_WAVEFORM_VALIDATED; subjective listening pending", "engine": "Kokoro ONNX 0.6.1, CPU", "license": "Apache-2.0 models; see official model cards", "voiceCloning": False, "script": script_label, "scriptSha256": sha(script_path), "processing": {"sentenceGapSeconds": .22, "leadingPadSeconds": .08, "trailingPadSeconds": .18, "speed": {k: v["speed"] for k, v in CONFIG.items()}, "targetSpeechRmsDbfs": -21, "peakCeilingDbfs": -3.5, "reverb": False}, "sources": sources, "assets": assets}
     (ROOT / "review/audio/natural-voice-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
     print("Validated", len(assets), "neural narration files")
 

@@ -3,8 +3,8 @@
   "engine": "Kokoro ONNX 0.6.1, CPU",
   "license": "Apache-2.0 models; see official model cards",
   "voiceCloning": false,
-  "script": "handoff/content/VOICE_SCRIPT.md",
-  "scriptSha256": "88aeb37cf2518421e1e07dea7029d43e1c0e8209781797578f3710c7495dc540",
+  "script": "content/VOICE_SCRIPT_V2.md",
+  "scriptSha256": "b4b6759a9514b09f28d8962908da9d619b3ffa7aaeca4e4870d695812d933d5b",
   "processing": {
     "sentenceGapSeconds": 0.22,
     "leadingPadSeconds": 0.08,
@@ -43,11 +43,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 7.0028,
-      "peakDbfs": -3.607,
-      "rmsDbfs": -21.165,
+      "durationSeconds": 7.0021,
+      "peakDbfs": -3.5,
+      "rmsDbfs": -21.388,
       "clippedSamples": 0,
-      "sha256": "347faaa3d441b24eba95330e98f299bb08af61c5712e3f6aa9c8003f3ecc3d7c"
+      "sha256": "78e13187dd0c2c337ba47b754db8cc9f93c923b948f5e872cc7fbe4a90867ee4"
     },
     {
       "id": "closed",
@@ -61,10 +61,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 2.4453,
-      "peakDbfs": -5.098,
+      "peakDbfs": -5.019,
       "rmsDbfs": -21.489,
       "clippedSamples": 0,
-      "sha256": "cd3e6578492b403660486d9b396a476e7438233538d4139026d726dad7f6a93d"
+      "sha256": "526f5317ebd529e76497b60b90425446cd05de2a479ebd1d409f0639f6460d8e"
     },
     {
       "id": "count_3",
@@ -78,10 +78,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 1.05,
-      "peakDbfs": -7.489,
+      "peakDbfs": -7.569,
       "rmsDbfs": -22.236,
       "clippedSamples": 0,
-      "sha256": "6812faa7afe9c3b2cb35d49802eaba029673f15b4b8dd941bec0944adadcc2de"
+      "sha256": "ea8ef953ffe9476c8544c9b86625c1444a7dd46506797d9a450441c1fb4ec301"
     },
     {
       "id": "count_2",
@@ -95,10 +95,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 1.1045,
-      "peakDbfs": -8.533,
+      "peakDbfs": -8.547,
       "rmsDbfs": -22.166,
       "clippedSamples": 0,
-      "sha256": "708786d8a3dc2bd1d338e74b0eb6f9b60de4b04cc7b1c848ad67a1492db602d6"
+      "sha256": "30aefa8d79351d43c049009a26db6f2231a703a67e84c1efd6a6e81a811277f3"
     },
     {
       "id": "count_1",
@@ -111,11 +111,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 1.1447,
-      "peakDbfs": -5.728,
-      "rmsDbfs": -22.119,
+      "durationSeconds": 1.1347,
+      "peakDbfs": -5.64,
+      "rmsDbfs": -22.131,
       "clippedSamples": 0,
-      "sha256": "560e9465d9f64b89521377a8635ffe9ee67464515a2e7a3212490c4ad36110fb"
+      "sha256": "3654775e3f7166bb91cc7896c11f43a4498af6a4786c1b1070e17d6c8fd89a2f"
     },
     {
       "id": "open",
@@ -128,16 +128,16 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 2.5293,
-      "peakDbfs": -4.195,
-      "rmsDbfs": -21.472,
+      "durationSeconds": 2.4375,
+      "peakDbfs": -4.213,
+      "rmsDbfs": -21.49,
       "clippedSamples": 0,
-      "sha256": "633f7980fe178326cd8cf255a6c22b887f092fd69f1ca2b4d6813e1cf23b7ee6"
+      "sha256": "5ae070c23bd8a58fa9c1af5f7023f537b408b5dfa66a3fbc983f0ae1cca126dd"
     },
     {
       "id": "butterfly",
       "language": "zh",
-      "text": "保持头部自然稳定，用视线慢慢跟随蝴蝶。可以自然眨眼。",
+      "text": "用目光慢慢跟随蝴蝶。放松身体，可以自然眨眼。",
       "voice": "zf_001",
       "speed": 0.92,
       "model": "kokoro-v1.1-zh.onnx",
@@ -145,11 +145,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 6.7302,
-      "peakDbfs": -3.762,
-      "rmsDbfs": -21.172,
+      "durationSeconds": 5.9713,
+      "peakDbfs": -3.5,
+      "rmsDbfs": -22.214,
       "clippedSamples": 0,
-      "sha256": "3e81f59d8fe07bb84325824f3914bcc7cca13c17c488f262660b38570869a80b"
+      "sha256": "b674105d01a48a9f448b7355757a8e822a1dc13f3be3c153e532dcb3edad23c6"
     },
     {
       "id": "gaze_left_right",
@@ -162,11 +162,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 4.5133,
-      "peakDbfs": -6.439,
-      "rmsDbfs": -21.258,
+      "durationSeconds": 4.5033,
+      "peakDbfs": -6.273,
+      "rmsDbfs": -21.259,
       "clippedSamples": 0,
-      "sha256": "1bb9141e80711cac74025ce681e32c446cd9f646a148de0ca19af8b042890132"
+      "sha256": "e470545932bc96f914c66cd0b35a7d6fe1d0de66829281fd58c0bb468500204e"
     },
     {
       "id": "gaze_up_down",
@@ -180,10 +180,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 4.5273,
-      "peakDbfs": -3.879,
+      "peakDbfs": -3.976,
       "rmsDbfs": -21.257,
       "clippedSamples": 0,
-      "sha256": "c6854448e64cb1a802fd68a2d06302a7ed87d1350e015f18e548cf144a8ffa8c"
+      "sha256": "aad817eb9f38659b790ef3148b3fb97179bef827ad98ae985f8498a54094078b"
     },
     {
       "id": "gaze_clockwise",
@@ -196,11 +196,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 2.5171,
-      "peakDbfs": -4.796,
-      "rmsDbfs": -21.474,
+      "durationSeconds": 2.5137,
+      "peakDbfs": -4.86,
+      "rmsDbfs": -21.475,
       "clippedSamples": 0,
-      "sha256": "e3ef00e7e96bc13c378507bff3b9b8c83580d5f4ac052df6596a3134cf684285"
+      "sha256": "29a5f5b0c6dfab5fe8e5e6cc06633a93b6718b8f5635d8f45969074b4ba421fb"
     },
     {
       "id": "gaze_counter",
@@ -214,10 +214,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 2.542,
-      "peakDbfs": -5.822,
+      "peakDbfs": -5.887,
       "rmsDbfs": -21.469,
       "clippedSamples": 0,
-      "sha256": "145013f42f5ca73c59d1a1e77d209d3819fbf5491d59859364a7fb71e3b320ba"
+      "sha256": "12579c5a21ca5821ee694bcc4f87581a453f2b15492cbb5939f1e98f414ece09"
     },
     {
       "id": "incomplete",
@@ -231,15 +231,15 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 4.5187,
-      "peakDbfs": -5.473,
+      "peakDbfs": -5.488,
       "rmsDbfs": -21.258,
       "clippedSamples": 0,
-      "sha256": "6895b71d2970a91f5d3385b30fa462795d5ee63f29f995a1a2b7bdca23600db7"
+      "sha256": "7c8e43f49678aba4e4354cf41e9b6317c340bd1bb05b682f3110e192c149fde2"
     },
     {
       "id": "tracking_paused",
       "language": "zh",
-      "text": "训练已暂停，请检查设备的佩戴或眼动追踪状态。",
+      "text": "先休息一下，调整好佩戴后，我们再继续。",
       "voice": "zf_001",
       "speed": 0.92,
       "model": "kokoro-v1.1-zh.onnx",
@@ -247,11 +247,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 5.3406,
-      "peakDbfs": -5.796,
-      "rmsDbfs": -21.217,
+      "durationSeconds": 4.4193,
+      "peakDbfs": -3.772,
+      "rmsDbfs": -21.264,
       "clippedSamples": 0,
-      "sha256": "b87b5af414efaa8ee9c0a1991c6fd03b1aeef866002fa919710cdcfdd35b3c07"
+      "sha256": "354a191a9ccb1d0a9606a3d526bbd20cb4a1166b9cb308fe050d1215685d2ed8"
     },
     {
       "id": "finish",
@@ -264,11 +264,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 2.7098,
-      "peakDbfs": -4.966,
+      "durationSeconds": 2.7093,
+      "peakDbfs": -4.933,
       "rmsDbfs": -21.439,
       "clippedSamples": 0,
-      "sha256": "a02c3987c944f3820236492a91c0326e40d0b5937ebe10886c6594754a88280d"
+      "sha256": "fead3caeef080748a3b187a933a2f76093c332159cb86f1f8283620456a758ac"
     },
     {
       "id": "discomfort",
@@ -283,9 +283,9 @@
       "format": "WAV PCM_16",
       "durationSeconds": 5.722,
       "peakDbfs": -3.5,
-      "rmsDbfs": -21.559,
+      "rmsDbfs": -21.503,
       "clippedSamples": 0,
-      "sha256": "ff9ed255107957537569a48b7f6faf89f782ce3b4c5315cbc3bd9cdf9ced7f82"
+      "sha256": "39fad94da71149a6e615d62909260cfb40db7b40e375ef6652f21ab04bda3835"
     },
     {
       "id": "intro_blink",
@@ -299,10 +299,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 6.3053,
-      "peakDbfs": -3.5,
-      "rmsDbfs": -21.213,
+      "peakDbfs": -3.636,
+      "rmsDbfs": -21.183,
       "clippedSamples": 0,
-      "sha256": "a6454984f42609c76b3f6c6875fc1510aa2728af487f27464ee6f477564c2312"
+      "sha256": "3ddd362afb9160dc1a982c416d09529cb064cb91feb6c34a5efcb6c43412aa02"
     },
     {
       "id": "closed",
@@ -316,10 +316,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 2.9547,
-      "peakDbfs": -4.065,
+      "peakDbfs": -4.15,
       "rmsDbfs": -21.4,
       "clippedSamples": 0,
-      "sha256": "bcf9aa8c8a881e347bb50bf07b3d6ff3f0f8b13b108e0e4fdfd789f0f4f7d510"
+      "sha256": "76ce7dc11800f36f4c1362673b707ecc817d289db64947b0bbea8a03b3dddeea"
     },
     {
       "id": "count_3",
@@ -333,10 +333,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 1.1133,
-      "peakDbfs": -5.867,
+      "peakDbfs": -5.738,
       "rmsDbfs": -22.156,
       "clippedSamples": 0,
-      "sha256": "3716a2dd27b9e2f39e0795dd2c477d9bb194118f0df2dde1366b10505eb57e21"
+      "sha256": "dff6695cb8a62afd2badf956e74e0085a8f676544442d84b4424ad528b7f191b"
     },
     {
       "id": "count_2",
@@ -349,11 +349,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 1.0253,
-      "peakDbfs": -6.111,
-      "rmsDbfs": -22.271,
+      "durationSeconds": 1.0467,
+      "peakDbfs": -5.976,
+      "rmsDbfs": -22.241,
       "clippedSamples": 0,
-      "sha256": "f0859c3cd473eeb2f86c103ea333cfdef5664ba499ef63bb1730e81824924302"
+      "sha256": "1492e725e3ab43428c1aab0fdf188a00cf80eed938ace2d56baaad6cade91ea3"
     },
     {
       "id": "count_1",
@@ -367,10 +367,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 1.0693,
-      "peakDbfs": -6.641,
+      "peakDbfs": -6.534,
       "rmsDbfs": -22.21,
       "clippedSamples": 0,
-      "sha256": "0465f3ff0d0f2c666b6b0400bf06ec0fea3a5a2c4961983739bc9c6187f22634"
+      "sha256": "b054af609c3632f46cfeb5628d9e0a193f972bf7d2c528bb3407943b240ee7ed"
     },
     {
       "id": "open",
@@ -384,15 +384,15 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 2.0227,
-      "peakDbfs": -4.634,
+      "peakDbfs": -4.579,
       "rmsDbfs": -21.598,
       "clippedSamples": 0,
-      "sha256": "7cb60b30edf372db0056a8a29e023b89af730c03b1f87609bd04628352df6e13"
+      "sha256": "86490c1f250af53ef837de554fff70f9f6589939d569282fb1d35a82f60248f6"
     },
     {
       "id": "butterfly",
       "language": "en",
-      "text": "Keep your head comfortably steady and follow the butterfly with your eyes. Blink naturally.",
+      "text": "Follow the butterfly gently with your eyes. Relax, and blink naturally.",
       "voice": "af_heart",
       "speed": 0.9,
       "model": "kokoro-v1.0.onnx",
@@ -400,11 +400,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 6.0106,
+      "durationSeconds": 5.112,
       "peakDbfs": -3.5,
-      "rmsDbfs": -22.033,
+      "rmsDbfs": -21.845,
       "clippedSamples": 0,
-      "sha256": "ab4b370af35802b0d43c4d90a302c0ebefc7a98eb4a4fb32585e2dcc012d9be0"
+      "sha256": "e6c6a70e1837ca623fcec8c6cafb234e98240e38c1139bf384dd7811a66e997e"
     },
     {
       "id": "gaze_left_right",
@@ -417,11 +417,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 2.9033,
-      "peakDbfs": -5.021,
-      "rmsDbfs": -21.408,
+      "durationSeconds": 2.8933,
+      "peakDbfs": -4.785,
+      "rmsDbfs": -21.409,
       "clippedSamples": 0,
-      "sha256": "f689b7030b476d14bd21f0853d0ff4826dae50905890105f0a6d1aebe84a7417"
+      "sha256": "a1321fdbf04326896de7acd3888530322a10366a20286ab2d5cd69f423e61f5c"
     },
     {
       "id": "gaze_up_down",
@@ -435,10 +435,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 2.6673,
-      "peakDbfs": -5.469,
+      "peakDbfs": -5.254,
       "rmsDbfs": -21.446,
       "clippedSamples": 0,
-      "sha256": "e803f636f9003f6ff9421d4ddde6df6046c537396253f4e3d463c8bdd295aeac"
+      "sha256": "bf6bb6be27f5753168e50b61163b46d3d3a9a315dc8b27cce97045728e108580"
     },
     {
       "id": "gaze_clockwise",
@@ -452,10 +452,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 2.4407,
-      "peakDbfs": -4.706,
+      "peakDbfs": -4.85,
       "rmsDbfs": -21.49,
       "clippedSamples": 0,
-      "sha256": "0bf33b3356dbed22e46f294193bf63ce2e69b261a2d8c381e41598cf2e5fcbf8"
+      "sha256": "f0a223f95d8069ffcc3a0da4436f3b06565ee68fcee9844ec2025f6093c306df"
     },
     {
       "id": "gaze_counter",
@@ -470,9 +470,9 @@
       "format": "WAV PCM_16",
       "durationSeconds": 2.8033,
       "peakDbfs": -3.5,
-      "rmsDbfs": -21.756,
+      "rmsDbfs": -21.788,
       "clippedSamples": 0,
-      "sha256": "e7d07cd25f9dc038bead69ba8c2f012bbf36ed4766f2822784cf2869edbd046c"
+      "sha256": "85bd89675c54a26bd9611c05019eb932dcda89e70f96b33fa02f7a288b6211d3"
     },
     {
       "id": "incomplete",
@@ -486,15 +486,15 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 3.8912,
-      "peakDbfs": -5.112,
+      "peakDbfs": -5.102,
       "rmsDbfs": -21.301,
       "clippedSamples": 0,
-      "sha256": "9582bd10fa66be374a7dcd3697aaa1172c3e8e71d60f2fcc4de8163afdb7bff0"
+      "sha256": "ee08577d93f3b4016471e0e9684d97533c03d17315def58f66eb290d09a9cd7e"
     },
     {
       "id": "tracking_paused",
       "language": "en",
-      "text": "Session paused. Check your headset fit or eye tracking.",
+      "text": "Take a moment. Adjust your headset, and we will continue.",
       "voice": "af_heart",
       "speed": 0.9,
       "model": "kokoro-v1.0.onnx",
@@ -502,11 +502,11 @@
       "sampleRate": 24000,
       "channels": 1,
       "format": "WAV PCM_16",
-      "durationSeconds": 4.1526,
-      "peakDbfs": -4.974,
-      "rmsDbfs": -21.281,
+      "durationSeconds": 4.376,
+      "peakDbfs": -3.758,
+      "rmsDbfs": -21.266,
       "clippedSamples": 0,
-      "sha256": "654443a57a067124d60b8e1953036b68598fc9214607715a6fcb9d889f330fdf"
+      "sha256": "872bec37e7a05fb77a8849d3f32c54889743592a9e79c7fb78e19c3973d0e054"
     },
     {
       "id": "finish",
@@ -520,10 +520,10 @@
       "channels": 1,
       "format": "WAV PCM_16",
       "durationSeconds": 1.9373,
-      "peakDbfs": -5.427,
+      "peakDbfs": -5.296,
       "rmsDbfs": -21.626,
       "clippedSamples": 0,
-      "sha256": "ba531abb644bc1e2705e346b4e75a6d691b2b3e5324ca74096fe60268f9ec34b"
+      "sha256": "6b229d5984b9caa32c49d281c5a5a50ed73c6c8846f1906121c218debcee10a2"
     },
     {
       "id": "discomfort",
@@ -538,9 +538,9 @@
       "format": "WAV PCM_16",
       "durationSeconds": 5.768,
       "peakDbfs": -3.5,
-      "rmsDbfs": -21.813,
+      "rmsDbfs": -21.827,
       "clippedSamples": 0,
-      "sha256": "cc8ad64e88775b533a1d2a024af58b12ad9d2416baf8040b49fe4fc0e076a0de"
+      "sha256": "fb6591ce468c7a76038bdf16a0fab203f678cb2c6b19b45a70d97aac1ad8507f"
     }
   ]
 }

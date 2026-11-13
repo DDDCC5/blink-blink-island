@@ -15,10 +15,11 @@ import com.pico.spatial.ui.design.ButtonDefaults
 import com.pico.spatial.ui.design.PicoTheme
 import com.pico.spatial.ui.design.Text
 import com.example.blinkblinkisland.dev.ui.theme.IslandColors
+import androidx.compose.ui.graphics.Color
 
 /** One native input/hover surface. Dark brand fill makes the system highlight visible. */
 @Composable
-fun IslandActionButton(label:String,enabled:Boolean=true,onClick:()->Unit){
+fun IslandActionButton(label:String,enabled:Boolean=true,modifier:Modifier=Modifier,primary:Boolean=false,quiet:Boolean=false,onClick:()->Unit){
  val input=remember{MutableInteractionSource()}
  LaunchedEffect(input,label){input.interactions.collect{event->when(event){
   is PressInteraction.Press->Log.i("BlinkIsland","ui_press=$label")
@@ -27,9 +28,9 @@ fun IslandActionButton(label:String,enabled:Boolean=true,onClick:()->Unit){
  }}}
   Button(onClick={Log.i("BlinkIsland","ui_action=$label");onClick()},enabled=enabled,
    interactionSource=input,
-   modifier=Modifier.heightIn(min=84.dp).panelFitProbe("button"),
-   colors=ButtonDefaults.buttonColors(containerColor=IslandColors.Forest,contentColor=IslandColors.Cream),
-   contentPadding=PaddingValues(horizontal=24.dp,vertical=16.dp)){
-   Text(label,style=PicoTheme.typography.labelLarge.copy(fontSize=32.sp,lineHeight=42.sp))
+   modifier=modifier.heightIn(min=80.dp).panelFitProbe("button"),
+   colors=ButtonDefaults.buttonColors(containerColor=if(primary)IslandColors.Forest else if(quiet)Color.Transparent else IslandColors.Mint,contentColor=if(primary)IslandColors.Cream else IslandColors.Forest),
+   contentPadding=PaddingValues(horizontal=24.dp,vertical=14.dp)){
+   Text(label,onTextLayout=panelTextProbe("button_label"),style=PicoTheme.typography.labelLarge.copy(fontSize=32.sp,lineHeight=42.sp))
   }
 }

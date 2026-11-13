@@ -6,9 +6,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.text.TextLayoutResult
 
 internal val LocalPanelArea=compositionLocalOf<Rect?>{null}
 internal val LocalPanelPage=compositionLocalOf{"unknown"}
+
+@Composable
+internal fun panelTextProbe(kind:String):(TextLayoutResult)->Unit {
+ val page=LocalPanelPage.current
+ var reported:Boolean? by remember(page,kind){mutableStateOf(null)}
+ return {layout->
+  val fits=!layout.didOverflowWidth&&!layout.didOverflowHeight
+  if(fits!=reported){reported=fits;Log.i("BlinkIsland","text_fit page=$page kind=$kind ok=$fits")}
+ }
+}
 
 /** Read-only layout evidence; never clips, scrolls or intercepts input. */
 @Composable
@@ -20,7 +31,7 @@ internal fun Modifier.panelFitProbe(kind:String):Modifier {
   if(area!=null){
    val b=coordinates.boundsInRoot()
    val fits=b.left>=area.left-1&&b.top>=area.top-1&&b.right<=area.right+1&&b.bottom<=area.bottom+1
-   if(fits!=reported){reported=fits;Log.i("BlinkIsland","panel_fit page=$page kind=$kind ok=$fits")}
+   if(fits!=reported){reported=fits;Log.i("BlinkIsland","panel_fit page=$page kind=$kind ok=$fits item=$b area=$area")}
   }
  }
 }

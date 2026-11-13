@@ -5,7 +5,7 @@ enum class Phase { PREPARING, ACTIVE, USER_PAUSED, TRACKING_PAUSED, CAPABILITY_B
 enum class Outcome { COMPLETED, INCOMPLETE, SKIPPED, EXITED }
 enum class Move { BLINK, PURSUIT, HORIZONTAL, VERTICAL, CLOCKWISE, COUNTERCLOCKWISE }
 data class Step(val activity:Activity,val move:Move,val round:Int,val rounds:Int)
-data class Capabilities(val eyelid:Boolean=false,val calibrated:Boolean=false)
+data class Capabilities(val eyelid:Boolean=false,val gazeReady:Boolean=false)
 enum class GazeIssue { NONE, NO_DATA, INVALID_SAMPLE, HEAD_ROTATION, HEAD_POSITION, GAZE_OFF_TARGET, EYE_PARTICIPATION }
 /** Adapter-owned observations, not claimed PICO SDK fields. Null closure means unavailable. */
 data class Observation(val atMs:Long,val quality:Boolean,val headStable:Boolean,val eyesClosed:Boolean?=null,val targetHit:Boolean=false,val targetReady:Boolean=true,val issue:GazeIssue=GazeIssue.NONE,val headRotationBand:Int=-1,val headShiftBand:Int=-1)

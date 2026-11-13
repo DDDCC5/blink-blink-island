@@ -5,6 +5,8 @@ import kotlin.math.*
 data class ScenePlacement(val reference:TrackedPose,val panel:Point3,val island:Point3)
 class ScenePlacementUseCase {
  private var placement:ScenePlacement?=null
+ /** Explicit user action only; normal head movement must never move the scene. */
+ fun reset(){placement=null}
  fun resolve(head:TrackedPose?,now:Long):ScenePlacement? {
   placement?.let{return it}
   if(head==null||now-head.atMs !in 0..200)return null

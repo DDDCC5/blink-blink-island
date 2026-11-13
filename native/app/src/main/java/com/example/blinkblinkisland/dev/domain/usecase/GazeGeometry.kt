@@ -15,6 +15,20 @@ data class GazeRules(val targetDegrees:Double,val headDegrees:Double,val headMet
 
 /** Pure geometric evaluator; this alone does not establish successful device calibration. */
 object GazeGeometry {
+ /** Training policy: only a fresh world-space eye ray is required; no paired HMD sample. */
+ fun evaluateEye(eye:TrackedPose,target:Point3,now:Long,rules:GazeRules):Observation {
+  fun invalid()=Observation(now,false,true,issue=GazeIssue.INVALID_SAMPLE)
+  if(!eye.position.finite()||!target.finite()||now<0||eye.atMs<0||eye.atMs>now||now-eye.atMs>rules.maxAgeMs)return invalid()
+  val q=eye.rotation.unit()?:return invalid()
+  val direction=Point3(target.x-eye.position.x,target.y-eye.position.y,target.z-eye.position.z)
+  val distance=direction.length()
+  if(!distance.isFinite()||distance<1e-6)return invalid()
+  val forward=Point3(-2*(q.x*q.z+q.w*q.y),-2*(q.y*q.z-q.w*q.x),-(1-2*(q.x*q.x+q.y*q.y)))
+  val error=acos(((forward.x*direction.x+forward.y*direction.y+forward.z*direction.z)/distance).coerceIn(-1.0,1.0))*180/PI
+  val hit=error<=rules.targetDegrees
+  // Kept true for compatibility: head stability is no longer a training condition.
+  return Observation(now,true,true,targetHit=hit,issue=if(hit)GazeIssue.NONE else GazeIssue.GAZE_OFF_TARGET)
+ }
  /** Eye motion in head-local coordinates; turning both poses together gives zero. */
  fun relativeEyeMotion(eye:TrackedPose,head:TrackedPose,centerEye:TrackedPose,centerHead:TrackedPose):Double {
   fun local(e:TrackedPose,h:TrackedPose):Point3{
@@ -32,6 +46,7 @@ object GazeGeometry {
   val b=Point3(target.x-head.position.x,target.y-head.position.y,target.z-head.position.z)
   return acos(((a.x*b.x+a.y*b.y+a.z*b.z)/(a.length()*b.length())).coerceIn(-1.0,1.0))*180/PI
  }
+ /** Legacy paired-pose diagnostic, retained for initial scene placement; training uses evaluateEye. */
  fun evaluate(eye:TrackedPose,head:TrackedPose,baseline:TrackedPose,target:Point3,now:Long,rules:GazeRules):Observation {
   fun invalid()=Observation(now,false,false,issue=GazeIssue.INVALID_SAMPLE)
   if(!listOf(eye.position,head.position,baseline.position,target).all{it.finite()})return invalid()

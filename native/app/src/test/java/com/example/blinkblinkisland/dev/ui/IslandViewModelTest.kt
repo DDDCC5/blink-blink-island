@@ -39,4 +39,17 @@ class IslandViewModelTest {
   vm.onEvent(IslandEvent.Frame(p.copy(atMs=150),p.copy(atMs=150),150,"test",ref))
   assertNotNull(vm.trainingVisual);assertEquals(1.6,vm.trainingVisual!!.point.y,1e-8);assertEquals(-1.8,vm.trainingVisual!!.point.z,1e-8)
  }
+ @Test fun actualStartUsesFreshEyeThenThreeSecondCountdownWithoutFivePointGate()=runTest(d){
+  val vm=IslandViewModel(IslandUseCase(Memory()),d);advanceUntilIdle();vm.onEvent(IslandEvent.Start(listOf(Activity.BUTTERFLY)))
+  val anchor=TrackedPose(Point3(0.0,1.6,0.0),Rotation4(0.0,0.0,0.0,1.0),0)
+  fun frame(t:Long,eye:TrackedPose?=anchor.copy(atMs=t)){vm.onEvent(IslandEvent.Frame(eye,null,t,"test",anchor))}
+  frame(1000,null);frame(1050,anchor);assertEquals(Phase.CAPABILITY_BLOCKED,vm.state.value.phase)
+  frame(1100);assertEquals(Phase.PREPARING,vm.state.value.phase);assertEquals(3000L,vm.state.value.preparationMs)
+  assertFalse(vm.state.value.calibrating);assertEquals(0,vm.state.value.calibrationIndex)
+  for(t in 1150L..4100 step 50)frame(t)
+  assertEquals(Phase.PREPARING,vm.state.value.phase);assertEquals(0L,vm.state.value.progressMs)
+  frame(4150);assertEquals(Phase.ACTIVE,vm.state.value.phase);assertEquals(0L,vm.state.value.progressMs)
+  frame(4200);frame(4250);assertEquals(50L,vm.state.value.progressMs)
+  frame(4300,null);assertEquals(Phase.TRACKING_PAUSED,vm.state.value.phase);assertEquals(50L,vm.state.value.progressMs)
+ }
 }

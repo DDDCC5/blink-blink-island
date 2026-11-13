@@ -1,3 +1,9 @@
+最终2026-11-13：用户确认四角、内容完整及返回正常，并明确取消可移动。已移除所有拖动代码，恢复原左侧固定位置与静态标题，保留视口裁切修复和顶部返回；108测试、构建/样式/架构通过，替换安装启动PID17492，实际frame与root同为1383×1408。见 [最终面板修复报告](native/PANEL_VIEWPORT_AND_INPUT_FIX.md)。
+
+最新2026-11-13：系统窗口日志定位附件2016px被裁成1440px。按实际视口适配为1383×1408，系统实际frame一致；用户确认“四角和内容完整，返回正常”。标题裸pointerInput没有收到捏合，现改原生Button输入目标+Initial事件读取，安装PID16777，拖动待验收。108项测试、构建/样式/架构通过。
+
+最新2026-11-13：按用户要求增加标题栏捏住拖动XYZ和松手固定；四角使用实际View硬件轮廓裁切，附件输出1980×2016并补偿物理缩放。107项JVM测试/构建、样式与架构检查通过。设备重新连接后替换安装并启动PID8374；运行日志确认1980×2016、首页内容未溢出、GLB加载正常，底角和拖动仍待佩戴者验收。小球范围与重新注视继续已获用户确认。详见 [可移动面板报告](native/MOVABLE_PANEL_REBUILD.md)。
+
 # 阶段状态 — 2026-11-12
 
 Latest correction (2026-11-12): closer/larger left panel, one-time locked persistent placement, and fixed central training reference implemented. 75 unit tests and final build passed; replaced and launched. Wearer acceptance pending; countdown report still under investigation. See native/TRAINING_UI_REPAIR.md.
@@ -13,6 +19,10 @@ Latest horizontal-layout fix: launch pitch/roll removed from persistent referenc
 Latest polish: wearer confirms horizontal persistent placement correct. Training language control hidden,30 neural female narration clips replaced, tangent/banked/flapping butterfly implemented.81 tests/build/style pass; installed/launched PID4236. New voice/animation wearer acceptance pending. Details native/VOICE_FLIGHT_POLISH.md.
 
 Latest panel fix: language only WELCOME/HOME, fixed non-scrolling panel, grouped actions and2-record history pages.83 tests/build/style/architecture pass; installed/launched PID4778. Wearer full-content visibility acceptance pending. User accepts female voice and butterfly. Details native/NO_SCROLL_PANEL_FIX.md.
+
+2026-11-13 latest: user changed butterfly/eye movement to world-gaze-only judging; head-stability/relative-eye/live-HMD scoring gates removed. Branded no-scroll panel rebuilt and real attachment height corrected.91 tests/build/style/architecture pass; final installPID29334. Natural-head-motion and new visual acceptance pending. See native/GAZE_ONLY_UI_REBUILD.md.
+
+Latest2026-11-13 follow-up: production five-point gate removed; valid-eye readiness starts3s countdown. Full-session CTA moved above modes, Finish/Back aligned, History top Back added, flight14.3percent faster. Explicit pre-training recenter and internal text-overflow checks added.98 tests/build/style/architecture pass; final installedPID30352. Wearer acceptance pending. See native/STARTUP_LAYOUT_FOLLOWUP.md.
 
 ## 2026-11-12 训练修复与重置后重装
 

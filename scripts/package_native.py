@@ -13,9 +13,11 @@ shutil.copy2(root / 'native/app/build/outputs/apk/debug/app-debug.apk', apk)
 archive = dest / 'Blink_Blink_Island_Native_Dev_Source.zip'
 excluded = {'.gradle', '.kotlin', '.scratch', '.idea', 'build', 'builds', '__pycache__', '.git', 'captures'}
 files = [root / 'README.md', root / 'docs/superpowers/plans/2026-11-11-native-app.md']
-for folder in ['native', 'handoff', 'review', 'reports', 'scripts']:
+for folder in ['native', 'handoff', 'content', 'review', 'reports', 'scripts']:
     for path in (root / folder).rglob('*'):
         if not path.is_file() or any(part in excluded for part in path.relative_to(root).parts):
+            continue
+        if folder == 'reports' and path.suffix != '.md' and path.name != 'DEVICE_OBSERVATIONS.json':
             continue
         if path.name in {'local.properties', 'pico-mcp.mjs'} or path.suffix in {'.apk', '.keystore', '.jks'}:
             continue

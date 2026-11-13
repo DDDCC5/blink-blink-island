@@ -2,6 +2,10 @@ package com.example.blinkblinkisland.dev.ui.island.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import android.util.Log
+import com.pico.spatial.ui.design.Button
+import com.pico.spatial.ui.design.ButtonDefaults
+import com.example.blinkblinkisland.dev.ui.theme.IslandColors
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,33 +25,69 @@ import java.util.Locale
 
 @Composable
 internal fun PanelText(text:String,modifier:Modifier=Modifier){
- Text(text,modifier=modifier.panelFitProbe("text"),style=PicoTheme.typography.bodyLargeMultiline.copy(fontSize=32.sp,lineHeight=42.sp),color=PicoTheme.colorScheme.labelPrimary)
+ Text(text,modifier=modifier.panelFitProbe("text"),onTextLayout=panelTextProbe("text"),style=PicoTheme.typography.bodyLargeMultiline.copy(fontSize=32.sp,lineHeight=44.sp),color=PicoTheme.colorScheme.labelPrimary)
 }
 @Composable
 internal fun PanelHeading(text:String){
- Text(text,modifier=Modifier.panelFitProbe("heading"),style=PicoTheme.typography.headlineMedium.copy(fontSize=38.sp,lineHeight=48.sp),color=PicoTheme.colorScheme.labelPrimary)
+ Text(text,modifier=Modifier.panelFitProbe("heading"),onTextLayout=panelTextProbe("heading"),style=PicoTheme.typography.headlineMedium.copy(fontSize=48.sp,lineHeight=58.sp),color=PicoTheme.colorScheme.labelPrimary)
 }
 
+@Composable
+internal fun PanelNote(text:String,modifier:Modifier=Modifier){
+ Text(text,modifier=modifier.panelFitProbe("note"),onTextLayout=panelTextProbe("note"),style=PicoTheme.typography.bodyLargeMultiline.copy(fontSize=26.sp,lineHeight=36.sp),color=PicoTheme.colorScheme.labelSecondary)
+}
+@Composable
+private fun ModeChoice(activity:Activity,zh:Boolean,event:(IslandEvent)->Unit){
+ fun l(a:String,b:String)=if(zh)a else b
+ val icon=when(activity){Activity.BLINK->R.drawable.mode_rest;Activity.BUTTERFLY->R.drawable.mode_butterfly;Activity.GAZE->R.drawable.mode_gaze}
+ val detail=when(activity){Activity.BLINK->l("闭眼三秒，再轻轻睁开","Close for three seconds, then gently reopen");Activity.BUTTERFLY->l("用目光，跟随翩飞的蝴蝶","Gently follow the butterfly with your gaze");Activity.GAZE->l("跟着橙色小球，走一段轨迹","Follow the orange target through its path")}
+ val badge=when(activity){Activity.BLINK->l("暂未开放","Unavailable");Activity.BUTTERFLY->l("60 秒","60 sec");Activity.GAZE->l("四组动作","4 patterns")}
+ Button(onClick={Log.i("BlinkIsland","ui_action=${activityName(activity,zh)}");event(IslandEvent.Start(listOf(activity)))},modifier=Modifier.fillMaxWidth().heightIn(min=112.dp).panelFitProbe("mode"),colors=ButtonDefaults.buttonColors(containerColor=IslandColors.Mint,contentColor=IslandColors.Forest),contentPadding=PaddingValues(horizontal=24.dp,vertical=14.dp)){
+  Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(20.dp)){
+   Image(painterResource(icon),contentDescription=null,modifier=Modifier.size(72.dp))
+   Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(4.dp)){
+    Text(activityName(activity,zh),onTextLayout=panelTextProbe("mode_title"),style=PicoTheme.typography.titleLarge.copy(fontSize=32.sp,lineHeight=42.sp))
+    Text(detail,onTextLayout=panelTextProbe("mode_detail"),style=PicoTheme.typography.bodyLargeMultiline.copy(fontSize=25.sp,lineHeight=34.sp))
+   }
+   Text(badge,onTextLayout=panelTextProbe("mode_badge"),style=PicoTheme.typography.labelLarge.copy(fontSize=26.sp,lineHeight=36.sp))
+  }
+ }
+}
 @Composable
 internal fun HomePanel(s:IslandUiState,event:(IslandEvent)->Unit){
  val zh=s.settings.language=="zh"
  fun l(a:String,b:String)=if(zh)a else b
- Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(20.dp)){
-  Image(painterResource(R.drawable.local_avatar),contentDescription=l("本机默认头像","Local default avatar"),modifier=Modifier.size(64.dp))
-  Column{PanelHeading(l("让视线，慢下来。","A softer place to pause."));PanelText(l("岛上访客 · 本机默认资料","Island visitor · local default profile"))}
+ PanelHeading(l("让视线，慢下来。","A softer place to pause."))
+ PanelNote(l("选一种休息方式，把这一刻留给自己。","Choose a gentle activity. Take a moment for yourself."))
+ IslandActionButton(l("开始完整休息","Start full session"),modifier=Modifier.fillMaxWidth(),primary=true){event(IslandEvent.Start(Activity.entries))}
+ Column(verticalArrangement=Arrangement.spacedBy(12.dp)){
+  listOf(Activity.BLINK,Activity.BUTTERFLY,Activity.GAZE).forEach{ModeChoice(it,zh,event)}
  }
- PanelText(l("完整训练：闭眼10轮，蝴蝶60秒，左右/上下各10轮，顺/逆圆周各5轮。","Full: close ×10; butterfly 60 s; left/right and up/down ×10; clockwise and counterclockwise ×5."))
- Row(horizontalArrangement=Arrangement.spacedBy(16.dp)){
-  listOf(Activity.BLINK,Activity.BUTTERFLY,Activity.GAZE).forEach{a->IslandActionButton(activityName(a,zh)){event(IslandEvent.Start(listOf(a)))}}
+ Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween){
+  IslandActionButton(l("记录与统计","History"),quiet=true){event(IslandEvent.Navigate(Page.HISTORY))}
+  IslandActionButton(l("声音与设置","Settings"),quiet=true){event(IslandEvent.Navigate(Page.SETTINGS))}
+  IslandActionButton(l("使用说明","Help"),quiet=true){event(IslandEvent.Navigate(Page.CAPABILITIES))}
  }
- PanelText(l("蝴蝶与眼球运动需要眼动。闭眼休息暂未开放。","Eye tracking is required. Close & rest is not available yet."))
- IslandActionButton(l("开始完整训练","Start full session")){event(IslandEvent.Start(Activity.entries))}
- Row(horizontalArrangement=Arrangement.spacedBy(12.dp)){
-  IslandActionButton(l("本地记录与统计","Local history")){event(IslandEvent.Navigate(Page.HISTORY))}
-  IslandActionButton(l("设置","Settings")){event(IslandEvent.Navigate(Page.SETTINGS))}
-  IslandActionButton(l("权限与使用说明","Permissions & help")){event(IslandEvent.Navigate(Page.CAPABILITIES))}
+}
+
+@Composable
+internal fun SummaryPanel(s:IslandUiState,event:(IslandEvent)->Unit){
+ val zh=s.settings.language=="zh"
+ fun l(a:String,b:String)=if(zh)a else b
+ PanelHeading(l("这次休息的记录","Your moment of rest"))
+ PanelNote(l("每一次停下来，都值得被记录。","Every little pause deserves a place."))
+ Spacer(Modifier.height(20.dp))
+ Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween){
+  listOf(l("完成","Complete") to s.completed,l("未完成","Incomplete") to s.incomplete,l("跳过","Skipped") to s.skipped,l("中断","Pauses") to s.interruptions).forEach{(label,value)->
+   Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
+    Text("$value",modifier=Modifier.panelFitProbe("statistic"),style=PicoTheme.typography.headlineLarge.copy(fontSize=64.sp,lineHeight=76.sp),color=PicoTheme.colorScheme.labelPrimary)
+    PanelNote(label)
+   }
+  }
  }
- PanelText(if(s.sceneLoaded)l("小岛已准备好","Your island is ready") else l("正在准备小岛…","Preparing your island…"))
+ Spacer(Modifier.height(20.dp))
+ PanelText(if(s.savePending)l("正在保存这次休息。","Saving your session.") else l("这份记录已留在本机。","Your record is saved on this device."))
+ IslandActionButton(l("查看本地记录","View local history"),primary=true){event(IslandEvent.Navigate(Page.HISTORY))}
 }
 
 @Composable

@@ -4,31 +4,34 @@
   "nativeDevelopmentApp": {
     "package": "com.example.blinkblinkisland.dev",
     "sdkBom": "6.1.9",
-    "sceneAndWelcome": "PASS \u2014 user: \u573a\u666f\u548c\u6b22\u8fce\u9762\u677f\u90fd\u80fd\u770b\u5230",
-    "exitRecord": "PASS \u2014 user: \u8bb0\u5f55\u6b63\u786e\uff0c\u9000\u51fa\u6ca1\u6709\u7b97\u5b8c\u6210",
-    "readability": "PASS \u2014 user: \u6587\u5b57\u6e05\u695a\u53ef\u8bfb",
-    "launcherIdentity": "PASS \u2014 user: \u56fe\u6807\u548c\u4e2d\u6587\u540d\u79f0\u90fd\u6b63\u786e; English APK labels verified, English-system desktop not yet observed",
-    "trainingUiReadabilityAndHover": "PASS \u2014 user: \u6587\u5b57\u548c\u9ad8\u4eae\u90fd\u6e05\u695a\u4e86; current implementation uses standard SpatialUI Button",
-    "eyePermissionDialog": "PASS \u2014 user confirmed dialog; device EYE_TRACKING granted=true/USER_SET",
+    "sceneAndWelcome": "PASS — user: 场景和欢迎面板都能看到",
+    "exitRecord": "PASS — user: 记录正确，退出没有算完成",
+    "readability": "PASS — user: 文字清楚可读",
+    "launcherIdentity": "PASS — user: 图标和中文名称都正确; English APK labels verified, English-system desktop not yet observed",
+    "trainingUiReadabilityAndHover": "PASS — user: 文字和高亮都清楚了; current implementation uses standard SpatialUI Button",
+    "eyePermissionDialog": "PASS — user confirmed dialog; device EYE_TRACKING granted=true/USER_SET",
     "scope": "Wearer observations for these cases only; no automatic training judgment or full acceptance implied",
     "fivePointAlignment": "PASS in scoped device log alignment-diagnostics-runtime.log at 2026-11-12 15:26:19.840, ACTIVE/PURSUIT alignment=5/5",
-    "butterflyFull60Seconds": "PENDING \u2014 partial pursuit observed; head-adjustment build installed, full completion not yet observed",
+    "butterflyFull60Seconds": "PENDING — partial pursuit observed; head-adjustment build installed, full completion not yet observed",
     "butterflyExperience": "User confirms countdown present and experience basically complete; full acceptance/record result not inferred",
     "eyeMovementRetry": "Device log at16:42:02.862-05.910 PREPARING; wearer says countdown seemed absent. New scroll-to-top and skip preparation awaiting wearer verification.",
     "eyeMovementManualCountdown": {
       "result": "PASS - wearer confirmed both Retry and Skip show countdown",
-      "userObservation": "\u4e24\u4e2a\u64cd\u4f5c\u90fd\u6709\u5012\u8ba1\u65f6",
+      "userObservation": "两个操作都有倒计时",
       "scope": "Countdown visibility only; full eye-movement trajectory completion and all-mode acceptance remain unverified"
     },
     "horizontalPersistentLayout": "PASS - user confirms current panel/island positions correct",
     "voiceFlightPolish": "Installed PID4236; training language switch hidden,30 neural voice clips replaced and tangent flight attitude implemented. Wearer acceptance pending.",
     "neuralFemaleVoice": "PASS - user confirmed voice suitable",
     "butterflyNaturalFlight": "PASS - user confirmed butterfly displays normally",
-    "noScrollPanel": "Installed PID4778; summary language removed, fixed pages and paginated history implemented. Complete content visibility awaiting wearer observation."
+    "noScrollPanel": "Installed PID4778; summary language removed, fixed pages and paginated history implemented. Complete content visibility awaiting wearer observation.",
+    "expandedGazeWait": "PASS - user confirms suitable range and reacquisition resumes without resetting",
+    "navigationActions": "PASS - user confirms full-session button, inline finish/back and history return visible/working",
+    "bottomCorners": "PASS wearer after viewport-sized attachment: 四角和内容完整，返回正常. Prior failures retained in reports."
   },
   "panelVisible": {
     "result": "pass",
-    "evidence": "User: \u4f69\u6234\u540e\u80fd\u770b\u5230\u9762\u677f"
+    "evidence": "User: 佩戴后能看到面板"
   },
   "eyeStream": "SUPPORTED/STARTED; increasing Flow count",
   "headStream": "SUPPORTED/STARTED; increasing Flow count",
@@ -37,7 +40,7 @@
   "selection": {
     "countObserved": 1,
     "source": "hand gesture",
-    "evidence": "User confirmed \u624b\u52bf; selection=1 logged",
+    "evidence": "User confirmed 手势; selection=1 logged",
     "limits": "Single click, not 10-trial reliability test"
   },
   "notification": {
@@ -46,7 +49,7 @@
     "appOps": "default allow",
     "record": "notification-record.txt; id701; actions3; importance3",
     "systemPresentation": "seen=false; airtimeCount=0; airtimeMs=0; mIntercept=false; mHidden=false; mSuppressedVisualEffects=0",
-    "userObservation": "\u6ca1\u6709\u770b\u5230\u901a\u77e5",
+    "userObservation": "没有看到通知",
     "notificationCenter": "PASS: user confirmed notification present",
     "clickRoute": "PASS: user confirmed start; log at16:08:40.877 notification_route=start",
     "verdict": "Default-importance notification center delivery and observed start route passed. Heads-up, cold start and other actions remain unverified."
@@ -60,7 +63,18 @@
     "seen": false,
     "airtimeMs": 0,
     "intercept": false,
-    "userObservation": "\u672c\u6b21\u901a\u77e5\u4e2d\u5fc3\u4e5f\u6ca1\u6709",
+    "userObservation": "本次通知中心也没有",
     "verdict": "Current HIGH-channel presentation test did not pass. No claim of platform-wide unsupported capability."
+  },
+  "movablePanel20261113": {
+    "result": "ACCEPTED_CORNERS_CONTENT_BACK_MOVEMENT_CANCELLED",
+    "implementation": "Dedicated title pinch drag XYZ via public6.1.9 gesture; four-corner Compose + public Android outline; density-capped1980x2016 raster with reciprocal scale",
+    "validation": "108 JVM tests/build PASS; style0errors0warnings; architecture PASS",
+    "device": "Final replacement install/launchPID17492;1383x1408 frame matches own root; GLB loaded and layout locked. No process AndroidRuntime error.",
+    "previousCornerObservation": "FAIL: bottom corners still square; software raster symmetry did not prove XR output",
+    "acceptance": "Four-corner final XR rendering and pinch XYZ/release/input separation pending",
+    "cornerContentBack": "PASS wearer: 四角和内容完整，返回正常",
+    "rootCause": "Requested attachment2016px high; system Window actual frame1440px. New1383x1408 request and actual Window frame match.",
+    "drag": "Cancelled explicitly by user; removed all movement handlers and bindings. Original fixed placement restored."
   }
 }

@@ -28,20 +28,22 @@ data class IslandSceneFrame(val target:TrainingVisual?,val head:TrackedPose?)
 
 /** Existing original GLB, not an Editor bundle. Placement remains subject to comfort QA. */
 @Composable
-fun IslandScene(panel:AttachmentPanelComponent,motionAllowed:Boolean,onScene:(Boolean,String?)->Unit,frame:(Entity,Long,TrackedPose?)->IslandSceneFrame){
+fun IslandScene(panel:AttachmentPanelComponent,motionAllowed:Boolean,panelScale:Float=1f,placementVersion:Int=0,onPlacementApplied:(Int)->Unit={},onScene:(Boolean,String?)->Unit,frame:(Entity,Long,TrackedPose?)->IslandSceneFrame){
  val root=remember{Entity()}
  val panelPlacement=remember{Entity()}
  val controls=remember{Entity().apply{components[AttachmentPanelComponent::class.java]=panel}}
  val allowed by rememberUpdatedState(motionAllowed)
  val report by rememberUpdatedState(onScene)
  val tick by rememberUpdatedState(frame)
+ val requestedPlacementVersion by rememberUpdatedState(placementVersion)
+ val placementApplied by rememberUpdatedState(onPlacementApplied)
  val mesh=remember{MeshResource.createSphere(.03f)}
  val material=remember{UnlitMaterial.create().apply{setBaseColor(Color4(.96f,.64f,.28f,1f))}}
  val scope=rememberCoroutineScope()
  var flap:Job? by remember{mutableStateOf(null)}
  SpatialView(initial={content,_->
   root.addChild(panelPlacement);panelPlacement.addChild(controls)
-  controls.components[TransformComponent::class.java]?.apply{setEulerAngles(EulerAngles(0f,38.4f,0f));setScaleVector(Vector3.ONE)}
+  controls.components[TransformComponent::class.java]?.apply{setEulerAngles(EulerAngles(0f,38.4f,0f));setScaleVector(Vector3(panelScale,panelScale,panelScale))}
   panelPlacement.components[TransformComponent::class.java]?.setPosition(Vector3(-.95f,1.6f,-1.2f))
   content.addEntity(root)
   try{
@@ -70,7 +72,11 @@ fun IslandScene(panel:AttachmentPanelComponent,motionAllowed:Boolean,onScene:(Bo
    val placement=ScenePlacementUseCase()
    var placed=false
    var fixedReference:TrackedPose?=null
+   var appliedPlacementVersion=requestedPlacementVersion
    flap=scope.launch{while(isActive){
+    if(appliedPlacementVersion!=requestedPlacementVersion){
+     placement.reset();placed=false;fixedReference=null;appliedPlacementVersion=requestedPlacementVersion
+    }
     val now=SystemClock.elapsedRealtime();val scene=tick(root,now,fixedReference);val target=scene.target
     val fixed=placement.resolve(scene.head,now)
     if(!placed&&fixed!=null){
@@ -81,6 +87,7 @@ fun IslandScene(panel:AttachmentPanelComponent,motionAllowed:Boolean,onScene:(Bo
      val islandPoint=fixed.island
      scenery.components[TransformComponent::class.java]?.apply{setPosition(Vector3(islandPoint.x.toFloat(),islandPoint.y.toFloat(),islandPoint.z.toFloat()));setQuaternion(rotation)}
      placed=true
+     placementApplied(appliedPlacementVersion)
      Log.i("BlinkIsland","layout_locked_once panel_left=true scenery_right=true eye_level=true scenery_bounds=${model.getVisualBounds(root)}")
     }
     marker.enabled=target!=null&&!target.butterfly;flight.enabled=target?.butterfly==true

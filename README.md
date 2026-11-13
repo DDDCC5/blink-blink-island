@@ -1,11 +1,14 @@
 # 眨眨岛 / Blink Blink Island
 
-这是 PICO Swan 上运行的 Android/Kotlin Spatial 原生开发版，使用 SDK BOM 6.1.9，不是浏览器原型。已实现双语界面、三维岛屿、眼动校准与训练判定、自然女声配音、蝴蝶飞行动画及离线记录统计。闭眼识别、后台佩戴累计等能力仍待接入与验证，尚非正式完成版。
+这是 PICO Swan 上运行的 Android/Kotlin Spatial 原生开发版，使用 SDK BOM 6.1.9，不是浏览器原型。已实现双语界面、三维岛屿、目光跟随与训练判定、自然女声配音、蝴蝶飞行动画及离线记录统计。闭眼识别、后台佩戴累计等能力仍待接入与验证，尚非正式完成版。
 
-当前备份：2026-11-12，83项单元测试及调试构建通过。最新界面采用固定页式面板与历史记录分页；该轮真机显示验收待确认。女声音色、蝴蝶姿态及水平固定布局已得到佩戴者确认。
+当前开发版：2026-11-13，108项单元测试及调试构建通过。面板保持原左侧固定位置；四角圆角、完整内容和返回入口已获佩戴者确认。蝴蝶与小球训练允许自然转头；小球扩大范围，漏看时等待、重新注视后继续。闭眼模式和佩戴累计提醒仍未开放。
 
 正式工程在 `native/`。准备 JDK21 与 Android SDK 后，按 [原生构建说明](native/README.md) 配置本机 SDK 路径并运行 `./gradlew testDebugUnitTest assembleDebug`。调试安装包作为 GitHub Release 附件保存；构建缓存、本机配置及原始设备日志不纳入版本控制。
 
+- [当前面板裁切修复与验收](reports/native/PANEL_VIEWPORT_AND_INPUT_FIX.md)
+- [训练起步、可见按钮与飞行速度](reports/native/STARTUP_LAYOUT_FOLLOWUP.md)
+- [目光判定与面板重构](reports/native/GAZE_ONLY_UI_REBUILD.md)
 - [最新固定页式面板修复](reports/native/NO_SCROLL_PANEL_FIX.md)
 - [配音与蝴蝶姿态修复](reports/native/VOICE_FLIGHT_POLISH.md)
 - [闭眼接口复核与限制](reports/native/BLINK_CAPABILITY_RECHECK.md)

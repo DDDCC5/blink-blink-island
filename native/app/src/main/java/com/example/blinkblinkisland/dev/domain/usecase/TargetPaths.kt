@@ -5,20 +5,25 @@ import kotlin.math.*
 data class PathPoint(val point:Point3,val ready:Boolean)
 /** App-owned trajectory in head-reference meters, not accommodation or a physical focus distance. */
 object TargetPaths {
- private val rx=1.8*tan(10*PI/180)
- private val ry=1.8*tan(6*PI/180)
+ const val pursuitPeriodMs=14000L
+ private val pursuitRx=1.8*tan(10*PI/180)
+ private val pursuitRy=1.8*tan(6*PI/180)
+ private val gazeRx=1.8*tan(15*PI/180)
+ private val gazeRy=1.8*tan(10*PI/180)
+ private val circleRadius=1.8*tan(12*PI/180)
  val center=Point3(0.0,0.0,-1.8)
  fun destination(move:Move,index:Int):Point3=when(move){
-  Move.HORIZONTAL->Point3(if(index%2==0)-rx else rx,0.0,-1.8)
-  Move.VERTICAL->Point3(0.0,if(index%2==0)ry else -ry,-1.8)
-  Move.CLOCKWISE,Move.COUNTERCLOCKWISE->{val a=index*PI/6*(if(move==Move.CLOCKWISE)1 else -1);Point3(rx*sin(a),ry*cos(a),-1.8)}
+  Move.HORIZONTAL->Point3(if(index%2==0)-gazeRx else gazeRx,0.0,-1.8)
+  Move.VERTICAL->Point3(0.0,if(index%2==0)gazeRy else -gazeRy,-1.8)
+  Move.CLOCKWISE,Move.COUNTERCLOCKWISE->{val a=index*PI/6*(if(move==Move.CLOCKWISE)1 else -1);Point3(circleRadius*sin(a),circleRadius*cos(a),-1.8)}
   else->center
  }
- fun pursuit(ms:Long):Point3{val a=ms.coerceAtLeast(0)*2*PI/16000;return Point3(rx*sin(a),ry*sin(2*a),-1.8)}
+ fun pursuit(ms:Long):Point3{val a=ms.coerceAtLeast(0)*2*PI/pursuitPeriodMs;return Point3(pursuitRx*sin(a),pursuitRy*sin(2*a),-1.8)}
+ fun transitionDurationMs(move:Move):Long=if(move==Move.HORIZONTAL||move==Move.VERTICAL)3000L else 2000L
  fun gaze(move:Move,index:Int,ms:Long):PathPoint {
   val end=destination(move,index);val start=if(index==0)center else destination(move,index-1)
-  val f=(ms/2000.0).coerceIn(0.0,1.0);val ease=f*f*(3-2*f)
-  return PathPoint(Point3(start.x+(end.x-start.x)*ease,start.y+(end.y-start.y)*ease,-1.8),ms>=2000)
+  val duration=transitionDurationMs(move);val f=(ms/duration.toDouble()).coerceIn(0.0,1.0);val ease=f*f*(3-2*f)
+  return PathPoint(Point3(start.x+(end.x-start.x)*ease,start.y+(end.y-start.y)*ease,-1.8),ms>=duration)
  }
  fun calibration(index:Int)=when(index){1->Point3(-.25,0.0,-1.8);2->Point3(.25,0.0,-1.8);3->Point3(0.0,.19,-1.8);4->Point3(0.0,-.19,-1.8);else->center}
  fun fromHead(offset:Point3,head:TrackedPose):Point3 {

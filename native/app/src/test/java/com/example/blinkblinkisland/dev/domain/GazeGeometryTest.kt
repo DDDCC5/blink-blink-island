@@ -18,8 +18,25 @@ class GazeGeometryTest {
  @Test fun rotatedAndTranslatedGazeUsesWorldCoordinates(){val eye=TrackedPose(Point3(2.0,1.0,0.0),Rotation4(0.0,.7071067811865476,0.0,.7071067811865476),1000);assertTrue(evaluate(eye,Point3(0.0,1.0,0.0)).targetHit);assertFalse(evaluate(eye).targetHit)}
  @Test fun nearTargetIsInsufficientOutsideAngularTolerance(){assertFalse(evaluate(target=Point3(.2,0.0,-2.0)).targetHit);assertTrue(evaluate(target=Point3(.05,0.0,-2.0)).targetHit)}
  @Test fun quaternionScaleAndSignDoNotChangePose(){assertTrue(evaluate(eye=head.copy(rotation=Rotation4(0.0,0.0,0.0,-2.0)),currentHead=head.copy(rotation=Rotation4(0.0,0.0,0.0,-1.0))).headStable);assertTrue(evaluate(eye=head.copy(rotation=Rotation4(0.0,0.0,0.0,2.0))).targetHit)}
- @Test fun headRotationOrTranslationPreventsSuccess(){val yaw=head.copy(rotation=Rotation4(0.0,.17364817766693033,0.0,.984807753012208));assertFalse(evaluate(currentHead=yaw).headStable);assertFalse(evaluate(currentHead=head.copy(position=Point3(.2,0.0,0.0))).headStable)}
+ @Test fun legacyPlacementDiagnosticReportsHeadRotationOrTranslation(){val yaw=head.copy(rotation=Rotation4(0.0,.17364817766693033,0.0,.984807753012208));assertFalse(evaluate(currentHead=yaw).headStable);assertFalse(evaluate(currentHead=head.copy(position=Point3(.2,0.0,0.0))).headStable)}
  @Test fun staleFutureOrUnsynchronisedSamplesAreInvalid(){assertFalse(evaluate(now=1300).quality);assertFalse(evaluate(now=999).quality);assertFalse(evaluate(eye=head.copy(atMs=850)).quality)}
  @Test fun invalidNumbersCannotCountAsTargetHits(){for(eye in listOf(head.copy(rotation=Rotation4(0.0,0.0,0.0,0.0)),head.copy(position=Point3(Double.NaN,0.0,0.0)))){val r=evaluate(eye=eye);assertFalse(r.quality);assertFalse(r.targetHit);assertFalse(r.headStable)};assertFalse(evaluate(target=zero).quality)}
- @Test fun lookingAtTargetWhileMovingHeadDoesNotPass(){val r=evaluate(currentHead=head.copy(position=Point3(.2,0.0,0.0)));assertTrue(r.quality);assertFalse(r.targetHit)}
+ @Test fun legacyPlacementDiagnosticDistinguishesValidPoseFromStablePose(){val r=evaluate(currentHead=head.copy(position=Point3(.2,0.0,0.0)));assertTrue(r.quality);assertFalse(r.targetHit)}
+ @Test fun eyeOnlyEvaluatorUsesFreshWorldRayWithoutHmdPairing(){
+  val eye=TrackedPose(Point3(2.0,1.0,0.0),Rotation4(0.0,.7071067811865476,0.0,.7071067811865476),850)
+  val result=GazeGeometry.evaluateEye(eye,Point3(0.0,1.0,0.0),1000,rules)
+  assertTrue(result.quality);assertTrue(result.targetHit);assertEquals(GazeIssue.NONE,result.issue)
+ }
+ @Test fun eyeOnlyEvaluatorRejectsStaleFutureAndMalformedRays(){
+  val target=Point3(0.0,0.0,-2.0)
+  for(eye in listOf(head.copy(atMs=749),head.copy(atMs=1001),head.copy(position=Point3(Double.NaN,0.0,0.0)),head.copy(rotation=Rotation4(0.0,0.0,0.0,0.0)))){
+   val r=GazeGeometry.evaluateEye(eye,target,1000,rules);assertFalse(r.quality);assertFalse(r.targetHit)
+  }
+  assertFalse(GazeGeometry.evaluateEye(head,zero,1000,rules).quality)
+  assertFalse(GazeGeometry.evaluateEye(head,Point3(Double.POSITIVE_INFINITY,0.0,-2.0),1000,rules).quality)
+ }
+ @Test fun eyeOnlyEvaluatorStillRequiresAngularTargetHit(){
+  val r=GazeGeometry.evaluateEye(head,Point3(.2,0.0,-2.0),1000,rules)
+  assertTrue(r.quality);assertFalse(r.targetHit);assertEquals(GazeIssue.GAZE_OFF_TARGET,r.issue)
+ }
 }

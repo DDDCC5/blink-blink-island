@@ -52,8 +52,8 @@ class IslandViewModel(private val store:IslandUseCase,private val dispatcher:Cor
     if(event.sceneReference==null&&s.step?.move!=Move.BLINK){trainingVisual=null;return}
     val f=gaze.frame(event.eye,event.head,event.now,s.step,s.phase,s.index,s.targetIndex,s.preparationRestartsPath,event.sceneReference)
     trainingVisual=f.visual
-    if(f.calibrated&&!s.capabilities.calibrated)s.updateCapabilities(Capabilities(calibrated=true)) else if(f.calibrated)s.observe(f.observation)
-    mutable.update{it.copy(calibrating=s.step?.move!=Move.BLINK&&!f.calibrated,calibrationIndex=gaze.calibration.index,calibrationHold=gaze.calibration.heldMs,trackingGood=f.observation.quality,headStable=f.observation.headStable,targetHit=f.observation.targetHit,sensorStatus="${event.status} gate=${f.observation.issue} turnBand=${f.observation.headRotationBand} shiftBand=${f.observation.headShiftBand}")}
+    if(f.gazeReady&&!s.capabilities.gazeReady)s.updateCapabilities(Capabilities(gazeReady=true)) else if(s.capabilities.gazeReady)s.observe(f.observation)
+    mutable.update{it.copy(calibrating=s.step?.move!=Move.BLINK&&!s.capabilities.gazeReady,calibrationIndex=0,calibrationHold=0,trackingGood=f.observation.quality,headStable=f.observation.headStable,targetHit=f.observation.targetHit,sensorStatus="${event.status} gate=${f.observation.issue} turnBand=${f.observation.headRotationBand} shiftBand=${f.observation.headShiftBand}")}
     sync();saveIfTerminal()
    }else trainingVisual=null
   }
