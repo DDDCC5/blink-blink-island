@@ -12,8 +12,8 @@ apk = dest / 'BlinkBlinkIsland-native-dev-debug.apk'
 shutil.copy2(root / 'native/app/build/outputs/apk/debug/app-debug.apk', apk)
 archive = dest / 'Blink_Blink_Island_Native_Dev_Source.zip'
 excluded = {'.gradle', '.kotlin', '.scratch', '.idea', 'build', 'builds', '__pycache__', '.git', 'captures'}
-files = [root / 'README.md', root / 'docs/superpowers/plans/2026-11-11-native-app.md']
-for folder in ['native', 'handoff', 'content', 'review', 'reports', 'scripts']:
+files = [root / name for name in ['README.md', 'gradlew', 'gradlew.bat', 'gradle.properties', 'settings.gradle.kts', 'build.gradle.kts', 'docs/superpowers/plans/2026-11-11-native-app.md']]
+for folder in ['gradle', 'native', 'handoff', 'content', 'review', 'reports', 'scripts']:
     for path in (root / folder).rglob('*'):
         if not path.is_file() or any(part in excluded for part in path.relative_to(root).parts):
             continue
@@ -33,6 +33,9 @@ with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
 with zipfile.ZipFile(archive) as z:
     assert z.testzip() is None
     assert 'native/app/src/main/java/com/example/blinkblinkisland/dev/Main.kt' in z.namelist()
+    for entry in ['gradlew', 'gradlew.bat', 'settings.gradle.kts', 'build.gradle.kts', 'gradle.properties', 'gradle/wrapper/gradle-wrapper.jar', 'gradle/wrapper/gradle-wrapper.properties', 'native/gradle/libs.versions.toml']:
+        assert entry in z.namelist(), entry
+    assert (z.getinfo('gradlew').external_attr >> 16) & 0o100, 'gradlew must stay executable'
     assert not any(name.endswith('local.properties') for name in z.namelist())
 rows = [{'path': path.name, 'bytes': path.stat().st_size, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()} for path in [apk, archive]]
 (dest / 'NATIVE_SHA256.json').write_text(json.dumps(rows, ensure_ascii=False, indent=2))

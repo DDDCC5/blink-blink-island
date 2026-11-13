@@ -4,7 +4,13 @@
 
 当前开发版：2026-11-13，108项单元测试及调试构建通过。面板保持原左侧固定位置；四角圆角、完整内容和返回入口已获佩戴者确认。蝴蝶与小球训练允许自然转头；小球扩大范围，漏看时等待、重新注视后继续。闭眼模式和佩戴累计提醒仍未开放。
 
-正式工程在 `native/`。准备 JDK21 与 Android SDK 后，按 [原生构建说明](native/README.md) 配置本机 SDK 路径并运行 `./gradlew testDebugUnitTest assembleDebug`。调试安装包作为 GitHub Release 附件保存；构建缓存、本机配置及原始设备日志不纳入版本控制。
+应用源码在 `native/app/`，仓库根目录已提供云构建入口。准备 JDK21 与 Android SDK（API35）后，在根目录运行：
+
+```sh
+./gradlew --no-daemon --console=plain assembleRelease
+```
+
+输出 `app/build/outputs/apk/release/app-release-unsigned.apk`，发布签名由平台或你自己的签名配置完成。根目录 Wrapper 固定 Gradle8.13；不要使用日志中的系统Gradle8.11.1替代它。`./gradlew testDebugUnitTest` 可验证108项单元测试。原有 `cd native && ./gradlew ...` 开发入口继续可用，详见 [构建说明](native/README.md)。调试安装包与源码交付包保存于 GitHub Releases。
 
 - [当前面板裁切修复与验收](reports/native/PANEL_VIEWPORT_AND_INPUT_FIX.md)
 - [训练起步、可见按钮与飞行速度](reports/native/STARTUP_LAYOUT_FOLLOWUP.md)

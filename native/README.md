@@ -17,6 +17,8 @@ cd native
 
 输出 `app/build/outputs/apk/debug/app-debug.apk`。108 项 JVM 测试验证算法与 ViewModel；不替代设备精度或舒适度验收。
 
+云端在仓库根目录构建时，使用根目录 `./gradlew assembleRelease`，输出根目录 `app/build/outputs/apk/release/app-release-unsigned.apk`。该入口复用本目录源码与版本目录，并不要求云端先 `cd native`。根目录Wrapper固定Gradle8.13，兼容当前AGP8.13.2；Release默认不携带私人签名密钥。原有本目录构建输出路径不变。
+
 连接 Swan、确认设备序列号后，使用已安装官方 CLI：
 
 ```sh
