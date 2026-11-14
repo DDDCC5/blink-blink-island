@@ -14,7 +14,7 @@ source = E.parse(root / 'handoff/assets/brand/app_icon.svg').getroot()
 for kind in ('background', 'foreground'):
     svg = E.Element(f'{{{ns}}}svg', width='1024', height='1024', viewBox='0 0 512 512')
     if kind == 'background':
-        E.SubElement(svg, f'{{{ns}}}circle', cx='256', cy='256', r='256', fill='#D7EDE4')
+        E.SubElement(svg, f'{{{ns}}}rect', x='0', y='0', width='512', height='512', fill='#D7EDE4')
         E.SubElement(svg, f'{{{ns}}}circle', cx='256', cy='256', r='175', fill='#F6F5E9')
     else:
         for node in list(source):

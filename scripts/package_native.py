@@ -4,12 +4,26 @@ import hashlib
 import json
 import shutil
 import zipfile
+import re
 
 root = Path(__file__).resolve().parents[1]
 dest = root / 'deliverables'
 dest.mkdir(exist_ok=True)
 apk = dest / 'BlinkBlinkIsland-native-dev-debug.apk'
-shutil.copy2(root / 'native/app/build/outputs/apk/debug/app-debug.apk', apk)
+build = (root / 'native/app/build.gradle.kts').read_text()
+expected_name = re.search(r'versionName = "([^"]+)"', build).group(1)
+expected_code = int(re.search(r'versionCode = (\d+)', build).group(1))
+choices = []
+for folder in [root / 'app/build/outputs/apk/debug', root / 'native/app/build/outputs/apk/debug']:
+    metadata = folder / 'output-metadata.json'
+    if not metadata.exists():
+        continue
+    for entry in json.loads(metadata.read_text())['elements']:
+        candidate = folder / entry['outputFile']
+        if entry['versionName'] == expected_name and entry['versionCode'] == expected_code and candidate.exists():
+            choices.append(candidate)
+assert choices, 'Build the current version before packaging; refusing a stale debug APK'
+shutil.copy2(max(choices, key=lambda p: p.stat().st_mtime), apk)
 archive = dest / 'Blink_Blink_Island_Native_Dev_Source.zip'
 excluded = {'.gradle', '.kotlin', '.scratch', '.idea', 'build', 'builds', '__pycache__', '.git', 'captures'}
 files = [root / name for name in ['README.md', 'gradlew', 'gradlew.bat', 'gradle.properties', 'settings.gradle.kts', 'build.gradle.kts', 'docs/superpowers/plans/2026-11-11-native-app.md']]
