@@ -7,13 +7,20 @@ plugins {
 android {
     namespace = "com.example.blinkisland.capabilityprobe"
     compileSdk = 35
+    flavorDimensions += "probeRuntime"
+    productFlavors {
+        create("spatial") { dimension = "probeRuntime" }
+        create("openxr") { dimension = "probeRuntime"; applicationIdSuffix = ".openxr"; versionNameSuffix = "-openxr" }
+    }
+    ndkVersion = "28.2.13676358"
+    externalNativeBuild { cmake { path = file("src/main/cpp/CMakeLists.txt"); version = "3.22.1" } }
 
     defaultConfig {
         applicationId = "com.example.blinkisland.capabilityprobe"
         minSdk = 35
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 4
+        versionName = "1.3-probe"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters.add("arm64-v8a") }
@@ -28,6 +35,7 @@ android {
             )
         }
     }
+    androidResources { noCompress += "wav" }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -37,10 +45,12 @@ android {
     }
     buildFeatures {
         compose = true
+        prefab = true
     }
 }
 
 dependencies {
+    implementation("org.khronos.openxr:openxr_loader_for_android:1.1.65")
     implementation(libs.androidx.core.ktx)
     implementation(platform(libs.spatial.bom))
     implementation(libs.spatial.core)

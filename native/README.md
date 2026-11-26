@@ -1,10 +1,10 @@
 # 眨眨岛原生开发版
 
-这是 Android/Kotlin PICO Spatial 应用，独立于浏览器审阅稿及能力探针。开发身份 `com.example.blinkblinkisland.dev`，入口 `.platform.LaunchActivity`，Spatial BOM **6.1.9**。当前版本 **1.0.1 / versionCode 2**，仍为开发测试包，尚未完成产品验收。
+这是 Android/Kotlin PICO Spatial 应用，独立于浏览器审阅稿及能力探针。开发身份 `com.example.blinkblinkisland.dev`，入口 `.platform.LaunchActivity`，Spatial BOM **6.1.9**。当前版本 **1.0.3 / versionCode 4**，仍为开发测试包，尚未完成产品验收。
 
 系统名称已本地化：中文系统“眨眨岛”，英文系统“Blink Blink Island”。启动图标已用交接SVG经PICO官方App Identity Configurator生成普通图标、两层空间图标和SDF；身份修复证据见 `reports/identity/IDENTITY_FIX.md`（工作区根目录下）。
 
-已实现双语页面、真实 GLB 岛屿及蝴蝶翼动画、环境音/配音/音量设置、本地默认身份头像、SQLite 训练记录与统计、删除确认、训练状态机与重试/跳过/退出，以及通知 start 路由。闭眼和眼动训练仍有明确能力门槛；禁止把门槛移除后直接按时间完成。
+已实现双语页面、真实 GLB 岛屿及蝴蝶翼动画、环境音/配音/音量设置、本地默认身份头像、SQLite 训练记录与统计、删除确认、训练状态机与重试/跳过/退出，以及通知 start 路由。按用户2026-11-26最新决定，闭眼休息改为无需追踪权限的十轮语音引导；眼动训练继续要求真实目光数据。闭眼记录标为引导练习，不作为闭眼检测结果。
 
 ## 构建与验证
 
@@ -15,7 +15,7 @@ cd native
 ./gradlew testDebugUnitTest assembleDebug
 ```
 
-输出 `app/build/outputs/apk/debug/app-debug.apk`。108 项 JVM 测试验证算法与 ViewModel；不替代设备精度或舒适度验收。
+输出 `app/build/outputs/apk/debug/app-debug.apk`。117 项 JVM 测试验证算法与 ViewModel；不替代设备精度或舒适度验收。
 
 云端在仓库根目录构建时，使用根目录 `./gradlew assembleRelease`，输出根目录 `app/build/outputs/apk/release/app-release-unsigned.apk`。该入口复用本目录源码与版本目录，并不要求云端先 `cd native`。根目录Wrapper固定Gradle8.13，兼容当前AGP8.13.2；Release默认不携带私人签名密钥。原有本目录构建输出路径不变。
 
@@ -37,7 +37,7 @@ pico-cli app launch com.example.blinkblinkisland.dev --activity .platform.Launch
 ## 能力门槛与验收边界
 
 - 真实 Eye/HMD Flow 姿态已接入并转换到渲染root坐标；`GazeRuntime` 收到有效眼动后倒计时3秒，再仅按真实世界坐标下的目光命中判定；不再限制头部运动，也不要求眼球相对头部运动。开发容差尚需Swan验收；`TrackingBridge` 不伪造眼闭合数据。
-- `SessionUseCase` 实现闭眼3秒×10、有效追随60秒、四向眼动次数、暂停/失败/重试/跳过等状态；合成观测测试通过，设备动作判定尚未通过。
+- `SessionUseCase` 实现十轮闭眼语音引导（闭眼提示播完、保持3秒、睁眼提示、放松2秒）、有效追随60秒、四向眼动次数及暂停/失败/重试/跳过等状态。闭眼不读取眼睑数据，恢复时先倒计时并重新引导当前轮。
 - `GazeGeometry` 已接入运行期，训练只计算同坐标下的视线夹角，拒绝无效或过期眼动；不要求实时头姿或双数据流时间戳配对。蝴蝶有八字运动路径，眼动目标按左右/上下/顺逆圆周路径运行。移动段须满足有效追随覆盖；圆周必须回到起点。规则为开发参数，不能冒充真机已验收的产品容差。
 - `ReminderUseCase` 仅接受“已验证佩戴”输入。尚无已验证的后台累计佩戴来源，故没有启用后台提醒。15秒通知是手动诊断测试，进程终止时不可靠。
 - PICO 用户中心尚未接入。当前头像/身份是本地降级，不读取系统账户冒充 PICO 资料。
@@ -58,3 +58,7 @@ pico-cli app launch com.example.blinkblinkisland.dev --activity .platform.Launch
 Current policy update (2026-11-13): butterfly and eye movement judge world-space gaze following only, with no head-stability or relative-eye movement gate. Initial head pose is used for fixed scene placement. Eye tracking quality pauses and true target/time checks remain. See reports/native/GAZE_ONLY_UI_REBUILD.md from workspace root.
 
 2026-11-13 GAZE update: larger paths and gaze-wait/resume replace miss-triggered round failure for small-target exercises. Runtime HMD provider stops during training. Expanded range/wait behavior has wearer confirmation; bottom-corner display issue remains under investigation (reports/native/ROUNDED_PANEL_AND_GAZE_WAIT.md).
+
+## 1.0.2 自然插画界面
+
+首页与结果页导入自然水彩岛屿，训练页采用更清楚的进度层级。保持原有固定空间位置、圆角与栅格缩放，以及真实追踪判定、权限、准备倒计时和本机记录。设计来源位于 `review/nature-illustration-2026-11-24/`（仓库根目录下）。

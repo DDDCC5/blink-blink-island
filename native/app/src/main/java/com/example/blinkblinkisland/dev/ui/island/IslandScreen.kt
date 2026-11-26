@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.pm.PackageManager
 import android.util.Log
+import android.os.SystemClock
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -71,10 +72,22 @@ fun IslandScreen(){
   when{ s.page==Page.SUMMARY->{if(s.completed==s.total&&s.total>0){audio.speak("finish");audio.sound("sfx_session_complete")}else audio.sound("sfx_incomplete")}
    s.phase==Phase.TRACKING_PAUSED->{audio.hold(false);audio.speak("tracking_paused");audio.sound("sfx_tracking_pause")}
    s.phase==Phase.INCOMPLETE->{audio.hold(false);audio.speak("incomplete");audio.sound("sfx_incomplete")}
-   s.page==Page.TRAINING&&s.phase==Phase.ACTIVE->{audio.speak(when(s.step?.move){Move.BLINK->"intro_blink";Move.PURSUIT->"butterfly";Move.HORIZONTAL->"gaze_left_right";Move.VERTICAL->"gaze_up_down";Move.CLOCKWISE->"gaze_clockwise";else->"gaze_counter"})}
+   s.page==Page.TRAINING&&s.phase==Phase.ACTIVE&&s.step?.move!=Move.BLINK->{audio.speak(when(s.step?.move){Move.BLINK->"intro_blink";Move.PURSUIT->"butterfly";Move.HORIZONTAL->"gaze_left_right";Move.VERTICAL->"gaze_up_down";Move.CLOCKWISE->"gaze_clockwise";else->"gaze_counter"})}
   }
  }
- LaunchedEffect(active,permissionEpoch){if(!active)return@LaunchedEffect;try{while(true){val granted=context.applicationContext.checkSelfPermission("com.picovr.permission.EYE_TRACKING")==PackageManager.PERMISSION_GRANTED;vm.onEvent(IslandEvent.EyePermission(granted));tracker.start(granted,headNeeded=vm.state.value.page!=Page.TRAINING||!layoutReady);delay(300)}}finally{tracker.stop()}}
+ // Guidance runs independently of rendering/sensor delivery and is cancelled off-screen.
+ LaunchedEffect(active,s.page,s.sessionId,s.step?.move){
+  if(active&&s.page==Page.TRAINING&&s.step?.move==Move.BLINK){
+   while(true){vm.onEvent(IslandEvent.GuideTick(SystemClock.elapsedRealtime()));delay(50)}
+  }
+ }
+ LaunchedEffect(active,s.page,s.sessionId,s.index,s.phase,s.blinkStage){
+  if(!active||s.page!=Page.TRAINING||s.phase!=Phase.ACTIVE||s.step?.move!=Move.BLINK)return@LaunchedEffect
+  val id=when(s.blinkStage){BlinkGuideStage.CLOSE_PROMPT->"intro_blink";BlinkGuideStage.OPEN_PROMPT->"open";else->return@LaunchedEffect}
+  if(audio.narrate(id))vm.onEvent(IslandEvent.GuidePromptFinished(s.sessionId,s.index,s.blinkStage))
+  else {Log.w("BlinkIsland","guided_narration_unavailable");vm.onEvent(IslandEvent.Pause)}
+ }
+ LaunchedEffect(active,permissionEpoch){if(!active)return@LaunchedEffect;try{while(true){val granted=context.applicationContext.checkSelfPermission("com.picovr.permission.EYE_TRACKING")==PackageManager.PERMISSION_GRANTED;vm.onEvent(IslandEvent.EyePermission(granted));tracker.start(granted&&!(vm.state.value.page==Page.TRAINING&&vm.state.value.step?.move==Move.BLINK),headNeeded=vm.state.value.page!=Page.TRAINING||!layoutReady);delay(300)}}finally{tracker.stop()}}
  val hostDensity=LocalDensity.current
  val configuration=LocalConfiguration.current
  val viewportWidth=(configuration.screenWidthDp*hostDensity.density).toInt()

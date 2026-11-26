@@ -2,9 +2,9 @@
 
 <img src="review/identity/app_icon_square_green.png" width="160" alt="眨眨岛：绿色铺满的方形提交图标">
 
-这是 PICO Swan 上运行的 Android/Kotlin Spatial 原生开发版，使用 SDK BOM 6.1.9，不是浏览器原型。已实现双语界面、三维岛屿、目光跟随与训练判定、自然女声配音、蝴蝶飞行动画及离线记录统计。闭眼识别、后台佩戴累计等能力仍待接入与验证，尚非正式完成版。
+这是 PICO Swan 上运行的 Android/Kotlin Spatial 原生开发版，使用 SDK BOM 6.1.9，不是浏览器原型。已实现双语界面、三维岛屿、目光跟随与训练判定、自然女声配音、蝴蝶飞行动画、十轮闭眼语音引导及离线记录统计。闭眼休息按用户最新决定采用语音引导，不检测眼睛开合。后台佩戴累计等能力仍待接入与验证，尚非正式完成版。
 
-当前开发版：**1.0.1（versionCode 2）**，2026-11-14。[下载1.0.1](https://github.com/DDDCC5/blink-blink-island/releases/tag/v1.0.1)。安装包图标与绿色方形提交图标同步更新；构建验证见 [1.0.1发布报告](reports/native/RELEASE_1_0_1.md)。面板保持原左侧固定位置；四角圆角、完整内容和返回入口已获佩戴者确认。蝴蝶与小球训练允许自然转头；小球扩大范围，漏看时等待、重新注视后继续。闭眼模式和佩戴累计提醒仍未开放。
+当前开发版：**1.0.3（versionCode 4）**，2026-11-26。新增十轮闭眼语音引导，支持暂停、恢复倒计时和独立记录；合入自然插画界面。详见 [1.0.3版本说明](reports/native/RELEASE_1_0_3.md)。面板保持左侧固定位置、四角圆角、完整内容和返回入口；蝴蝶与小球训练允许自然转头。佩戴累计提醒仍未开放。历史安装包见 [1.0.1 Release](https://github.com/DDDCC5/blink-blink-island/releases/tag/v1.0.1)。
 
 应用源码在 `native/app/`，仓库根目录已提供云构建入口。准备 JDK21 与 Android SDK（API35）后，在根目录运行：
 
@@ -12,7 +12,7 @@
 ./gradlew --no-daemon --console=plain assembleRelease
 ```
 
-输出 `app/build/outputs/apk/release/app-release-unsigned.apk`，发布签名由平台或你自己的签名配置完成。根目录 Wrapper 固定 Gradle8.13；不要使用日志中的系统Gradle8.11.1替代它。`./gradlew testDebugUnitTest` 可验证108项单元测试。原有 `cd native && ./gradlew ...` 开发入口继续可用，详见 [构建说明](native/README.md)。调试安装包与源码交付包保存于 GitHub Releases。
+输出 `app/build/outputs/apk/release/app-release-unsigned.apk`，发布签名由平台或你自己的签名配置完成。根目录 Wrapper 固定 Gradle8.13；不要使用日志中的系统Gradle8.11.1替代它。`./gradlew testDebugUnitTest` 可验证117项单元测试。原有 `cd native && ./gradlew ...` 开发入口继续可用，详见 [构建说明](native/README.md)。
 
 - [当前面板裁切修复与验收](reports/native/PANEL_VIEWPORT_AND_INPUT_FIX.md)
 - [训练起步、可见按钮与飞行速度](reports/native/STARTUP_LAYOUT_FOLLOWUP.md)
@@ -32,4 +32,4 @@
 
 从此目录运行 `python3 -m http.server 8765 --bind 127.0.0.1`，然后访问 `http://127.0.0.1:8765/review/index.html`。服务只用于本机审阅；保留已有文件，若端口被占用先检查现有服务，不擅自终止其他进程。
 
-原生探针为Kotlin/Spatial SDK 6.1.9，最终APK在`probes/spatial/app/build/outputs/apk/debug/app-debug.apk`。仅用于验证，不是眨眨岛业务应用。
+原生探针分为 Spatial 与独立 OpenXR 两个 variant，详见 [探针说明](probes/spatial/README.md)。仅用于能力验证，不参与眨眨岛闭眼引导流程。

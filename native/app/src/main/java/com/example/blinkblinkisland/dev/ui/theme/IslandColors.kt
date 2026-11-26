@@ -3,6 +3,17 @@ import androidx.compose.ui.graphics.Color
 /** DESIGN_SPEC palette shared with original GLB materials and local_avatar.xml.
  * App-owned brand tokens, never overrides of native PicoTheme roles. */
 object IslandColors {
+ // design-style: fixed-figma-color review/nature-illustration-2026-11-24/design-spec.json brandColors
+ val ForestInk = Color(0xFF254E43) // design-style: fixed-figma-color nature design-spec brandColors
+ // design-style: fixed-figma-color review/nature-illustration-2026-11-24/design-spec.json brandColors
+ val DeepForest = Color(0xFF2E6D57) // design-style: fixed-figma-color nature design-spec brandColors
+ // design-style: fixed-figma-color review/nature-illustration-2026-11-24/design-spec.json brandColors
+ val MutedInk = Color(0xFF526C60) // design-style: fixed-figma-color nature design-spec brandColors
+ // design-style: fixed-figma-color review/nature-illustration-2026-11-24/design-spec.json brandColors
+ val MintWash = Color(0xFFE3EBDD) // design-style: fixed-figma-color nature design-spec brandColors
+ // design-style: fixed-figma-color review/nature-illustration-2026-11-24/design-spec.json brandColors
+ val PaperWhite = Color(0xFFFAFBF5) // design-style: fixed-figma-color nature design-spec brandColors
+
  // design-style: fixed-figma-color handoff/DESIGN_SPEC.md visual palette
  val Mint = Color(0xFFD7ECE1) // design-style: fixed-figma-color DESIGN_SPEC palette
  // design-style: fixed-figma-color handoff/DESIGN_SPEC.md visual palette

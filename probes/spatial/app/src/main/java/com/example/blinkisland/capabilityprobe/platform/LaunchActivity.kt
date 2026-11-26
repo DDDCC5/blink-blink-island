@@ -20,9 +20,14 @@ import com.pico.spatial.ui.platform.stub.SpatialLaunchActivity
 
 class LaunchActivity : SpatialLaunchActivity(), SensorEventListener {
     private val handler = Handler(Looper.getMainLooper())
+    private var experiment:EyeSignalExperiment?=null
+    fun startEyeSignalExperiment():Boolean=experiment?.start()?:false
     private var sensors: SensorManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        experiment=EyeSignalExperiment(this)
+        ProbeState.requestEyePermission={ProbeActions.requestProbePermissions(this)}
+        ProbeState.startEyeExperiment={experiment?.start()?:false}
         recordRoute(intent)
         sensors = getSystemService(SensorManager::class.java)
         val sensor = sensors?.getDefaultSensor(Sensor.TYPE_PROXIMITY)
@@ -47,9 +52,13 @@ class LaunchActivity : SpatialLaunchActivity(), SensorEventListener {
         Log.i(TAG, "proximity_event; wear_semantics=unverified")
     }
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) = Unit
-    override fun onStop() { Log.i(TAG, "lifecycle=stop"); super.onStop() }
+    override fun onStop() { experiment?.cancel(); Log.i(TAG, "lifecycle=stop"); super.onStop() }
     override fun onDestroy() {
         handler.removeCallbacksAndMessages(null)
+        ProbeState.requestEyePermission={ProbeActions.requestProbePermissions(this)}
+        ProbeState.requestEyePermission=null
+        ProbeState.startEyeExperiment=null
+        experiment?.close()
         sensors?.unregisterListener(this)
         super.onDestroy()
     }

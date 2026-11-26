@@ -33,14 +33,13 @@ fun IslandContent(s:IslandUiState,event:(IslandEvent)->Unit,permissions:()->Unit
  val panelShape=remember{RoundedCornerShape(36.dp)}
  // Transparent inset keeps every rounded edge inside the attachment's raster boundary.
  Box(Modifier.width(1100.dp).height(1120.dp).onGloballyPositioned{Log.i("BlinkIsland","panel_root size=${it.size} bounds=${it.boundsInRoot()}")}.padding(8.dp)){
- // design-style: opaque-root Stage attachment has no system glass; DESIGN_SPEC cream content card
- Column(Modifier.fillMaxSize().clip(panelShape).background(IslandColors.Cream,panelShape).padding(32.dp),verticalArrangement=Arrangement.spacedBy(16.dp)){
-  Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically){
+ // design-style: opaque-root Existing Stage attachment has no system glass; preserve accepted clipped opaque attachment, nature palette
+ Column(Modifier.fillMaxSize().clip(panelShape).background(IslandColors.PaperWhite,panelShape).padding(32.dp),verticalArrangement=Arrangement.spacedBy(16.dp)){
+  Row(Modifier.fillMaxWidth().height(80.dp),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically){
    Row(Modifier.weight(1f),horizontalArrangement=Arrangement.spacedBy(16.dp),verticalAlignment=Alignment.CenterVertically){
-    Image(painterResource(R.drawable.local_avatar),contentDescription=null,modifier=Modifier.size(56.dp))
+    Image(painterResource(R.mipmap.ic_spatial_launcher),contentDescription=null,modifier=Modifier.size(48.dp))
     Column{
-     Text(l("眨眨岛","Blink Blink Island"),style=PicoTheme.typography.titleLarge.copy(fontSize=34.sp,lineHeight=44.sp),color=PicoTheme.colorScheme.labelPrimary)
-     PanelNote(l("一座让眼睛休息的小岛","A little island for a gentle break"))
+     Text(l("眨眨岛","Blink Blink Island"),style=PicoTheme.typography.titleLarge.copy(fontSize=34.sp,lineHeight=44.sp),color=IslandColors.ForestInk)
     }
    }
    if(s.page in listOf(Page.WELCOME,Page.HOME))Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){
@@ -59,14 +58,14 @@ fun IslandContent(s:IslandUiState,event:(IslandEvent)->Unit,permissions:()->Unit
   Column(Modifier.fillMaxWidth().weight(1f).onGloballyPositioned{contentBounds=it.boundsInRoot()},verticalArrangement=Arrangement.spacedBy(16.dp)){
   CompositionLocalProvider(LocalPanelArea provides contentBounds,LocalPanelPage provides s.page.name){
   when(s.page){
-   Page.WELCOME->{heading("让眼睛休息一下","A gentle place to pause");body("先选择语言。训练需要眼动权限；提醒需要通知权限。你可以拒绝权限并查看本地记录。","Choose a language. Eye tracking and notifications need your permission; local records remain available if you decline.");body("如有疼痛、眩晕或不适，请停止并摘下头显。虚拟远近不代表真实调焦；本应用不测闭眼力度。","Stop and remove the headset if uncomfortable. Virtual depth is not real accommodation. Eyelid force is not measured.");action("了解并继续","Continue",primary=true){event(IslandEvent.AcceptWelcome)}}
+   Page.WELCOME->{heading("让眼睛休息一下","A gentle place to pause");body("先选择语言。闭眼休息跟随语音即可；跟随训练需要眼动权限。记录保存在本机。","Choose a language. Close & rest follows voice guidance; following activities need eye tracking. Records stay on this device.");body("如有疼痛、眩晕或不适，请停止并摘下头显。虚拟远近不代表真实调焦；本应用不测闭眼力度。","Stop and remove the headset if uncomfortable. Virtual depth is not real accommodation. Eyelid force is not measured.");action("了解并继续","Continue",primary=true){event(IslandEvent.AcceptWelcome)}}
    Page.HOME->HomePanel(s,event)
    Page.TRAINING->TrainingPanel(s,event,permissions)
    Page.SUMMARY->SummaryPanel(s,event)
    Page.HISTORY->HistoryPanel(s,event)
    Page.DELETE_CONFIRM->{heading("删除全部训练记录？","Delete all activity records?");body("确认后将删除本机全部训练记录；语言和音量设置保留。此操作无法从应用内撤销。","This deletes all local activity records and keeps language/audio settings. There is no in-app undo.");action("确认删除训练记录","Confirm deletion"){event(IslandEvent.DeleteRecords)};action("取消","Cancel"){event(IslandEvent.Navigate(Page.HISTORY))}}
    Page.SETTINGS->SettingsPanel(s,event,previewSound)
-   Page.CAPABILITIES->{heading("权限与使用说明","Permissions & help");body("跟随蝴蝶和橙点需要开启眼动，你随时可以在系统设置中关闭。","Following the butterfly and orange targets requires eye tracking. You can turn it off in system settings at any time.");body(if(s.eyePermissionGranted)"眼动已开启。" else "眼动尚未开启。",if(s.eyePermissionGranted)"Eye tracking is enabled." else "Eye tracking is not enabled.");action("开启眼动","Enable eye tracking"){permissions()};body("闭眼休息和佩戴提醒暂未开放。训练记录保存在本机，你可以随时删除。","Close & rest and wear reminders are not available yet. Activity records stay on this device and can be deleted at any time.")}
+   Page.CAPABILITIES->{heading("权限与使用说明","Permissions & help");body("跟随蝴蝶和橙点需要开启眼动，你随时可以在系统设置中关闭。","Following the butterfly and orange targets requires eye tracking. You can turn it off in system settings at any time.");body(if(s.eyePermissionGranted)"眼动已开启。" else "眼动尚未开启。",if(s.eyePermissionGranted)"Eye tracking is enabled." else "Eye tracking is not enabled.");action("开启眼动","Enable eye tracking"){permissions()};body("闭眼休息跟随语音完成，不检测眼睛开合。佩戴提醒暂未开放。训练记录保存在本机，可随时删除。","Close & rest is voice-guided; eye closure is not measured. Wear reminders are not available yet. Records stay on this device and can be deleted.")}
   }
   }
   }

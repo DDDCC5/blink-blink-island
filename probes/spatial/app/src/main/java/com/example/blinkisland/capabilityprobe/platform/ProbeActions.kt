@@ -22,7 +22,7 @@ object ProbeActions {
     private val handler = Handler(Looper.getMainLooper())
     private const val CHANNEL = "blink-capability-probe"
     fun requestProbePermissions(activity: android.app.Activity) {
-        val permissions = arrayOf("com.picovr.permission.EYE_TRACKING", Manifest.permission.POST_NOTIFICATIONS)
+        val permissions = arrayOf("com.picovr.permission.EYE_TRACKING")
             .filter { activity.checkSelfPermission(it) != PackageManager.PERMISSION_GRANTED }
         if (permissions.isNotEmpty()) activity.requestPermissions(permissions.toTypedArray(), 41)
     }

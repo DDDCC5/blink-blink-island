@@ -2,6 +2,7 @@ package com.example.blinkblinkisland.dev.domain.model
 
 enum class Activity { BLINK, BUTTERFLY, GAZE }
 enum class Phase { PREPARING, ACTIVE, USER_PAUSED, TRACKING_PAUSED, CAPABILITY_BLOCKED, INCOMPLETE, DONE, EXITED }
+enum class BlinkGuideStage { CLOSE_PROMPT, HOLD, OPEN_PROMPT, REST }
 enum class Outcome { COMPLETED, INCOMPLETE, SKIPPED, EXITED }
 enum class Move { BLINK, PURSUIT, HORIZONTAL, VERTICAL, CLOCKWISE, COUNTERCLOCKWISE }
 data class Step(val activity:Activity,val move:Move,val round:Int,val rounds:Int)

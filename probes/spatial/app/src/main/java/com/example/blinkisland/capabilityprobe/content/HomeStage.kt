@@ -16,6 +16,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.example.blinkisland.capabilityprobe.ProbeState
+import com.example.blinkisland.capabilityprobe.EyeSignalWindow
+import android.os.SystemClock
+import com.pico.spatial.tracking.eye.EyePose
 import com.example.blinkisland.capabilityprobe.platform.LaunchActivity
 import com.example.blinkisland.capabilityprobe.platform.ProbeActions
 import com.pico.spatial.core.ecs.AttachmentPanelComponent
@@ -43,12 +46,15 @@ private fun Context.activity(): Activity? = when (this) {
 
 @Composable
 fun HomeStage() {
-    val activity = LocalContext.current.activity()
+    val context=LocalContext.current
+    val activity = context.activity()
     val lifecycle = LocalLifecycleOwner.current.lifecycle
     var active by remember { mutableStateOf(lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) }
     var requested by remember { mutableStateOf(false) }
     var status by remember { mutableStateOf("Tracking stopped / 尚未启动追踪") }
     var presses by remember { mutableIntStateOf(0) }
+    val auditRequested by ProbeState.auditRequested.collectAsState()
+    val condition by ProbeState.experiment.collectAsState()
     val route by ProbeState.route.collectAsState()
     val proximity by ProbeState.proximity.collectAsState()
     val eye = remember { EyeTrackingProvider() }
@@ -60,9 +66,9 @@ fun HomeStage() {
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer) }
     }
-    LaunchedEffect(requested, active) {
-        if (!requested || !active) return@LaunchedEffect
-        if (activity?.checkSelfPermission("com.picovr.permission.EYE_TRACKING") != PackageManager.PERMISSION_GRANTED) {
+    LaunchedEffect(requested, auditRequested, active) {
+        if ((!requested && !auditRequested) || !active) return@LaunchedEffect
+        if (context.checkSelfPermission("com.picovr.permission.EYE_TRACKING") != PackageManager.PERMISSION_GRANTED) {
             status = "Eye permission absent; tracking not started / 请先授权眼动"
             return@LaunchedEffect
         }
@@ -70,13 +76,22 @@ fun HomeStage() {
             val starts = listOf(eye.start(), head.start(), hand.start(), controller.start())
             Log.i(LaunchActivity.TAG, "provider_start_results=$starts")
             var eyeTicks = 0; var headTicks = 0; var handTicks = 0; var controllerTicks = 0
-            // Count real Flow emissions; never access internal timestamp properties.
-            launch { eye.dataFlow.collect { eyeTicks++ } }
+            // Count real Flow emissions and the public EyeTrackingData.timestamp; no raw poses persisted.
+            val window=EyeSignalWindow()
+            var previousPose:EyePose?=null
+            launch { eye.dataFlow.collect {
+                eyeTicks++
+                val p=it.eyePose
+                val finite=listOf(p.position.x,p.position.y,p.position.z,p.rotation.x,p.rotation.y,p.rotation.z,p.rotation.w).all{v->v.isFinite()}
+                window.sample(it.timestamp,SystemClock.elapsedRealtime(),finite,previousPose==p)
+                previousPose=p
+            } }
             launch { head.dataFlow.collect { headTicks++ } }
             launch { hand.dataFlow.collect { handTicks++ } }
             launch { controller.dataFlow.collect { controllerTicks++ } }
             while (true) {
                 status = "Eye: ${eye.supportState}/${eye.state} ticks=$eyeTicks\nHead: ${head.supportState}/${head.state} ticks=$headTicks\nHand: ${hand.supportState}/${hand.state} ticks=$handTicks\nController: ${controller.supportState}/${controller.state} ticks=$controllerTicks"
+                Log.i(LaunchActivity.TAG,"eye_signal condition=${ProbeState.experiment.value} eye_support=${eye.supportState} eye_state=${eye.state} head_support=${head.supportState} head_state=${head.state} "+window.snapshot(SystemClock.elapsedRealtime()))
                 Log.i(LaunchActivity.TAG, status.replace('\n', ';'))
                 delay(1000)
             }
@@ -92,12 +107,18 @@ fun HomeStage() {
                 Text("眨眨岛 · 能力探针 / Blink capability probe")
                 Text("SDK 6.1.9 · Full Space · Diagnostics only; NOT training")
                 Text(status)
-                Text("Eyelid openness and wear-time API: UNVERIFIED. No inferred closure or success.")
+                Text("Eyelid openness: UNVERIFIED. No inferred closure or success. Condition cue: $condition")
                 Text(proximity)
                 Text(route)
-                Button(onClick = { activity?.let { ProbeActions.requestProbePermissions(it) } }) { Text("1. Request eye + notice permissions / 请求权限") }
+                Button(onClick = { Log.i(LaunchActivity.TAG,"ui_action=request_permissions");ProbeState.requestEyePermission?.invoke() }) { Text("1. 请求视线权限 / Request eye permission") }
                 Button(onClick = { requested = !requested }) { Text(if (requested) "Stop tracking / 停止追踪" else "2. Start tracking / 开始追踪") }
-                Button(onClick = { presses++; Log.i(LaunchActivity.TAG, "selection=$presses; source_requires_observer_label") }) { Text("Selection test / 选择测试: $presses") }
+                Button(onClick = {
+                    Log.i(LaunchActivity.TAG,"ui_action=eye_signal_experiment")
+                    presses++
+                    if(context.checkSelfPermission("com.picovr.permission.EYE_TRACKING")==PackageManager.PERMISSION_GRANTED){
+                        ProbeState.startEyeExperiment?.invoke()
+                    }else status="请先授权眼动，再开始实验 / Grant eye permission first"
+                }) { Text("闭眼信号对照实验 / Eye signal experiment") }
                 Button(onClick = { activity?.let { ProbeActions.scheduleNotification(it) } }) { Text("3. Test notice after 15 s / 15 秒后测试通知") }
                 Button(onClick = { activity?.let { ProbeActions.scheduleNotification(it, highImportance = true) } }) { Text("4. HIGH notice after 15 s / 高重要性通知测试") }
                 Text("Repeat selection with hand, controller and system dwell if available. Observer labels each mode.")

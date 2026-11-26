@@ -33,8 +33,10 @@ class IslandViewModel(private val store:IslandUseCase,private val dispatcher:Cor
   IslandEvent.ToggleLanguage->settings(state.value.settings.copy(language=if(state.value.settings.language=="zh")"en" else "zh"))
   is IslandEvent.EyePermission->mutable.update{it.copy(eyePermissionGranted=event.granted)}
   is IslandEvent.ChangeSettings->settings(event.settings)
-  is IslandEvent.Start->{if(event.activities.isEmpty())return;session?.let{it.exit();saveSession()};gaze=GazeRuntime();trainingVisual=null;session=SessionUseCase(event.activities,Capabilities());sessionId=UUID.randomUUID().toString();started=System.currentTimeMillis();mutable.update{it.copy(page=Page.TRAINING,error=null,calibrating=false)};sync()}
+  is IslandEvent.Start->{if(event.activities.isEmpty())return;session?.let{it.exit();saveSession()};gaze=GazeRuntime();trainingVisual=null;session=SessionUseCase(event.activities,Capabilities());sessionId=UUID.randomUUID().toString();started=System.currentTimeMillis();mutable.update{it.copy(page=Page.TRAINING,error=null,calibrating=false,sessionId=sessionId,guidedBlink=Activity.BLINK in event.activities)};sync()}
   IslandEvent.Recalibrate->{gaze=GazeRuntime();trainingVisual=null;session?.retry();session?.updateCapabilities(Capabilities());sync()}
+  is IslandEvent.GuideTick->{if(state.value.page==Page.TRAINING){session?.guideTick(event.now);sync();saveIfTerminal()}}
+  is IslandEvent.GuidePromptFinished->{if(event.sessionId==sessionId&&state.value.page==Page.TRAINING){session?.guidePromptFinished(event.index,event.stage);sync()}}
   IslandEvent.Pause->{session?.pause();sync()}
   IslandEvent.Resume->{session?.resume();sync()}
   IslandEvent.Retry->{session?.retry();sync()}
@@ -48,6 +50,7 @@ class IslandViewModel(private val store:IslandUseCase,private val dispatcher:Cor
    mutable.update{it.copy(sensorStatus=event.status)}
    val s=session
    if(s!=null&&state.value.page==Page.TRAINING){
+    if(s.step?.move==Move.BLINK){trainingVisual=null;return}
     // The first valid tracking frame may precede persistent scene placement by one tick.
     if(event.sceneReference==null&&s.step?.move!=Move.BLINK){trainingVisual=null;return}
     val f=gaze.frame(event.eye,event.head,event.now,s.step,s.phase,s.index,s.targetIndex,s.preparationRestartsPath,event.sceneReference)
@@ -60,10 +63,10 @@ class IslandViewModel(private val store:IslandUseCase,private val dispatcher:Cor
   is IslandEvent.Scene->mutable.update{it.copy(sceneLoaded=event.loaded,error=event.error?:it.error)}
   is IslandEvent.Route->{mutable.update{it.copy(route=event.action)};if(event.action=="start")onEvent(IslandEvent.Navigate(Page.HOME)) }
  }}
- private fun sync(){session?.let{s->mutable.update{it.copy(phase=s.phase,step=s.step,completed=s.completed,skipped=s.skipped,incomplete=s.incomplete,interruptions=s.interruptions,index=s.index,total=s.total,preparationMs=s.preparationMs,progressMs=s.stepMs,targetIndex=s.targetIndex)}}}
+ private fun sync(){session?.let{s->mutable.update{it.copy(phase=s.phase,step=s.step,completed=s.completed,skipped=s.skipped,incomplete=s.incomplete,interruptions=s.interruptions,index=s.index,total=s.total,preparationMs=s.preparationMs,progressMs=s.stepMs,targetIndex=s.targetIndex,blinkStage=s.blinkStage)}}}
  private fun saveIfTerminal(){if(session?.phase in listOf(Phase.DONE,Phase.EXITED)){saveSession();mutable.update{it.copy(page=Page.SUMMARY)}}}
  private fun saveSession(){val s=session?:return;if(sessionId in savedIds||sessionId in savingIds)return
-  val row=pending.getOrPut(sessionId){Record(sessionId,started,System.currentTimeMillis(),if(s.activities.size>1)"FULL" else s.activities.first().name,s.outcome,s.attempts,s.completed,s.incomplete,s.skipped,s.interruptions,s.activeMs,s.interruptedMs)}
+  val row=pending.getOrPut(sessionId){Record(sessionId,started,System.currentTimeMillis(),if(Activity.BLINK in s.activities){if(s.activities.size>1)"FULL_GUIDED" else "BLINK_GUIDED"} else if(s.activities.size>1)"FULL" else s.activities.first().name,s.outcome,s.attempts,s.completed,s.incomplete,s.skipped,s.interruptions,s.activeMs,s.interruptedMs)}
   enqueueSave(row)
  }
  private fun enqueueSave(row:Record){if(row.id in savedIds||!savingIds.add(row.id))return

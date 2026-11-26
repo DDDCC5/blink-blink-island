@@ -52,4 +52,26 @@ class IslandViewModelTest {
   frame(4200);frame(4250);assertEquals(50L,vm.state.value.progressMs)
   frame(4300,null);assertEquals(Phase.TRACKING_PAUSED,vm.state.value.phase);assertEquals(50L,vm.state.value.progressMs)
  }
+ @Test fun guidedRestSavesSeparateKindAndExitRemainsExited()=runTest(d){
+  val r=Memory();val vm=IslandViewModel(IslandUseCase(r),d);advanceUntilIdle()
+  vm.onEvent(IslandEvent.Start(listOf(Activity.BLINK)))
+  for(t in 0L..3000 step 50)vm.onEvent(IslandEvent.GuideTick(t))
+  val id=vm.state.value.sessionId
+  vm.onEvent(IslandEvent.GuidePromptFinished(id,0,BlinkGuideStage.CLOSE_PROMPT))
+  for(t in 4000L..7000 step 50)vm.onEvent(IslandEvent.GuideTick(t))
+  vm.onEvent(IslandEvent.GuidePromptFinished(id,0,BlinkGuideStage.OPEN_PROMPT))
+  for(t in 8000L..10000 step 50)vm.onEvent(IslandEvent.GuideTick(t))
+  assertEquals(1,vm.state.value.completed)
+  vm.onEvent(IslandEvent.Exit);advanceUntilIdle()
+  assertEquals("BLINK_GUIDED",r.records().single().kind);assertEquals(Outcome.EXITED,r.records().single().outcome)
+ }
+ @Test fun oldSessionAudioCompletionCannotAdvanceNewSession()=runTest(d){
+  val vm=IslandViewModel(IslandUseCase(Memory()),d);advanceUntilIdle()
+  vm.onEvent(IslandEvent.Start(listOf(Activity.BLINK)));val old=vm.state.value.sessionId
+  vm.onEvent(IslandEvent.Start(listOf(Activity.BLINK)))
+  for(t in 0L..3000 step 50)vm.onEvent(IslandEvent.GuideTick(t))
+  vm.onEvent(IslandEvent.GuidePromptFinished(old,0,BlinkGuideStage.CLOSE_PROMPT))
+  assertEquals(BlinkGuideStage.CLOSE_PROMPT,vm.state.value.blinkStage)
+ }
+
 }

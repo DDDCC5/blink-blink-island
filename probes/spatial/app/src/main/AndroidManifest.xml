@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="com.picovr.permission.EYE_TRACKING" />
+    <uses-permission android:name="com.picovr.permission.FACE_TRACKING" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <queries><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
     <application
         android:name=".platform.SpatialApplication"
         android:allowBackup="false"
@@ -17,6 +19,7 @@
         android:theme="@style/Theme.BlinkCapabilityProbeTheme"
         tools:targetApi="31">
 
+        <meta-data android:name="picovr.software.face_tracking" android:value="false/true" />
         <activity
             android:name=".platform.LaunchActivity"
             android:exported="true"

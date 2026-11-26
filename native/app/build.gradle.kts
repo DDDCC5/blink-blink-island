@@ -12,8 +12,8 @@ android {
         applicationId = "com.example.blinkblinkisland.dev"
         minSdk = 35
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.0.1"
+        versionCode = 4
+        versionName = "1.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters.add("arm64-v8a") }

@@ -29,7 +29,7 @@ fun IslandActionButton(label:String,enabled:Boolean=true,modifier:Modifier=Modif
   Button(onClick={Log.i("BlinkIsland","ui_action=$label");onClick()},enabled=enabled,
    interactionSource=input,
    modifier=modifier.heightIn(min=80.dp).panelFitProbe("button"),
-   colors=ButtonDefaults.buttonColors(containerColor=if(primary)IslandColors.Forest else if(quiet)Color.Transparent else IslandColors.Mint,contentColor=if(primary)IslandColors.Cream else IslandColors.Forest),
+   colors=ButtonDefaults.buttonColors(containerColor=if(primary)IslandColors.DeepForest else if(quiet)Color.Transparent else IslandColors.MintWash,contentColor=if(primary)IslandColors.PaperWhite else IslandColors.DeepForest),
    contentPadding=PaddingValues(horizontal=24.dp,vertical=14.dp)){
    Text(label,onTextLayout=panelTextProbe("button_label"),style=PicoTheme.typography.labelLarge.copy(fontSize=32.sp,lineHeight=42.sp))
   }

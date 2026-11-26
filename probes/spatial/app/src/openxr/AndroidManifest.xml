@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+ <application android:name="android.app.Application" tools:replace="android:name">
+  <meta-data android:name="pvr.app.type" android:value="vr" />
+  <activity android:name="com.example.blinkisland.capabilityprobe.platform.LaunchActivity" tools:node="remove" />
+  <activity android:name="com.example.blinkisland.capabilityprobe.platform.OpenXrProbeActivity" android:exported="true" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+   <intent-filter>
+    <action android:name="android.intent.action.MAIN" />
+    <category android:name="android.intent.category.LAUNCHER" />
+    <category android:name="org.khronos.openxr.intent.category.IMMERSIVE_HMD" />
+   </intent-filter>
+  </activity>
+ </application>
+</manifest>

@@ -1,0 +1,86 @@
+[
+  {
+    "state": "home",
+    "w": 1100,
+    "lang": "zh",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "home",
+    "w": 1100,
+    "lang": "en",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "training",
+    "w": 1100,
+    "lang": "zh",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "training",
+    "w": 1100,
+    "lang": "en",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "summary",
+    "w": 1100,
+    "lang": "zh",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "summary",
+    "w": 1100,
+    "lang": "en",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "home",
+    "w": 960,
+    "lang": "zh",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "home",
+    "w": 960,
+    "lang": "en",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "training",
+    "w": 960,
+    "lang": "zh",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "training",
+    "w": 960,
+    "lang": "en",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "summary",
+    "w": 960,
+    "lang": "zh",
+    "nativeControls": 0,
+    "overflow": []
+  },
+  {
+    "state": "summary",
+    "w": 960,
+    "lang": "en",
+    "nativeControls": 0,
+    "overflow": []
+  }
+]

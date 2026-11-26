@@ -1,58 +1,51 @@
-# Blink capability probe — 原生 Spatial 最小验证程序
+# 眨眨岛能力探针
 
-这是真正的 Kotlin/Spatial SDK 工程，不是网页封装，也不是业务应用。当前 BOM **6.1.9**，包名 `com.example.blinkisland.capabilityprobe`，入口 `.platform.LaunchActivity`。当前已构建、安装并启动到 Swan；用户确认佩戴后面板可见；Eye/Head/Hand公开Flow接收有真机日志证据，通知中心展示及一次start点击路由已获用户/日志验证；其他通知行为及训练判定仍待验证。
+探针与正式应用分开；不生成训练完成记录。
 
-## 本机复现
+## 两种运行方式
 
-在本目录运行：
+- `spatial`：`com.example.blinkisland.capabilityprobe`，Spatial Stage中验证视线更新与离线语音对照流程。
+- `openxr`：`com.example.blinkisland.capabilityprobe.openxr`，普通Android Activity创建自有OpenXR instance/headless session，查询面部支持与模式后结束。使用官方Loader1.1.65。VR应用标记仅在此variant，不能混入Spatial入口，否则可能出现“Activity is not associated with a SpatialContainer”。
+
+主应用保持原有Spatial结构与SDK版本。模拟器结果不等于真实眼睑识别通过。
+
+## 构建
+
+在仓库根目录使用现有JDK与Android SDK：
 
 ```sh
-JAVA_HOME="/Users/chanzungsan/.pico/primer-cli/jdk/jdk-21.0.12.1+1/Contents/Home" ./gradlew :app:assembleDebug
+JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home' ANDROID_HOME='/Users/chanzungsan/Library/Android/sdk' ./gradlew -p probes/spatial --no-daemon --console=plain :app:testSpatialDebugUnitTest :app:testOpenxrDebugUnitTest :app:assembleSpatialDebug :app:assembleOpenxrDebug
 ```
 
-APK：`app/build/outputs/apk/debug/app-debug.apk`。本机 Android SDK 路径由 CLI 生成到 `local.properties`，其他电脑应重新按官方指南配置，不复制本机路径。
+输出：
 
-当前机器有两套同名CLI，以下全部使用已核验的0.6.1绝对路径：
+- `app/build/outputs/apk/spatial/debug/app-spatial-debug.apk`
+- `app/build/outputs/apk/openxr/debug/app-openxr-debug.apk`
+
+路径相对此目录；旧单variant `outputs/apk/debug` 是历史产物，应使用上面两个明确路径。
+
+## 运行
+
+先检查设备列表并选定真实返回的ID，将下列YOUR_SERIAL替换为它。所有后续设备命令使用同一ID，不会自动选择另一个设备。
 
 ```sh
-/Users/chanzungsan/.local/lib/nodejs/node-v22.23.2-darwin-arm64/bin/pico-cli app install \
-  "/Users/chanzungsan/Documents/ChatGPT/Blink Blink Island/probes/spatial/app/build/outputs/apk/debug/app-debug.apk" \
-  --replace --device PB311XHGKC220169G
-/Users/chanzungsan/.local/lib/nodejs/node-v22.23.2-darwin-arm64/bin/pico-cli app launch \
-  com.example.blinkisland.capabilityprobe --activity .platform.LaunchActivity --device PB311XHGKC220169G
-/Users/chanzungsan/.local/lib/nodejs/node-v22.23.2-darwin-arm64/bin/pico-cli app logcat \
-  --package com.example.blinkisland.capabilityprobe --device PB311XHGKC220169G \
-  --tag BlinkCapabilityProbe --lines 200
+pico-cli app install probes/spatial/app/build/outputs/apk/spatial/debug/app-spatial-debug.apk --replace --device YOUR_SERIAL
+pico-cli app launch com.example.blinkisland.capabilityprobe --activity .platform.LaunchActivity --device YOUR_SERIAL
+pico-cli app install probes/spatial/app/build/outputs/apk/openxr/debug/app-openxr-debug.apk --replace --device YOUR_SERIAL
+pico-cli app launch com.example.blinkisland.capabilityprobe.openxr --activity com.example.blinkisland.capabilityprobe.platform.OpenXrProbeActivity --device YOUR_SERIAL
+pico-cli log --device YOUR_SERIAL --tag BlinkCapabilityProbe --lines 160
 ```
 
-首次安装与启动已获用户批准。上面的 replace 是只替换本测试包；不含卸载、清除数据、自动授予权限、修改系统配置。
+OpenXR探针1.3会创建并启动自己的headless会话；获得用户授权后尝试公开DEFAULT面部追踪模式。通过标准Activity extra `request_face_permission=true` 请求FACE_TRACKING运行时权限，仍需用户在设备上确认，不自动授予。只有模式、句柄均有效时才读取一次有效性与有限数值计数，不保存面部权重。Swan实测DEFAULT返回不支持，详见 `reports/native/SWAN_FACE_VALIDATION_2026_11_26.md`（仓库根目录）。
 
-## 真机操作步骤
+正式应用1.0.3的闭眼休息已按用户决定改为纯语音引导，不依赖本探针或面部追踪。
 
-1. 佩戴并唤醒Swan。确认出现“眨眨岛·能力探针”面板；全黑截图不能算通过。
-2. 按“请求权限”，自行确认眼动和通知权限。拒绝权限也应记录为测试结果，不能用ADB强行授权。
-3. 按“开始追踪”。观察Eye、Head、Hand、Controller的supportState/state及tick计数。tick是公开Flow的回调计数，不是训练成功数。
-4. 依次做眼动、轻微头动、控制器操作和手势操作；标注发生时间。不要以零值或缺失样本推断闭眼。关闭/重开追踪以及离开Stage，核查停止清理。
-5. 用手势与控制器各点击“选择测试”10次；记录输入类型、成功、漏点、误触。若系统提供dwell，再独立测试；本探针没有自定义dwell进度。
-6. 点“15秒后测试通知”，切换到另一应用。观察是否出现通知、是否有三个动作。检查正文、Start/Later/Today分别回到对应route。各自重复热启动与进程被回收场景。日志里的notification_posted只说明调用成功，不证明显示成功。
-7. 新增“高重要性通知测试”使用独立IMPORTANCE_HIGH通道，15秒后发送；切换其他应用观察是否主动弹出。它不修改默认通道，不证明后台调度。连续点测试只保留最后一个待发送任务，避免叠加。
-8. Proximity仅作候选诊断。佩戴/摘下/遮挡传感器需对照，不把读数当作正式wear事件。当前未实现后台佩戴累计。
-9. 眼睑开合与PICO用户中心API尚未确认，**本程序不伪造这两项接口**。待取得公开文档与权限后扩充。
+## 信号实验
 
-## 代码位置
+Spatial探针中请求视线权限后，选择“闭眼信号对照实验”。预置离线语音提示三次睁眼/闭眼/重新睁眼及睁眼转向，约88秒。条件标签是指令，不是真值；真机实验结束后需佩戴者确认是否遵循提示。程序只统计真实发射次数、源时间戳重复/逆序、非有限值、姿态未变化及到达间隔，不保存视线坐标，也不推断闭眼。
 
-- `content/HomeStage.kt`：SpatialUI面板、公开追踪Provider、Flow计数、生命周期清理。
-- `platform/ProbeActions.kt`：在实际面板Activity上请求权限；进程内15秒通知候选实验。
-- `platform/LaunchActivity.kt`：冷/热启动通知路由；proximity可用性诊断。
-- `ProbeState.kt`：仅内存诊断状态，无眼动/资料持久化。
+`probe_voice/` 是仅供诊断的中文离线提示（本机已安装Tingting声线生成、PCM WAV），不替换主应用已确认的自然女声。使用MediaPlayer播放，不依赖设备TTS引擎。
 
-不会生成任何训练成功记录。通知的Later/Today只验证路由，不执行延后或静默业务。
+## 已知边界
 
-## 已知问题与验证界限
-
-- CLI默认选择的6.2.8在本Swan运行时崩溃，原始日志在`../../reports/probe-crash.log`；回退6.1.9可启动。
-- 初始capture是全黑；随后用户确认佩戴后面板可见。
-- 启动Activity和Stage实际Activity不同，权限/通知按钮已改用实际Activity，不依赖LaunchActivity强转。
-- 面板可见性已获用户确认；不据此推断所有控件、输入、通知或训练逻辑通过。
-- 当前根知识selector是6.2，探针是6.1.9。本轮直接使用6.1本地文档和编译结果；未改托管配置。
-- 无后台服务、无进程重启计时、无账号SDK；通知Handler不是后台调度方案。
+模拟器可验证启动、权限按钮、数据流与播放调度；真实眼睑准确性、Face Only权重和Spatial主应用共存仍需Swan。模拟器的一次查询中supportsFaceTracking=true，但模式列表为空，不能据此宣称真实闭眼可用。详见仓库 `reports/native/EMULATOR_EYE_PROBE_2026_11_24.md`。

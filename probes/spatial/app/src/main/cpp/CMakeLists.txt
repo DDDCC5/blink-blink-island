@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.22.1)
+project(blink_openxr_support)
+find_package(OpenXR REQUIRED CONFIG)
+add_library(blink_openxr_support SHARED openxr_support.cpp)
+target_compile_features(blink_openxr_support PRIVATE cxx_std_17)
+target_compile_definitions(blink_openxr_support PRIVATE XR_USE_PLATFORM_ANDROID XR_USE_TIMESPEC)
+target_link_libraries(blink_openxr_support OpenXR::openxr_loader)
