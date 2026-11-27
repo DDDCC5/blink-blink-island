@@ -1,6 +1,6 @@
 # 眨眨岛原生开发版
 
-这是 Android/Kotlin PICO Spatial 应用，独立于浏览器审阅稿及能力探针。开发身份 `com.example.blinkblinkisland.dev`，入口 `.platform.LaunchActivity`，Spatial BOM **6.1.9**。当前版本 **1.0.4 / versionCode 5**，仍为开发测试包，尚未完成产品验收。1.0.4仅优化图标为统一浅奶油黄底，去掉外绿内黄的双重底色与圆盘阴影。
+这是 Android/Kotlin PICO Spatial 应用，独立于浏览器审阅稿及能力探针。开发身份 `com.example.blinkblinkisland.dev`，入口 `.platform.LaunchActivity`，Spatial BOM **6.1.9**。当前版本 **1.0.8 / versionCode 9**，仍为开发测试包，尚未完成产品验收。新增岛屿与训练目标的入场、交接、确认结束后回岛；保留快速休息、节奏选择、七天统计和语音引导闭眼。137项JVM测试通过，已在独立模拟器加载原生首页及模型，完整动态流程和真实目光仍待验收，见工作区 `reports/native/RELEASE_1_0_8.md`。
 
 系统名称已本地化：中文系统“眨眨岛”，英文系统“Blink Blink Island”。启动图标已用交接SVG经PICO官方App Identity Configurator生成普通图标、两层空间图标和SDF；身份修复证据见 `reports/identity/IDENTITY_FIX.md`（工作区根目录下）。
 
@@ -15,7 +15,7 @@ cd native
 ./gradlew testDebugUnitTest assembleDebug
 ```
 
-输出 `app/build/outputs/apk/debug/app-debug.apk`。117 项 JVM 测试验证算法与 ViewModel；不替代设备精度或舒适度验收。
+输出 `app/build/outputs/apk/debug/app-debug.apk`。127 项 JVM 测试验证算法与 ViewModel；不替代设备精度或舒适度验收。
 
 云端在仓库根目录构建时，使用根目录 `./gradlew assembleRelease`，输出根目录 `app/build/outputs/apk/release/app-release-unsigned.apk`。该入口复用本目录源码与版本目录，并不要求云端先 `cd native`。根目录Wrapper固定Gradle8.13，兼容当前AGP8.13.2；Release默认不携带私人签名密钥。原有本目录构建输出路径不变。
 
@@ -62,3 +62,12 @@ Current policy update (2026-11-13): butterfly and eye movement judge world-space
 ## 1.0.2 自然插画界面
 
 首页与结果页导入自然水彩岛屿，训练页采用更清楚的进度层级。保持原有固定空间位置、圆角与栅格缩放，以及真实追踪判定、权限、准备倒计时和本机记录。设计来源位于 `review/nature-illustration-2026-11-24/`（仓库根目录下）。
+
+
+## 1.0.6 Tripo 自然绘本
+
+原生assets/models下包含实际岛屿和完整蒙皮蝴蝶GLB，均内嵌贴图。当前场景为岛屿36,908三角面加两只各8,509三角面的蝴蝶，共53,926实例三角面。SkeletalWingbeat使用6.1.9公开控制器连续播放NaturalWingbeat（7骨骼、4轨道、0.72秒），按真实motionMs校准相位和速度，暂停时保持对应姿态。右侧陪伴蝴蝶沿用固定岛屿锚点。
+
+1.0.7删除应用内回正入口、倒计时及重置路径，启动时仍只锁定一次水平布局。调整视角使用系统长按回正。127项JVM测试通过，Swan已验证新骨骼资源加载及连续播放；自然度、训练暂停恢复与系统回正效果仍需佩戴验收。
+
+原生骨骼加载和控制器已在6.1模拟器及Swan验证，完整佩戴视觉、真实目光跟随与暂停体验仍待用户验收。Editor工作流未成功打包，原因与直接GLB加载依据见reports/native/TRIPO_INTEGRATION_TOOLING.md（工作区根目录）。

@@ -40,14 +40,7 @@ fun IslandScreen(){
  val activity=context.activity()
  var active by remember{mutableStateOf(lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED))}
  var permissionEpoch by remember{mutableIntStateOf(0)}
- var placementVersion by remember{mutableIntStateOf(0)}
- var placementCountdown by remember{mutableIntStateOf(0)}
- var placementBusy by remember{mutableStateOf(false)}
  var layoutReady by remember{mutableStateOf(false)}
- LaunchedEffect(placementCountdown>0,active){
-  if(!active){placementCountdown=0;placementBusy=false;return@LaunchedEffect}
-  if(placementCountdown>0){for(second in 3 downTo 1){placementCountdown=second;delay(1000)};layoutReady=false;placementVersion++;placementCountdown=0}
- }
  val audio=remember{AudioGuide(context.applicationContext)}
  val scope=rememberCoroutineScope()
  val tracker=remember{TrackingBridge(scope)}
@@ -68,11 +61,11 @@ fun IslandScreen(){
    if(activity!=null)PermissionActions.requestEye(activity)else Log.e("BlinkIsland","training_entry_permission_activity_unavailable")
   }
  }
- LaunchedEffect(s.page,s.step?.move,s.phase,active){if(!active)return@LaunchedEffect
+ LaunchedEffect(s.page,s.step?.move,s.phase,s.journey.stage,active){if(!active)return@LaunchedEffect
   when{ s.page==Page.SUMMARY->{if(s.completed==s.total&&s.total>0){audio.speak("finish");audio.sound("sfx_session_complete")}else audio.sound("sfx_incomplete")}
    s.phase==Phase.TRACKING_PAUSED->{audio.hold(false);audio.speak("tracking_paused");audio.sound("sfx_tracking_pause")}
    s.phase==Phase.INCOMPLETE->{audio.hold(false);audio.speak("incomplete");audio.sound("sfx_incomplete")}
-   s.page==Page.TRAINING&&s.phase==Phase.ACTIVE&&s.step?.move!=Move.BLINK->{audio.speak(when(s.step?.move){Move.BLINK->"intro_blink";Move.PURSUIT->"butterfly";Move.HORIZONTAL->"gaze_left_right";Move.VERTICAL->"gaze_up_down";Move.CLOCKWISE->"gaze_clockwise";else->"gaze_counter"})}
+   s.page==Page.TRAINING&&s.phase==Phase.ACTIVE&&s.journey.stage==com.example.blinkblinkisland.dev.domain.usecase.JourneyStage.TRAINING&&s.step?.move!=Move.BLINK->{audio.speak(when(s.step?.move){Move.BLINK->"intro_blink";Move.PURSUIT->"butterfly";Move.HORIZONTAL->"gaze_left_right";Move.VERTICAL->"gaze_up_down";Move.CLOCKWISE->"gaze_clockwise";else->"gaze_counter"})}
   }
  }
  // Guidance runs independently of rendering/sensor delivery and is cancelled off-screen.
@@ -83,7 +76,7 @@ fun IslandScreen(){
  }
  LaunchedEffect(active,s.page,s.sessionId,s.index,s.phase,s.blinkStage){
   if(!active||s.page!=Page.TRAINING||s.phase!=Phase.ACTIVE||s.step?.move!=Move.BLINK)return@LaunchedEffect
-  val id=when(s.blinkStage){BlinkGuideStage.CLOSE_PROMPT->"intro_blink";BlinkGuideStage.OPEN_PROMPT->"open";else->return@LaunchedEffect}
+  val id=when(s.blinkStage){BlinkGuideStage.CLOSE_PROMPT->if(s.step?.round==1)"intro_blink" else "close_short";BlinkGuideStage.OPEN_PROMPT->"open";else->return@LaunchedEffect}
   if(audio.narrate(id))vm.onEvent(IslandEvent.GuidePromptFinished(s.sessionId,s.index,s.blinkStage))
   else {Log.w("BlinkIsland","guided_narration_unavailable");vm.onEvent(IslandEvent.Pause)}
  }
@@ -97,7 +90,7 @@ fun IslandScreen(){
  CompositionLocalProvider(LocalDensity provides Density(raster.density,hostDensity.fontScale)){
   val permissionHost=LocalContext.current.activity()?:activity
   DisposableEffect(permissionHost){Log.i("BlinkIsland","permission_host=${permissionHost?.javaClass?.simpleName?:"unavailable"}");onDispose{}}
-  PicoTheme{IslandContent(s,event={if(!placementBusy)vm.onEvent(it)},placementCountdown=placementCountdown,placementBusy=placementBusy,recenter={if(!placementBusy){placementBusy=true;placementCountdown=3}},permissions={if(permissionHost!=null)PermissionActions.requestEye(permissionHost)else Log.e("BlinkIsland","eye_permission_activity_unavailable")},previewSound={audio.speak("intro_blink")})}
+  PicoTheme{IslandContent(s,event=vm::onEvent,permissions={if(permissionHost!=null)PermissionActions.requestEye(permissionHost)else Log.e("BlinkIsland","eye_permission_activity_unavailable")},previewSound={audio.speak("intro_blink")})}
  }
  }
  // Public Android hardware outline clips the actual output View, independently of Compose layers.
@@ -112,9 +105,9 @@ fun IslandScreen(){
   Log.i("BlinkIsland","panel_raster width=${raster.widthPx} height=${raster.heightPx} scale=${raster.entityScale} native_outline=true viewport=${viewportWidth}x${viewportHeight}")
   onDispose{view?.removeOnLayoutChangeListener(listener)}
  }
- IslandScene(panel,panelScale=raster.entityScale,placementVersion=placementVersion,onPlacementApplied={if(it==placementVersion){placementBusy=false;layoutReady=true}},motionAllowed=active&&s.phase !in listOf(Phase.USER_PAUSED,Phase.TRACKING_PAUSED,Phase.INCOMPLETE,Phase.PREPARING),onScene={ok,error->vm.onEvent(IslandEvent.Scene(ok,error))},frame={root,now,sceneReference->
+ IslandScene(panel,panelScale=raster.entityScale,onPlacementApplied={layoutReady=true},motionAllowed=active&&s.phase !in listOf(Phase.USER_PAUSED,Phase.TRACKING_PAUSED,Phase.INCOMPLETE,Phase.PREPARING),onScene={ok,error->vm.onEvent(IslandEvent.Scene(ok,error))},frame={root,now,sceneReference->
   val snapshot=if(active)tracker.snapshot(root) else null
-  snapshot?.let{(eye,head)->vm.onEvent(IslandEvent.Frame(eye,head,now,tracker.status(),sceneReference))}
-  IslandSceneFrame(vm.trainingVisual.takeIf{vm.state.value.page==Page.TRAINING},snapshot?.second)
+  if(active)vm.onEvent(IslandEvent.Frame(snapshot?.first,snapshot?.second,now,tracker.status(),sceneReference))
+  IslandSceneFrame(vm.trainingVisual,snapshot?.second,vm.state.value.journey,active)
  })
 }

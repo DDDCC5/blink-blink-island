@@ -1,0 +1,18 @@
+{
+  "sourceAndExportTriangles": 8509,
+  "vertices": 9391,
+  "skinWeightsNormalized": true,
+  "boneCount": 7,
+  "clip": "NaturalWingbeat",
+  "durationSeconds": 0.72,
+  "keyframesPerTrack": 145,
+  "tracks": 4,
+  "loopSeamContinuous": true,
+  "exportReloadedAndPlayedInGallery": true,
+  "nativeSdkLoaded": true,
+  "swanVerified": false,
+  "headReliefRepaired": true,
+  "headVerticesFixedToBodyBone": "preserved rig source mask; new wingtip weights never override BodyRoot protection",
+  "swanVerifiedScope": "Swan loading/playback valid=true duration=0.72; companion paused=false. Wearer motion acceptance pending.",
+  "swanEvidence": "reports/native/v1.0.7/swan-scene.log"
+}

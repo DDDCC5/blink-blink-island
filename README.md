@@ -4,7 +4,7 @@
 
 这是 PICO Swan 上运行的 Android/Kotlin Spatial 原生开发版，使用 SDK BOM 6.1.9，不是浏览器原型。已实现双语界面、三维岛屿、目光跟随与训练判定、自然女声配音、蝴蝶飞行动画、十轮闭眼语音引导及离线记录统计。闭眼休息按用户最新决定采用语音引导，不检测眼睛开合。后台佩戴累计等能力仍待接入与验证，尚非正式完成版。
 
-当前开发版：**1.0.4（versionCode 5）**，2026-11-27。图标统一为浅奶油黄底，去掉外绿内黄的双重底色与圆盘阴影，同步普通图标、空间图标背景和提交素材。详见 [1.0.4版本说明](reports/native/RELEASE_1_0_4.md)。保留1.0.3的十轮闭眼语音引导、自然插画界面、本地记录和目光跟随训练。佩戴累计提醒仍未开放。历史安装包见 [1.0.1 Release](https://github.com/DDDCC5/blink-blink-island/releases/tag/v1.0.1)。
+当前开发版：**1.0.8（versionCode 9）**，2026-11-27。新增小岛与训练目标联动：蝴蝶和小球从岛屿入场，用户确认结束后回岛；组合训练采用目标交接。137项JVM测试和Debug/Release构建通过，已在独立模拟器启动原生首页与模型；受ROM空间输入接口限制，完整动画流程及真实眼动仍待验收。Swan尚未安装本版。详见 [1.0.8开发验证记录](reports/native/RELEASE_1_0_8.md)及[版本说明](docs/releases/v1.0.8.md)。
 
 应用源码在 `native/app/`，仓库根目录已提供云构建入口。准备 JDK21 与 Android SDK（API35）后，在根目录运行：
 
@@ -12,7 +12,7 @@
 ./gradlew --no-daemon --console=plain assembleRelease
 ```
 
-输出 `app/build/outputs/apk/release/app-release-unsigned.apk`，发布签名由平台或你自己的签名配置完成。根目录 Wrapper 固定 Gradle8.13；不要使用日志中的系统Gradle8.11.1替代它。`./gradlew testDebugUnitTest` 可验证117项单元测试。原有 `cd native && ./gradlew ...` 开发入口继续可用，详见 [构建说明](native/README.md)。
+输出 `app/build/outputs/apk/release/app-release-unsigned.apk`，发布签名由平台或你自己的签名配置完成。根目录 Wrapper 固定 Gradle8.13；不要使用日志中的系统Gradle8.11.1替代它。`./gradlew testDebugUnitTest` 可验证127项单元测试。原有 `cd native && ./gradlew ...` 开发入口继续可用，详见 [构建说明](native/README.md)。
 
 - [当前面板裁切修复与验收](reports/native/PANEL_VIEWPORT_AND_INPUT_FIX.md)
 - [训练起步、可见按钮与飞行速度](reports/native/STARTUP_LAYOUT_FOLLOWUP.md)

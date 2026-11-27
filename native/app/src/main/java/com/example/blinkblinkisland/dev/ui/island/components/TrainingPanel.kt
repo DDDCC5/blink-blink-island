@@ -22,11 +22,14 @@ fun ColumnScope.TrainingPanel(s:IslandUiState,event:(IslandEvent)->Unit,permissi
  val zh=s.settings.language=="zh"
  fun l(a:String,b:String)=if(zh)a else b
  val blink=s.step?.move==Move.BLINK
- val preparing=s.phase==Phase.PREPARING
  val paused=s.phase==Phase.USER_PAUSED||s.phase==Phase.TRACKING_PAUSED
+ val handoff=s.journey.stage==com.example.blinkblinkisland.dev.domain.usecase.JourneyStage.HANDOFF
+ val entering=s.journey.stage==com.example.blinkblinkisland.dev.domain.usecase.JourneyStage.ENTERING
+ val preparing=!paused&&(s.phase==Phase.PREPARING||entering||handoff)
+ val preparationMs=maxOf(s.preparationMs,if(entering)3000-s.journey.elapsedMs else 0)
  Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically){
   Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)){
-   Image(painterResource(if(blink)R.drawable.mode_rest else if(s.step?.move==Move.PURSUIT)R.drawable.mode_butterfly else R.drawable.mode_gaze),null,Modifier.size(64.dp))
+   Image(painterResource(if(blink)R.drawable.mode_rest else if(s.step?.move==Move.PURSUIT)R.drawable.storybook_butterfly else R.drawable.mode_gaze),null,Modifier.size(64.dp))
    Text(s.step?.activity?.let{activityName(it,zh)}?:l("这次休息","Your session"),style=PicoTheme.typography.titleLarge.copy(fontSize=34.sp,lineHeight=44.sp),color=IslandColors.ForestInk)
   }
   PanelNote(when{preparing->l("准备开始","Get ready");paused->l("已暂停","Paused");s.calibrating->l("等待目光","Waiting for gaze");s.phase==Phase.ACTIVE->if(blink)l("语音引导","Voice guidance") else l("跟随中","Following");else->""})
@@ -39,10 +42,10 @@ fun ColumnScope.TrainingPanel(s:IslandUiState,event:(IslandEvent)->Unit,permissi
    IslandActionButton(l("开启眼动","Enable eye tracking"),primary=true){permissions()}
   }
   preparing->{
-   if(!blink&&!s.trackingGood)PanelNote(l("调整好佩戴后，倒计时会继续。","Adjust your headset to continue the countdown."))
+   if(!blink&&!s.trackingGood&&!entering&&!handoff)PanelNote(l("调整好佩戴后，倒计时会继续。","Adjust your headset to continue the countdown."))
    Column(Modifier.fillMaxWidth().padding(vertical=20.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(12.dp)){
-    Text("${(s.preparationMs+999)/1000}",modifier=Modifier.panelFitProbe("countdown"),onTextLayout=panelTextProbe("countdown"),style=PicoTheme.typography.headlineLarge.copy(fontSize=112.sp,lineHeight=124.sp),color=IslandColors.ForestInk)
-    PanelText(if(blink)l("放松坐好，跟着语音休息。","Sit comfortably and follow the voice.") else l("看向目标，准备好就一起出发。","Look at the target. We begin in a moment."))
+    Text(if(handoff)l("稍候","One moment") else "${(preparationMs+999)/1000}",modifier=Modifier.panelFitProbe("countdown"),onTextLayout=panelTextProbe("countdown"),style=PicoTheme.typography.headlineLarge.copy(fontSize=112.sp,lineHeight=124.sp),color=IslandColors.ForestInk)
+    PanelText(if(handoff)l("伙伴交接中，稍后继续。","Your companions are changing places.") else if(entering)l("小岛的伙伴，来陪你了。","A friend from the island is on the way.") else if(blink)l("放松坐好，跟着语音休息。","Sit comfortably and follow the voice.") else l("看向目标，准备好就一起出发。","Look at the target. We begin in a moment."))
    }
   }
   s.phase==Phase.USER_PAUSED->{
@@ -69,7 +72,7 @@ fun ColumnScope.TrainingPanel(s:IslandUiState,event:(IslandEvent)->Unit,permissi
     BlinkGuideStage.REST->l("放松一下，稍后继续。","Take a moment before the next round.")
    })
    Column(Modifier.fillMaxWidth().height(248.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.Center){
-    Text("${s.step?.round?:1} / 10",modifier=Modifier.panelFitProbe("guided_round"),onTextLayout=panelTextProbe("guided_round"),style=PicoTheme.typography.headlineLarge.copy(fontSize=112.sp,lineHeight=132.sp),color=IslandColors.ForestInk)
+    Text("${s.step?.round?:1} / ${s.step?.rounds?:10}",modifier=Modifier.panelFitProbe("guided_round"),onTextLayout=panelTextProbe("guided_round"),style=PicoTheme.typography.headlineLarge.copy(fontSize=112.sp,lineHeight=132.sp),color=IslandColors.ForestInk)
     PanelText(l("跟随语音 · 闭眼3秒，再睁眼","Follow the voice · close for 3 seconds, then open"))
     if(s.blinkStage==BlinkGuideStage.HOLD)PanelText("${((3000-s.progressMs).coerceAtLeast(0)+999)/1000}")
    }
@@ -79,10 +82,10 @@ fun ColumnScope.TrainingPanel(s:IslandUiState,event:(IslandEvent)->Unit,permissi
    PanelHeading(if(s.step?.move==Move.PURSUIT)l("让目光，轻轻跟随。","Let your gaze follow gently.") else l("沿着小球，缓缓移动目光。","Follow the orange target gently."))
    Column(Modifier.fillMaxWidth().height(248.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.Center){
     Text(if(s.step?.move==Move.PURSUIT)"${s.progressMs/1000}" else "${s.step?.round?:1}",modifier=Modifier.panelFitProbe("progress"),onTextLayout=panelTextProbe("progress"),style=PicoTheme.typography.headlineLarge.copy(fontSize=132.sp,lineHeight=152.sp),color=IslandColors.ForestInk)
-    PanelText(if(s.step?.move==Move.PURSUIT)l("/ 60 秒有效追随","/ 60 seconds of following") else l("/ ${s.step?.rounds?:1} 轮 · ${moveName(s.step!!.move,zh)}","/ ${s.step?.rounds?:1} rounds · ${moveName(s.step!!.move,zh)}"))
+    PanelText(if(s.step?.move==Move.PURSUIT)l("/ ${s.pursuitGoalMs/1000} 秒有效追随","/ ${s.pursuitGoalMs/1000} seconds of following") else l("/ ${s.step?.rounds?:1} 轮 · ${moveName(s.step!!.move,zh)}","/ ${s.step?.rounds?:1} rounds · ${moveName(s.step!!.move,zh)}"))
     Spacer(Modifier.height(16.dp))
     // Real session observations only; gaze progress retains its existing waypoint acceptance.
-    LinearProgressIndicator(progress={if(s.step?.move==Move.PURSUIT)(s.progressMs/60000f).coerceIn(0f,1f) else (s.targetIndex.toFloat()/(if(s.step?.move in listOf(Move.HORIZONTAL,Move.VERTICAL))3f else 13f)).coerceIn(0f,1f)},modifier=Modifier.width(240.dp))
+    LinearProgressIndicator(progress={if(s.step?.move==Move.PURSUIT)(s.progressMs/s.pursuitGoalMs.toFloat()).coerceIn(0f,1f) else (s.targetIndex.toFloat()/(if(s.step?.move in listOf(Move.HORIZONTAL,Move.VERTICAL))3f else 13f)).coerceIn(0f,1f)},modifier=Modifier.width(240.dp))
    }
    Column(Modifier.fillMaxWidth(),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(8.dp)){
     PanelText(if(s.step?.move==Move.PURSUIT)l("中央的蝴蝶会带你慢慢移动。","Gently follow the butterfly in the center.") else if(s.trackingGood&&!s.targetHit)l("小球在等你，重新看向它就会继续。","The target is waiting. Look at it to continue.") else l("跟随中央橙色小球的轨迹。","Follow the orange target in the center."))

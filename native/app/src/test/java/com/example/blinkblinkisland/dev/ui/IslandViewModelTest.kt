@@ -74,4 +74,76 @@ class IslandViewModelTest {
   assertEquals(BlinkGuideStage.CLOSE_PROMPT,vm.state.value.blinkStage)
  }
 
+ @Test fun setupDoesNotStartOrSaveTrainingUntilBeginAndRemembersChoice()=runTest(d){
+  val r=Memory();val vm=IslandViewModel(IslandUseCase(r),d);advanceUntilIdle()
+  vm.onEvent(IslandEvent.ChooseSession(Activity.entries,SessionPlan.QUICK))
+  assertEquals(Page.PREPARE,vm.state.value.page);assertNull(vm.state.value.step);assertTrue(r.items.isEmpty())
+  vm.onEvent(IslandEvent.SelectPace(Pace.COMFORTABLE));vm.onEvent(IslandEvent.Begin);advanceUntilIdle()
+  assertEquals(Page.TRAINING,vm.state.value.page);assertEquals(8,vm.state.value.total)
+  assertEquals(Pace.COMFORTABLE,r.config.pace);assertEquals(SessionPlan.QUICK,r.config.lastPlan)
+  vm.onEvent(IslandEvent.Exit);advanceUntilIdle();assertEquals("QUICK_GUIDED",r.records().single().kind)
+ }
+
+ @Test fun islandEntryNeverAccumulatesPracticeAndExitSavesBeforeReturn()=runTest(d){
+  val r=Memory();val vm=IslandViewModel(IslandUseCase(r),d);advanceUntilIdle()
+  vm.onEvent(IslandEvent.Start(listOf(Activity.BUTTERFLY)))
+  val anchor=TrackedPose(Point3(0.0,1.6,0.0),Rotation4(0.0,0.0,0.0,1.0),0)
+  fun frame(t:Long){vm.onEvent(IslandEvent.Frame(anchor.copy(atMs=t),null,t,"test",anchor))}
+  frame(0);assertEquals(JourneyStage.ENTERING,vm.state.value.journey.stage)
+  for(t in 50L..2900L step 50)frame(t)
+  assertEquals(0L,vm.state.value.progressMs)
+  vm.onEvent(IslandEvent.Exit);advanceUntilIdle()
+  assertEquals(Outcome.EXITED,r.records().single().outcome)
+  assertEquals(JourneyStage.RETURNING,vm.state.value.journey.stage)
+  frame(2950);frame(3000);val progress=vm.state.value.journey.progress
+  vm.onEvent(IslandEvent.Exit);assertEquals(progress,vm.state.value.journey.progress,0.0)
+  for(t in 3050L..5000L step 50)frame(t)
+  assertEquals(JourneyStage.ISLAND,vm.state.value.journey.stage);assertNull(vm.trainingVisual)
+  advanceUntilIdle();assertEquals(1,r.items.size)
+ }
+ @Test fun terminalSummaryKeepsTargetUntilUserConfirmsFinish()=runTest(d){
+  val vm=IslandViewModel(IslandUseCase(Memory()),d);advanceUntilIdle()
+  vm.onEvent(IslandEvent.Start(listOf(Activity.BUTTERFLY)))
+  val anchor=TrackedPose(Point3(0.0,1.6,0.0),Rotation4(0.0,0.0,0.0,1.0),0)
+  vm.onEvent(IslandEvent.Frame(anchor,null,0,"test",anchor))
+  val target=vm.trainingVisual;assertNotNull(target)
+  vm.onEvent(IslandEvent.SkipActivity);advanceUntilIdle()
+  assertEquals(Page.SUMMARY,vm.state.value.page);assertEquals(JourneyStage.WAITING_END,vm.state.value.journey.stage)
+  vm.onEvent(IslandEvent.Frame(null,null,10000,"test",anchor))
+  assertEquals(target,vm.trainingVisual);assertEquals(JourneyStage.WAITING_END,vm.state.value.journey.stage)
+  vm.onEvent(IslandEvent.Exit);assertEquals(JourneyStage.RETURNING,vm.state.value.journey.stage)
+ }
+
+ @Test fun automaticCompletionWaitsAndCombinedModeHandoffDoesNotCreateARecord()=runTest(d){
+  val r=Memory();val vm=IslandViewModel(IslandUseCase(r),d);advanceUntilIdle()
+  vm.onEvent(IslandEvent.Start(listOf(Activity.BUTTERFLY,Activity.GAZE),SessionPlan.QUICK))
+  val anchor=TrackedPose(Point3(0.0,1.6,0.0),Rotation4(0.0,0.0,0.0,1.0),0)
+  fun frame(t:Long){vm.onEvent(IslandEvent.Frame(anchor.copy(atMs=t),null,t,"test",anchor))}
+  for(t in 0L..3050L step 50)frame(t)
+  for(t in 3100L..33200L step 50)vm.onEvent(IslandEvent.Sensor(Observation(t,true,true,targetHit=true,targetReady=true),"test"))
+  assertEquals(1,vm.state.value.completed);assertEquals(Activity.GAZE,vm.state.value.step?.activity)
+  val butterfly=vm.trainingVisual
+  frame(33250);assertEquals(JourneyStage.HANDOFF,vm.state.value.journey.stage)
+  assertEquals(butterfly,vm.trainingVisual);assertTrue(r.items.isEmpty())
+  for(t in 33300L..35250L step 50)frame(t)
+  assertEquals(JourneyStage.HANDOFF,vm.state.value.journey.stage)
+  frame(35300);assertEquals(JourneyStage.ENTERING,vm.state.value.journey.stage)
+  assertEquals(Activity.GAZE,vm.state.value.journey.activity);assertEquals(0L,vm.state.value.progressMs)
+  assertFalse(vm.trainingVisual!!.butterfly)
+  vm.onEvent(IslandEvent.SkipActivity);advanceUntilIdle()
+  assertEquals(Page.SUMMARY,vm.state.value.page);assertEquals(JourneyStage.WAITING_END,vm.state.value.journey.stage)
+  assertEquals(1,r.items.size)
+ }
+ @Test fun userPauseFreezesEntryAndResumeDoesNotResendTarget()=runTest(d){
+  val vm=IslandViewModel(IslandUseCase(Memory()),d);advanceUntilIdle();vm.onEvent(IslandEvent.Start(listOf(Activity.GAZE)))
+  val a=TrackedPose(Point3(0.0,1.6,0.0),Rotation4(0.0,0.0,0.0,1.0),0)
+  fun frame(t:Long){vm.onEvent(IslandEvent.Frame(a.copy(atMs=t),null,t,"test",a))}
+  for(t in 0L..500L step 50)frame(t)
+  val p=vm.state.value.journey.progress;vm.onEvent(IslandEvent.Pause)
+  for(t in 550L..1500L step 50)frame(t)
+  assertEquals(p,vm.state.value.journey.progress,0.0)
+  vm.onEvent(IslandEvent.Resume);frame(1550);frame(1600)
+  assertTrue(vm.state.value.journey.progress>p);assertEquals(JourneyStage.ENTERING,vm.state.value.journey.stage)
+ }
+
 }

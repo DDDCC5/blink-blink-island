@@ -1,0 +1,15 @@
+{
+  "diagnosis": "excess head/thorax relief already present in source, not neutral rig deformation",
+  "topologyPreserved": true,
+  "headSampleVertices": 1672,
+  "wingSampleVertices": 6198,
+  "outerWingMaxPositionDeltaMeters": 0.0,
+  "headMaxReliefBeforeMeters": 0.11317808204889297,
+  "headMaxReliefAfterMeters": 0.024899177491664884,
+  "reliefReductionPercent": 78.0000004939928,
+  "paidGenerationCalls": 0,
+  "nativeVerified": false,
+  "sourceToOldNeutralMaxDeltaMeters": 1.622526430680564e-08,
+  "headVerticesFixedToBodyBone": true,
+  "exportReloadedAndVisuallyChecked": true
+}

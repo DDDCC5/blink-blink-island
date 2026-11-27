@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "spatialcraft.scene-generation-spec/v2",
+  "sceneId": "BlinkStorybookTripo",
+  "name": "眨眨岛 · 自然绘本 Tripo 场景",
+  "objective": "Create the complete refreshed natural-storybook 3D asset set with Tripo only. Preserve the current functioning native app until this independent package is reviewed. Retain clear silhouettes and measured mobile XR budgets.",
+  "coordinateSystem": {
+    "handedness": "right",
+    "upAxis": "Y",
+    "unitsPerMeter": 1
+  },
+  "modelGeneration": "allowed",
+  "subjects": [
+    {
+      "id": "IslandBase",
+      "kind": "environment",
+      "description": "A floating miniature island terrain with a rounded cream rock underside and a soft sage grassy top; no pre-baked trees or butterfly.",
+      "generationPrompt": "Isolated floating miniature island terrain, one self-contained object. Rounded layered cream limestone underside, softly undulating sage-green grassy top with a shallow turquoise water inlet. Refined natural storybook diorama, matte hand-painted colors, smooth readable silhouette, soft cream and mint palette. Geometry contains terrain and inset water only. Centered, complete, unobstructed.",
+      "count": 1,
+      "authoringStrategy": "generated-model"
+    },
+    {
+      "id": "CanopyTree",
+      "kind": "prop",
+      "description": "A reusable softly rounded tree for the right-hand island.",
+      "generationPrompt": "Isolated miniature broadleaf tree as one self-contained object. One short warm ivory-brown trunk with branching structure and a soft irregular rounded sage and mint leafy canopy. Refined natural storybook diorama, matte hand-painted texture, readable organic silhouette with gentle asymmetry, compact rooted base. Centered, complete, unobstructed.",
+      "count": 2,
+      "authoringStrategy": "generated-model"
+    },
+    {
+      "id": "FlowerPatch",
+      "kind": "decoration",
+      "description": "A reusable low cluster of leaves and tiny cream blossoms.",
+      "generationPrompt": "Isolated miniature botanical cluster as one self-contained object. Low soft sage leaves, slender short stems and small cream-yellow wildflower blossoms on a compact organic root base. Refined natural storybook diorama, matte hand-painted material, rounded readable shapes and delicate restrained detail. Centered, complete, unobstructed.",
+      "count": 3,
+      "authoringStrategy": "generated-model"
+    },
+    {
+      "id": "PebbleCluster",
+      "kind": "decoration",
+      "description": "A reusable small group of softly rounded natural rocks.",
+      "generationPrompt": "Isolated miniature rounded river-stone cluster as one self-contained object. A compact arrangement of smooth cream limestone pebbles with subtle pale sand and sage tones. Refined natural storybook diorama, matte hand-painted surface, softly rounded organic geometry with restrained detail. Centered, complete, unobstructed.",
+      "count": 2,
+      "authoringStrategy": "generated-model"
+    },
+    {
+      "id": "ButterflyBody",
+      "kind": "character",
+      "description": "Butterfly body archetype with antennae; wings are separately generated and assembled for app-owned animation.",
+      "generationPrompt": "Isolated stylized butterfly body as one self-contained object. A slender softly rounded deep teal thorax and abdomen, small head and two gently curved antennae with tiny cream tips. Natural storybook style, smooth matte hand-painted surface, clean readable miniature silhouette. Geometry contains body and antennae only. Centered, complete, unobstructed.",
+      "count": 1,
+      "authoringStrategy": "generated-model"
+    },
+    {
+      "id": "ButterflyWing",
+      "kind": "character",
+      "description": "One butterfly side wing with upper and lower lobes and a rounded attachment edge, instantiated twice with mirrored placement.",
+      "generationPrompt": "Isolated single butterfly side wing as one self-contained object. One connected upper teardrop lobe and smaller lower rounded lobe joined along the inner attachment edge. Soft turquoise and mint hand-painted fields with a fine deep-teal edge and restrained botanical veins. Natural storybook miniature, matte material, gently curved thin volumetric geometry with a smooth attachment root. Centered, complete, unobstructed.",
+      "count": 2,
+      "authoringStrategy": "generated-model"
+    }
+  ],
+  "materials": [
+    {
+      "id": "StorybookMatte",
+      "description": "Cream #F6F5E9, sage, mint and restrained turquoise; matte hand-painted appearance with soft organic variation. Preserve provider-authored materials and inspect consistency.",
+      "subjectIds": [
+        "IslandBase",
+        "CanopyTree",
+        "FlowerPatch",
+        "PebbleCluster",
+        "ButterflyBody",
+        "ButterflyWing"
+      ],
+      "generation": "preserve"
+    }
+  ],
+  "composition": {
+    "description": "The island scenery is entirely to the viewer's right of center at eye level. Trees, flower patches and pebbles sit on the island. Keep the left native control panel volume and central training area unobstructed. Assemble butterfly body and two mirrored independently addressable wings as a separate reusable target asset; the native app will own flapping and flight animation after import.",
+    "relationships": [
+      "CanopyTree, FlowerPatch and PebbleCluster are supported by IslandBase.",
+      "ButterflyWing instances are left and right children of ButterflyBody with independent pivot parents.",
+      "Native UI and training routes are not model geometry."
+    ]
+  },
+  "lighting": {
+    "kind": "environment",
+    "description": "Soft neutral-warm environment illumination suitable for viewing matte cream and mint surfaces; no baked hard shadows or flashing effects."
+  }
+}

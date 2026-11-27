@@ -1,0 +1,70 @@
+{
+  "status": "GENERATED_AND_WAVEFORM_VALIDATED; subjective listening pending",
+  "engine": "Kokoro ONNX 0.6.1, CPU",
+  "license": "Apache-2.0 models; see official model cards",
+  "voiceCloning": false,
+  "script": "content/VOICE_GUIDED_SHORT.md",
+  "scriptSha256": "85b15b7969d956e152714bdc1052125dddb2b31ae5e0b9f200344b5e3cfa0a4b",
+  "processing": {
+    "sentenceGapSeconds": 0.22,
+    "leadingPadSeconds": 0.08,
+    "trailingPadSeconds": 0.18,
+    "speed": {
+      "zh": 0.92,
+      "en": 0.9
+    },
+    "targetSpeechRmsDbfs": -21,
+    "peakCeilingDbfs": -3.5,
+    "reverb": false
+  },
+  "sources": {
+    "zh": {
+      "model": "kokoro-v1.1-zh.onnx",
+      "modelSha256": "859f9ded9f53be16c24857cdab3254a45da53c3afd5ba6ef134c7de3f822e326",
+      "voices": "voices-v1.1-zh.bin",
+      "voicesSha256": "14cb6186c99e4f6016871405f62046c5df863ae27465cbdc4ee08be7dd703acd"
+    },
+    "en": {
+      "model": "kokoro-v1.0.onnx",
+      "modelSha256": "beb0d1848dee9a49da392cc3df26958d46cfa35d321edf434f52949153f0df3a",
+      "voices": "voices-v1.0.bin",
+      "voicesSha256": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"
+    }
+  },
+  "assets": [
+    {
+      "id": "close_short",
+      "language": "zh",
+      "text": "轻轻闭上眼睛。",
+      "voice": "zf_001",
+      "speed": 0.92,
+      "model": "kokoro-v1.1-zh.onnx",
+      "path": "review/audio/guided-short/voice_zh_close_short.wav",
+      "sampleRate": 24000,
+      "channels": 1,
+      "format": "WAV PCM_16",
+      "durationSeconds": 2.1472,
+      "peakDbfs": -6.163,
+      "rmsDbfs": -21.561,
+      "clippedSamples": 0,
+      "sha256": "5351462b8f8bb829ce2964d4350889ff7688873359cfe81dcfac802915917f33"
+    },
+    {
+      "id": "close_short",
+      "language": "en",
+      "text": "Gently close your eyes.",
+      "voice": "af_heart",
+      "speed": 0.9,
+      "model": "kokoro-v1.0.onnx",
+      "path": "review/audio/guided-short/voice_en_close_short.wav",
+      "sampleRate": 24000,
+      "channels": 1,
+      "format": "WAV PCM_16",
+      "durationSeconds": 1.8733,
+      "peakDbfs": -4.404,
+      "rmsDbfs": -21.649,
+      "clippedSamples": 0,
+      "sha256": "18f14a6c59d7288f53d0ba134b7153457167b26ca53dd277c77baae3b7f75c69"
+    }
+  ]
+}

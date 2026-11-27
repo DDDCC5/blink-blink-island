@@ -124,4 +124,14 @@ class GazeRuntimeTest {
   assertEquals(Phase.ACTIVE,s.phase);assertEquals(0L,s.activeMs);assertEquals(0,s.completed);assertEquals(before.visual!!.motionMs,recovered.visual!!.motionMs)
  }
  private fun GazeRuntime.sampleFrame(eye:TrackedPose?,h:TrackedPose?,now:Long,step:Step?,phase:Phase?,roundIndex:Int,targetIndex:Int=0,restartPreparation:Boolean=true,sceneReference:TrackedPose?=head(0))=frame(eye,h,now,step,phase,roundIndex,targetIndex,restartPreparation,sceneReference)
+ @Test fun comfortablePaceUsesSlowerClockAndSmallerExcursion(){
+  val r=GazeRuntime(Pace.COMFORTABLE);val anchor=head(0);var target=Point3(0.0,1.6,-1.8);var f:GazeFrame?=null
+  r.sampleFrame(anchor,null,0,step,Phase.CAPABILITY_BLOCKED,0)
+  for(t in 50L..4050 step 50){f=r.sampleFrame(gazeAt(target,t),null,t,step,Phase.ACTIVE,0);target=f!!.visual!!.point}
+  val motion=f!!.visual!!.motionMs
+  assertEquals(3037L,motion)
+  val expected=TargetPaths.pursuit(motion)
+  assertEquals(expected.x*.8,target.x,1e-8);assertEquals(1.6+expected.y*.8,target.y,1e-8)
+ }
+
 }

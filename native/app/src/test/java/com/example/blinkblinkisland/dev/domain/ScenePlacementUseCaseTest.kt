@@ -23,9 +23,10 @@ class ScenePlacementUseCaseTest {
   val p=ScenePlacementUseCase();val vertical=head(100).copy(rotation=Rotation4(sin(PI/4),0.0,0.0,cos(PI/4)))
   assertNull(p.resolve(vertical,100));assertNotNull(p.resolve(head(150),150))
  }
- @Test fun explicitRepositionCanReplaceThePreWearHeightWithoutFollowingNormalMotion(){
-  val p=ScenePlacementUseCase();val desk=head(0).copy(position=Point3(0.0,.8,0.0));val worn=head(100)
-  assertEquals(.8,p.resolve(desk,0)!!.panel.y,1e-8);assertEquals(.8,p.resolve(worn,100)!!.panel.y,1e-8)
-  p.reset();assertEquals(1.6,p.resolve(worn,100)!!.panel.y,1e-8);assertEquals(1.6,p.resolve(head(200).copy(position=Point3(0.0,2.0,0.0)),200)!!.panel.y,1e-8)
+ @Test fun applicationNeverRepositionsAfterItsInitialLock(){
+  val p=ScenePlacementUseCase();val initial=p.resolve(head(100),100)!!
+  for(t in 200L..1000L step 100){
+   assertEquals(initial,p.resolve(head(t).copy(position=Point3(2.0,.8,1.0)),t))
+  }
  }
 }

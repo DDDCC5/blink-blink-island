@@ -1,0 +1,60 @@
+{
+  "provider": "Tripo official CLI",
+  "cliVersion": "0.11.4",
+  "model": "tripo-v3.1",
+  "resolvedModel": "v3.1-20260211",
+  "tasks": [
+    {
+      "asset": "ButterflyBody",
+      "task_id": "daad87ea-c937-4be5-a1e0-f130854c61a1",
+      "status": "success",
+      "credits_consumed": 60,
+      "exitCode": 0
+    },
+    {
+      "asset": "ButterflyWing",
+      "task_id": "f5c5604b-cead-4dc0-b090-c3fef4fec58e",
+      "status": "success",
+      "credits_consumed": 60,
+      "exitCode": 0
+    },
+    {
+      "asset": "CanopyTree",
+      "task_id": "7605ef58-d65a-4eaa-ad18-4e59ed9b8e71",
+      "status": "success",
+      "credits_consumed": 60,
+      "exitCode": 0
+    },
+    {
+      "asset": "FlowerPatch",
+      "task_id": "ca3069f6-e2c1-4d8b-a628-f47cac52e34a",
+      "status": "success",
+      "credits_consumed": 60,
+      "exitCode": 0
+    },
+    {
+      "asset": "IslandBase",
+      "task_id": "3ebd2d8c-a3e8-4a0a-82d2-070a8feeccdd",
+      "status": "success",
+      "credits_consumed": 60,
+      "exitCode": 0
+    },
+    {
+      "asset": "PebbleCluster",
+      "task_id": "90f6c3a4-4d72-4859-a048-8db568a717e3",
+      "status": "success",
+      "credits_consumed": 60,
+      "exitCode": 0
+    },
+    {
+      "asset": "ButterflyAnatomical",
+      "task_id": "81ec586b-f3c3-4e1a-a227-cd857f851ee9",
+      "status": "success",
+      "credits_consumed": 70,
+      "exitCode": 0
+    }
+  ],
+  "totalCredits": 430,
+  "retries": 0,
+  "additionalModelApprovedByUser": true
+}

@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-27",
+  "provider": "Tripo official CLI; existing user default profile from Shatter setup",
+  "model": "tripo-v3.1",
+  "maxSubmissions": 6,
+  "candidatesPerAsset": 1,
+  "noPaidRetries": true,
+  "items": [
+    {
+      "id": "IslandBase",
+      "instances": 1,
+      "prompt": "Isolated floating miniature island terrain, one self-contained object. Rounded layered cream limestone underside, softly undulating sage-green grassy top with a shallow turquoise water inlet. Refined natural storybook diorama, matte hand-painted colors, smooth readable silhouette, soft cream and mint palette. Geometry contains terrain and inset water only. Centered, complete, unobstructed.",
+      "faceLimit": 16000
+    },
+    {
+      "id": "CanopyTree",
+      "instances": 2,
+      "prompt": "Isolated miniature broadleaf tree as one self-contained object. One short warm ivory-brown trunk with branching structure and a soft irregular rounded sage and mint leafy canopy. Refined natural storybook diorama, matte hand-painted texture, readable organic silhouette with gentle asymmetry, compact rooted base. Centered, complete, unobstructed.",
+      "faceLimit": 6000
+    },
+    {
+      "id": "FlowerPatch",
+      "instances": 3,
+      "prompt": "Isolated miniature botanical cluster as one self-contained object. Low soft sage leaves, slender short stems and small cream-yellow wildflower blossoms on a compact organic root base. Refined natural storybook diorama, matte hand-painted material, rounded readable shapes and delicate restrained detail. Centered, complete, unobstructed.",
+      "faceLimit": 2000
+    },
+    {
+      "id": "PebbleCluster",
+      "instances": 2,
+      "prompt": "Isolated miniature rounded river-stone cluster as one self-contained object. A compact arrangement of smooth cream limestone pebbles with subtle pale sand and sage tones. Refined natural storybook diorama, matte hand-painted surface, softly rounded organic geometry with restrained detail. Centered, complete, unobstructed.",
+      "faceLimit": 1500
+    },
+    {
+      "id": "ButterflyBody",
+      "instances": 1,
+      "prompt": "Isolated stylized butterfly body as one self-contained object. A slender softly rounded deep teal thorax and abdomen, small head and two gently curved antennae with tiny cream tips. Natural storybook style, smooth matte hand-painted surface, clean readable miniature silhouette. Geometry contains body and antennae only. Centered, complete, unobstructed.",
+      "faceLimit": 2000
+    },
+    {
+      "id": "ButterflyWing",
+      "instances": 2,
+      "prompt": "Isolated single butterfly side wing as one self-contained object. One connected upper teardrop lobe and smaller lower rounded lobe joined along the inner attachment edge. Soft turquoise and mint hand-painted fields with a fine deep-teal edge and restrained botanical veins. Natural storybook miniature, matte material, gently curved thin volumetric geometry with a smooth attachment root. Centered, complete, unobstructed.",
+      "faceLimit": 1500
+    }
+  ]
+}

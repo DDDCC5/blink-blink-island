@@ -1,0 +1,33 @@
+[
+  {
+    "file": "exports/butterfly-storybook.glb",
+    "sha256": "e0db8f74301ec59487274ab9636c0c85515605c734f4d5377e5279d642409bff",
+    "sizeBytes": 3829296,
+    "uniqueTriangles": 8509,
+    "instancedTriangles": 8509,
+    "materials": 1,
+    "textures": 1,
+    "externalDependencies": false,
+    "wingPivots": [
+      "LeftWingPivot",
+      "RightWingPivot"
+    ],
+    "skins": 1,
+    "animations": [
+      "NaturalWingbeat"
+    ]
+  },
+  {
+    "file": "exports/island-storybook.glb",
+    "sha256": "2978727f7d326390996b5235daaf1d3538f7accc1cd57da225013f3b95fdc215",
+    "sizeBytes": 10207660,
+    "uniqueTriangles": 24892,
+    "instancedTriangles": 36908,
+    "materials": 4,
+    "textures": 4,
+    "externalDependencies": false,
+    "wingPivots": [],
+    "skins": 0,
+    "animations": []
+  }
+]

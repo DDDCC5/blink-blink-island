@@ -42,8 +42,8 @@ def source_rows(script_path):
         cells = [v.strip() for v in line.strip().strip("|").split("|")]
         if line.startswith("|") and len(cells) == 3 and cells[0] not in ("id", "---"):
             rows.append(cells)
-    if len(rows) != 15 or len({r[0] for r in rows}) != 15:
-        raise ValueError("Expected 15 unique bilingual source lines")
+    if not rows or len({r[0] for r in rows}) != len(rows):
+        raise ValueError("Expected nonempty unique bilingual source lines")
     return rows
 
 
@@ -66,14 +66,21 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--models", type=Path, required=True)
     parser.add_argument("--script", type=Path, default=ROOT / "content/VOICE_SCRIPT_V2.md", help="Bilingual Markdown table; defaults to the current app V2 narration script")
+    parser.add_argument("--only", help="Generate one source id without changing other narration files")
+    parser.add_argument("--output", type=Path, default=ROOT / "review/audio/voice-natural")
+    parser.add_argument("--manifest", type=Path, default=ROOT / "review/audio/natural-voice-manifest.json")
     args = parser.parse_args()
     script_path = args.script.resolve()
     script_label = str(script_path.relative_to(ROOT)) if script_path.is_relative_to(ROOT) else str(script_path)
-    output = ROOT / "review/audio/voice-natural"
+    output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     EspeakWrapper.set_library(espeakng_loader.get_library_path())
     os.environ["ESPEAK_DATA_PATH"] = espeakng_loader.get_data_path()
     rows = source_rows(script_path)
+    if args.only:
+        rows = [row for row in rows if row[0] == args.only]
+        if not rows:
+            raise ValueError("Requested narration id is not in the source script")
     assets = []
     sources = {}
     for lang, cfg in CONFIG.items():
@@ -113,7 +120,7 @@ def main():
             assets.append({"id": ident, "language": lang, "text": text, "voice": cfg["voice"], "speed": cfg["speed"], "model": cfg["model"], "path": str(target.relative_to(ROOT)), "sampleRate": sr, "channels": 1, "format": "WAV PCM_16", "durationSeconds": round(len(check) / sr, 4), "peakDbfs": round(20 * np.log10(peak), 3), "rmsDbfs": round(float(20 * np.log10(np.sqrt(np.mean(check * check)))), 3), "clippedSamples": int(np.count_nonzero(np.abs(check) >= .999)), "sha256": sha(target)})
             print(lang, ident, assets[-1]["durationSeconds"], flush=True)
     manifest = {"status": "GENERATED_AND_WAVEFORM_VALIDATED; subjective listening pending", "engine": "Kokoro ONNX 0.6.1, CPU", "license": "Apache-2.0 models; see official model cards", "voiceCloning": False, "script": script_label, "scriptSha256": sha(script_path), "processing": {"sentenceGapSeconds": .22, "leadingPadSeconds": .08, "trailingPadSeconds": .18, "speed": {k: v["speed"] for k, v in CONFIG.items()}, "targetSpeechRmsDbfs": -21, "peakCeilingDbfs": -3.5, "reverb": False}, "sources": sources, "assets": assets}
-    (ROOT / "review/audio/natural-voice-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
+    args.manifest.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
     print("Validated", len(assets), "neural narration files")
 
 

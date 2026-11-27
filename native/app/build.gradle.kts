@@ -12,10 +12,10 @@ android {
         applicationId = "com.example.blinkblinkisland.dev"
         minSdk = 35
         targetSdk = 35
-        versionCode = 5
-        versionName = "1.0.4"
+        versionCode = 9
+        versionName = "1.0.8"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.blinkblinkisland.dev.StorageTestRunner"
         ndk { abiFilters.add("arm64-v8a") }
     }
 

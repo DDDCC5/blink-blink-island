@@ -3,6 +3,9 @@
 /.codex/
 /.pico/
 /.pico-env.json
+/.tripo/
+/review/tripo-storybook-2026-11-27/runs/
+/editor-tripo/
 /AGENTS.md
 /PICO-*.AGENTS.md
 /scripts/pico-mcp.mjs
@@ -48,3 +51,11 @@ google-services.json
 !/reports/**/
 !/reports/**/*.md
 !/reports/DEVICE_OBSERVATIONS.json
+
+# Local Tripo credentials, raw signed receipts and generation logs
+/.tripo/
+/review/tripo-storybook-2026-11-27/runs/
+/review/tripo-storybook-2026-11-27/models/**/task.json
+/review/tripo-storybook-2026-11-27/anatomical-rebuild/submission.stdout.json
+/review/tripo-storybook-2026-11-27/anatomical-rebuild/submission.stderr.log
+/review/tripo-storybook-2026-11-27/anatomical-rebuild/submission.started.json

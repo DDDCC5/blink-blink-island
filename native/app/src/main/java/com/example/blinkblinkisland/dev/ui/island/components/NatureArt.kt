@@ -14,7 +14,7 @@ import com.pico.spatial.ui.design.Text
 import com.example.blinkblinkisland.dev.R
 import com.example.blinkblinkisland.dev.ui.theme.IslandColors
 
-/** Accepted watercolor vignette: decoration only, never a gaze target or replacement 3D scene. */
+/** Accepted Tripo model render: decoration only, never a gaze target or replacement 3D scene. */
 @Composable
 internal fun NatureIsland(modifier:Modifier=Modifier){
  Image(painterResource(R.drawable.nature_island),contentDescription=null,modifier=modifier,contentScale=ContentScale.Fit)
@@ -24,10 +24,10 @@ internal fun NatureIsland(modifier:Modifier=Modifier){
 internal fun NatureWelcome(zh:Boolean){
  Row(Modifier.fillMaxWidth().height(240.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(24.dp)){
   Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(8.dp)){
-   PanelNote(if(zh)"给眼睛的一段留白" else "A little room to pause")
-   Text(if(zh)"在岛上\n歇一会儿。" else "Pause on\nthe island.",modifier=Modifier.panelFitProbe("hero_title"),onTextLayout=panelTextProbe("hero_title"),style=PicoTheme.typography.headlineLarge.copy(fontSize=56.sp,lineHeight=68.sp),color=IslandColors.ForestInk)
-   PanelNote(if(zh)"跟随目光，让节奏慢下来。" else "Follow gently. Take your time.")
+   PanelNote(if(zh)"给自己一点安静" else "A quiet moment for yourself")
+   Text(if(zh)"来岛上\n歇一会儿。" else "A little island.\nA gentle pause.",modifier=Modifier.panelFitProbe("hero_title"),onTextLayout=panelTextProbe("hero_title"),style=PicoTheme.typography.headlineLarge.copy(fontSize=56.sp,lineHeight=68.sp),color=IslandColors.ForestInk)
+   PanelNote(if(zh)"不赶时间，跟着自己的节奏。" else "No rush. Find your own pace.")
   }
-  NatureIsland(Modifier.width(440.dp).height(220.dp))
+  NatureIsland(Modifier.width(420.dp).height(220.dp))
  }
 }

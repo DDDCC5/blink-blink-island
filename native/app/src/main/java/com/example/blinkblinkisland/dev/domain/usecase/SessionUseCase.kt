@@ -1,7 +1,7 @@
 package com.example.blinkblinkisland.dev.domain.usecase
 import com.example.blinkblinkisland.dev.domain.model.*
 
-class SessionUseCase(val activities:List<Activity>, capabilities:Capabilities) {
+class SessionUseCase(val activities:List<Activity>, capabilities:Capabilities,val plan:SessionPlan=SessionPlan.FULL) {
  var capabilities=capabilities;private set
  fun updateCapabilities(value:Capabilities){
   val wasWaiting=phase==Phase.CAPABILITY_BLOCKED
@@ -9,10 +9,11 @@ class SessionUseCase(val activities:List<Activity>, capabilities:Capabilities) {
   if(phase in listOf(Phase.ACTIVE,Phase.CAPABILITY_BLOCKED,Phase.TRACKING_PAUSED))checkGate()
   if(wasWaiting&&phase==Phase.ACTIVE){preparationRestartsPath=true;preparationMs=3000;phase=Phase.PREPARING;resetObservation()}
  }
+ val pursuitGoalMs=if(plan==SessionPlan.QUICK)30000L else 60000L
  val steps=activities.flatMap { a-> when(a){
-  Activity.BLINK->(1..10).map{Step(a,Move.BLINK,it,10)}
+  Activity.BLINK->(1..if(plan==SessionPlan.QUICK)3 else 10).map{Step(a,Move.BLINK,it,if(plan==SessionPlan.QUICK)3 else 10)}
   Activity.BUTTERFLY->listOf(Step(a,Move.PURSUIT,1,1))
-  Activity.GAZE->listOf(Move.HORIZONTAL,Move.VERTICAL,Move.CLOCKWISE,Move.COUNTERCLOCKWISE).flatMap{m->val count=if(m==Move.HORIZONTAL||m==Move.VERTICAL)10 else 5;(1..count).map{Step(a,m,it,count)}}
+  Activity.GAZE->listOf(Move.HORIZONTAL,Move.VERTICAL,Move.CLOCKWISE,Move.COUNTERCLOCKWISE).flatMap{m->val count=if(plan==SessionPlan.QUICK)1 else if(m==Move.HORIZONTAL||m==Move.VERTICAL)10 else 5;(1..count).map{Step(a,m,it,count)}}
  }}
  var index=0; private set
  val total get()=steps.size
@@ -45,6 +46,7 @@ class SessionUseCase(val activities:List<Activity>, capabilities:Capabilities) {
  val outcome get()=when{phase==Phase.EXITED->Outcome.EXITED;completed==total&&total>0->Outcome.COMPLETED;incomplete>0||completed>0->Outcome.INCOMPLETE;else->Outcome.SKIPPED}
  init { require(activities.isNotEmpty());checkGate();if(step?.move==Move.BLINK){preparationMs=3000;phase=Phase.PREPARING} }
  private fun checkGate(){phase=when{index>=total->Phase.DONE;step?.move!=Move.BLINK&&!capabilities.gazeReady->Phase.CAPABILITY_BLOCKED;else->Phase.ACTIVE}}
+ fun prepareTargetEntry(){if(phase==Phase.ACTIVE){preparationRestartsPath=true;preparationMs=3000;phase=Phase.PREPARING;resetObservation()}}
  fun pause(){if(phase in listOf(Phase.ACTIVE,Phase.TRACKING_PAUSED,Phase.PREPARING)){pausedPreparing=phase==Phase.PREPARING;phase=Phase.USER_PAUSED;resetObservation()}}
  fun resume(){if(phase==Phase.USER_PAUSED){if(pausedPreparing)phase=Phase.PREPARING else {checkGate();if(phase==Phase.ACTIVE){preparationRestartsPath=false;preparationMs=3000;phase=Phase.PREPARING}};resetObservation()}}
  private fun resetObservation(){last=null;hold=0;closed=false;guideLast=null;if(step?.move==Move.BLINK){stepMs=0;blinkStage=BlinkGuideStage.CLOSE_PROMPT};targetHold=0;misses=0;waitingForGaze=false}
@@ -52,7 +54,7 @@ class SessionUseCase(val activities:List<Activity>, capabilities:Capabilities) {
  fun skip(){if(phase !in listOf(Phase.DONE,Phase.EXITED)){skipped++;advance();if(phase==Phase.ACTIVE){preparationRestartsPath=true;preparationMs=3000;phase=Phase.PREPARING}}}
  fun skipActivity(){val a=step?.activity?:return;while(step?.activity==a&&phase !in listOf(Phase.DONE,Phase.EXITED))skip()}
  fun exit(){if(phase !in listOf(Phase.DONE,Phase.EXITED))phase=Phase.EXITED}
- private fun advance(){attemptedThisStep=false;index++;stepMs=0;targetIndex=0;travelTotal=0;travelGood=0;resetObservation();checkGate()}
+ private fun advance(){val previousActivity=step?.activity;attemptedThisStep=false;index++;stepMs=0;targetIndex=0;travelTotal=0;travelGood=0;resetObservation();checkGate();if(step?.activity!=previousActivity&&step?.move!=Move.BLINK)prepareTargetEntry()}
  private fun fail(){attemptedThisStep=false;incomplete++;travelTotal=0;travelGood=0;phase=Phase.INCOMPLETE;resetObservation()}
  private fun pass(){completed++;advance()}
  /** Foreground monotonic clock for guided rest only; never consumes eye/head observations. */
@@ -113,7 +115,7 @@ class SessionUseCase(val activities:List<Activity>, capabilities:Capabilities) {
   }
   if(travelTotal>0){if(travelGood*4<travelTotal*3){fail();return};travelTotal=0;travelGood=0}
   if(o.targetHit){activeMs+=delta;stepMs+=delta;misses=0
-   if(current.move==Move.PURSUIT){if(stepMs>=60000)pass()}
+   if(current.move==Move.PURSUIT){if(stepMs>=pursuitGoalMs)pass()}
    else {targetHold+=delta;if(targetHold>=200){targetIndex++;targetHold=0;val count=if(current.move==Move.HORIZONTAL||current.move==Move.VERTICAL)3 else 13;if(targetIndex>=count)pass()}}
   } else {targetHold=0;misses+=delta;if(misses>=1500)fail()}
  }

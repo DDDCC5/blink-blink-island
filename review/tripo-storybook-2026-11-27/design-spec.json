@@ -1,0 +1,8331 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "projectName": "眨眨岛 · Tripo自然绘本重制",
+    "sourceMode": "hybrid",
+    "revision": 1
+  },
+  "experience": {
+    "subject": "Nature-illustrated gaze rest on Blink Blink Island",
+    "user": "PICO Swan wearer",
+    "context": "Existing fixed left control panel, center training target and right island in Stage",
+    "singleJob": "Choose and follow a gentle gaze activity with clear controls and honest records",
+    "space": "full",
+    "form": "stage_mixed",
+    "signature": "A cream storybook panel and a tactile Tripo miniature island form one calm visual world; central training stays clear."
+  },
+  "theme": {
+    "scheme": "vibrant",
+    "colorScheme": {
+      "fillPrimary": {
+        "source": "vibrant",
+        "role": "fillPrimary"
+      },
+      "fillSecondary": {
+        "source": "vibrant",
+        "role": "fillSecondary"
+      },
+      "fillTertiary": {
+        "source": "vibrant",
+        "role": "fillTertiary"
+      },
+      "fillLight": {
+        "source": "vibrant",
+        "role": "fillLight"
+      },
+      "labelPrimaryLight": {
+        "source": "vibrant",
+        "role": "labelPrimaryLight"
+      },
+      "labelPrimary": {
+        "source": "vibrant",
+        "role": "labelPrimary"
+      },
+      "labelSecondary": {
+        "source": "vibrant",
+        "role": "labelSecondary"
+      },
+      "labelTertiary": {
+        "source": "vibrant",
+        "role": "labelTertiary"
+      },
+      "labelQuaternary": {
+        "source": "vibrant",
+        "role": "labelQuaternary"
+      },
+      "lightenHover": {
+        "source": "vibrant",
+        "role": "lightenHover"
+      },
+      "lightenPressed": {
+        "source": "vibrant",
+        "role": "lightenPressed"
+      },
+      "error": {
+        "source": "vibrant",
+        "role": "error"
+      },
+      "alert": {
+        "source": "vibrant",
+        "role": "alert"
+      },
+      "passable": {
+        "source": "vibrant",
+        "role": "passable"
+      },
+      "interaction": {
+        "source": "vibrant",
+        "role": "interaction"
+      },
+      "dividerLine": {
+        "source": "vibrant",
+        "role": "dividerLine"
+      }
+    },
+    "brandColors": {
+      "forestInk": "#26483F",
+      "deepForest": "#365E48",
+      "mutedInk": "#586B5B",
+      "mintWash": "#E8EEDC",
+      "paperWhite": "#F6F5E9"
+    },
+    "typography": {
+      "hero": {
+        "family": "PingFang SC, Noto Sans CJK SC, sans-serif",
+        "sizeDp": 56,
+        "lineHeightDp": 68,
+        "weight": 600
+      },
+      "headline": {
+        "family": "PingFang SC, Noto Sans CJK SC, sans-serif",
+        "sizeDp": 48,
+        "lineHeightDp": 62,
+        "weight": 600
+      },
+      "title": {
+        "family": "PingFang SC, Noto Sans CJK SC, sans-serif",
+        "sizeDp": 34,
+        "lineHeightDp": 44,
+        "weight": 600
+      },
+      "brand": {
+        "family": "PingFang SC, Noto Sans CJK SC, sans-serif",
+        "sizeDp": 34,
+        "lineHeightDp": 44,
+        "weight": 600
+      },
+      "body": {
+        "family": "PingFang SC, Noto Sans CJK SC, sans-serif",
+        "sizeDp": 32,
+        "lineHeightDp": 44,
+        "weight": 400
+      },
+      "note": {
+        "family": "PingFang SC, Noto Sans CJK SC, sans-serif",
+        "sizeDp": 26,
+        "lineHeightDp": 36,
+        "weight": 400
+      },
+      "button": {
+        "family": "PingFang SC, Noto Sans CJK SC, sans-serif",
+        "sizeDp": 32,
+        "lineHeightDp": 42,
+        "weight": 500
+      },
+      "number": {
+        "family": "PingFang SC, Noto Sans CJK SC, sans-serif",
+        "sizeDp": 132,
+        "lineHeightDp": 152,
+        "weight": 400
+      },
+      "stat": {
+        "family": "PingFang SC, Noto Sans CJK SC, sans-serif",
+        "sizeDp": 72,
+        "lineHeightDp": 88,
+        "weight": 500
+      }
+    },
+    "spacing": {
+      "small": 8,
+      "regular": 16,
+      "medium": 24,
+      "large": 32
+    }
+  },
+  "surfaces": [
+    {
+      "id": "main-panel",
+      "type": "stage_mixed",
+      "defaultSize": {
+        "width": 1100,
+        "height": 1120,
+        "unit": "dp"
+      },
+      "minSize": {
+        "width": 960,
+        "height": 1120,
+        "unit": "dp"
+      },
+      "maxSize": {
+        "width": 1100,
+        "height": 1120,
+        "unit": "dp"
+      },
+      "rootNodeId": "home-surface",
+      "placement": {
+        "inherit": "existing fixed left attachment; no new window or movement",
+        "reviewOnly": true
+      }
+    }
+  ],
+  "initialStateId": "home",
+  "states": [
+    {
+      "id": "home",
+      "surfaceRoots": {
+        "main-panel": "home-surface"
+      }
+    },
+    {
+      "id": "welcome",
+      "surfaceRoots": {
+        "main-panel": "welcome-surface"
+      }
+    },
+    {
+      "id": "setup",
+      "surfaceRoots": {
+        "main-panel": "setup-surface"
+      }
+    },
+    {
+      "id": "blink",
+      "surfaceRoots": {
+        "main-panel": "blink-surface"
+      }
+    },
+    {
+      "id": "training",
+      "surfaceRoots": {
+        "main-panel": "training-surface"
+      }
+    },
+    {
+      "id": "gaze",
+      "surfaceRoots": {
+        "main-panel": "gaze-surface"
+      }
+    },
+    {
+      "id": "preparing",
+      "surfaceRoots": {
+        "main-panel": "preparing-surface"
+      }
+    },
+    {
+      "id": "paused",
+      "surfaceRoots": {
+        "main-panel": "paused-surface"
+      }
+    },
+    {
+      "id": "tracking-paused",
+      "surfaceRoots": {
+        "main-panel": "tracking-paused-surface"
+      }
+    },
+    {
+      "id": "permission",
+      "surfaceRoots": {
+        "main-panel": "permission-surface"
+      }
+    },
+    {
+      "id": "incomplete",
+      "surfaceRoots": {
+        "main-panel": "incomplete-surface"
+      }
+    },
+    {
+      "id": "entering",
+      "surfaceRoots": {
+        "main-panel": "entering-surface"
+      }
+    },
+    {
+      "id": "returning",
+      "surfaceRoots": {
+        "main-panel": "returning-surface"
+      }
+    },
+    {
+      "id": "summary",
+      "surfaceRoots": {
+        "main-panel": "summary-surface"
+      }
+    },
+    {
+      "id": "history",
+      "surfaceRoots": {
+        "main-panel": "history-surface"
+      }
+    },
+    {
+      "id": "statistics",
+      "surfaceRoots": {
+        "main-panel": "statistics-surface"
+      }
+    },
+    {
+      "id": "settings",
+      "surfaceRoots": {
+        "main-panel": "settings-surface"
+      }
+    },
+    {
+      "id": "help",
+      "surfaceRoots": {
+        "main-panel": "help-surface"
+      }
+    },
+    {
+      "id": "delete-confirm",
+      "surfaceRoots": {
+        "main-panel": "delete-confirm-surface"
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "id": "countdown-finished",
+      "from": "preparing",
+      "to": "blink",
+      "trigger": {
+        "nodeId": "countdown",
+        "event": "preparation-elapsed"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "returning",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "returning"
+      }
+    },
+    {
+      "id": "home",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "home"
+      }
+    },
+    {
+      "id": "history",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "history"
+      }
+    },
+    {
+      "id": "settings",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "settings"
+      }
+    },
+    {
+      "id": "help",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "help"
+      }
+    },
+    {
+      "id": "statistics",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "statistics"
+      }
+    },
+    {
+      "id": "setup-quick",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "setup",
+        "mode": "rest",
+        "plan": "QUICK"
+      }
+    },
+    {
+      "id": "setup-full",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "setup",
+        "mode": "rest",
+        "plan": "FULL"
+      }
+    },
+    {
+      "id": "setup-rest",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "setup",
+        "mode": "rest",
+        "plan": "QUICK"
+      }
+    },
+    {
+      "id": "setup-butterfly",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "setup",
+        "mode": "butterfly",
+        "plan": "QUICK"
+      }
+    },
+    {
+      "id": "setup-gaze",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "setup",
+        "mode": "gaze",
+        "plan": "QUICK"
+      }
+    },
+    {
+      "id": "preparing",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "preparing"
+      }
+    },
+    {
+      "id": "pause",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "paused"
+      }
+    },
+    {
+      "id": "exit",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "summary"
+      }
+    },
+    {
+      "id": "exit-home",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "home"
+      }
+    },
+    {
+      "id": "delete-confirm",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "delete-confirm"
+      }
+    },
+    {
+      "id": "plan-quick",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "setup",
+        "plan": "QUICK"
+      }
+    },
+    {
+      "id": "plan-full",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "setup",
+        "plan": "FULL"
+      }
+    },
+    {
+      "id": "pace-comfort",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "setup",
+        "pace": "COMFORTABLE"
+      }
+    },
+    {
+      "id": "pace-standard",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "setup",
+        "pace": "STANDARD"
+      }
+    },
+    {
+      "id": "volume-down",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "settings"
+      }
+    },
+    {
+      "id": "volume-up",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "settings"
+      }
+    },
+    {
+      "id": "mute",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "settings"
+      }
+    },
+    {
+      "id": "voice-preview",
+      "type": "custom",
+      "purpose": "Preview existing application navigation",
+      "payload": {
+        "to": "settings"
+      }
+    },
+    {
+      "id": "language",
+      "type": "toggle",
+      "purpose": "Language before training only",
+      "binding": "language"
+    }
+  ],
+  "dataCases": {
+    "normal": {
+      "description": "Illustrative design data; never a sensor result"
+    },
+    "fallback": {
+      "description": "Illustrative design data; never a sensor result"
+    },
+    "error": {
+      "description": "Illustrative design data; never a sensor result"
+    }
+  },
+  "nodes": [
+    {
+      "id": "home-eyebrow",
+      "kind": "text",
+      "content": "给自己一点安静",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "A quiet moment for yourself"
+      }
+    },
+    {
+      "id": "home-title",
+      "kind": "text",
+      "content": "来岛上\n歇一会儿。",
+      "textStyle": {
+        "typography": "hero",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "A little island.\nA gentle pause."
+      }
+    },
+    {
+      "id": "home-sub",
+      "kind": "text",
+      "content": "不赶时间，跟着自己的节奏。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "No rush. Find your own pace."
+      }
+    },
+    {
+      "id": "home-copy",
+      "kind": "layout",
+      "children": [
+        "home-eyebrow",
+        "home-title",
+        "home-sub"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 8,
+        "grow": 1
+      }
+    },
+    {
+      "id": "home-hero-art",
+      "kind": "media",
+      "assetId": "hero",
+      "layout": {
+        "mode": "column",
+        "widthDp": 420,
+        "heightDp": 220
+      }
+    },
+    {
+      "id": "home-hero",
+      "kind": "layout",
+      "children": [
+        "home-copy",
+        "home-hero-art"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 240
+      }
+    },
+    {
+      "id": "quick-label",
+      "kind": "text",
+      "content": "快速休息 · 约2–3分",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Quick · ~2–3 min"
+      }
+    },
+    {
+      "id": "quick-content",
+      "kind": "layout",
+      "children": [
+        "quick-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "quick",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "quick-content"
+      ],
+      "events": {
+        "click-action": "setup-quick"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row",
+        "widthDp": 510
+      }
+    },
+    {
+      "id": "full-label",
+      "kind": "text",
+      "content": "完整休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Full session"
+      }
+    },
+    {
+      "id": "full-content",
+      "kind": "layout",
+      "children": [
+        "full-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "full",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "full-content"
+      ],
+      "events": {
+        "click-action": "setup-full"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row",
+        "widthDp": 510
+      }
+    },
+    {
+      "id": "home-starts",
+      "kind": "layout",
+      "children": [
+        "quick",
+        "full"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "rest-mode-name",
+      "kind": "text",
+      "content": "闭眼休息",
+      "textStyle": {
+        "typography": "title",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Close & rest"
+      }
+    },
+    {
+      "id": "rest-mode-sub",
+      "kind": "text",
+      "content": "听着语音，轻轻闭眼再睁眼",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Let the voice guide your rest"
+      }
+    },
+    {
+      "id": "rest-mode-copy",
+      "kind": "layout",
+      "children": [
+        "rest-mode-name",
+        "rest-mode-sub"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 4,
+        "grow": 1
+      }
+    },
+    {
+      "id": "rest-mode-art",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 76,
+        "heightDp": 76
+      }
+    },
+    {
+      "id": "rest-mode-badge",
+      "kind": "text",
+      "content": "10轮",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "10 rounds"
+      }
+    },
+    {
+      "id": "rest-mode-row",
+      "kind": "layout",
+      "children": [
+        "rest-mode-art",
+        "rest-mode-copy",
+        "rest-mode-badge"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 88
+      },
+      "props": {
+        "slot": "headline"
+      }
+    },
+    {
+      "id": "rest-mode",
+      "kind": "spatialui",
+      "component": "sui-list-item",
+      "children": [
+        "rest-mode-row"
+      ],
+      "props": {
+        "ui": {
+          "container-color": "mintWash",
+          "headline-color": "forestInk"
+        }
+      },
+      "events": {
+        "click-action": "setup-rest"
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "butterfly-mode-name",
+      "kind": "text",
+      "content": "蝴蝶漫游",
+      "textStyle": {
+        "typography": "title",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Butterfly pursuit"
+      }
+    },
+    {
+      "id": "butterfly-mode-sub",
+      "kind": "text",
+      "content": "跟随一对轻盈的翅膀",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Follow a gentle pair of wings"
+      }
+    },
+    {
+      "id": "butterfly-mode-copy",
+      "kind": "layout",
+      "children": [
+        "butterfly-mode-name",
+        "butterfly-mode-sub"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 4,
+        "grow": 1
+      }
+    },
+    {
+      "id": "butterfly-mode-art",
+      "kind": "media",
+      "assetId": "butterfly",
+      "layout": {
+        "mode": "column",
+        "widthDp": 76,
+        "heightDp": 76
+      }
+    },
+    {
+      "id": "butterfly-mode-badge",
+      "kind": "text",
+      "content": "60s",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "60s"
+      }
+    },
+    {
+      "id": "butterfly-mode-row",
+      "kind": "layout",
+      "children": [
+        "butterfly-mode-art",
+        "butterfly-mode-copy",
+        "butterfly-mode-badge"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 88
+      },
+      "props": {
+        "slot": "headline"
+      }
+    },
+    {
+      "id": "butterfly-mode",
+      "kind": "spatialui",
+      "component": "sui-list-item",
+      "children": [
+        "butterfly-mode-row"
+      ],
+      "props": {
+        "ui": {
+          "container-color": "mintWash",
+          "headline-color": "forestInk"
+        }
+      },
+      "events": {
+        "click-action": "setup-butterfly"
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "gaze-mode-name",
+      "kind": "text",
+      "content": "眼球运动",
+      "textStyle": {
+        "typography": "title",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Eye movements"
+      }
+    },
+    {
+      "id": "gaze-mode-sub",
+      "kind": "text",
+      "content": "让目光沿着小球舒展",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Follow the orange target"
+      }
+    },
+    {
+      "id": "gaze-mode-copy",
+      "kind": "layout",
+      "children": [
+        "gaze-mode-name",
+        "gaze-mode-sub"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 4,
+        "grow": 1
+      }
+    },
+    {
+      "id": "gaze-mode-art",
+      "kind": "media",
+      "assetId": "orbit",
+      "layout": {
+        "mode": "column",
+        "widthDp": 76,
+        "heightDp": 76
+      }
+    },
+    {
+      "id": "gaze-mode-badge",
+      "kind": "text",
+      "content": "4组",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "4 paths"
+      }
+    },
+    {
+      "id": "gaze-mode-row",
+      "kind": "layout",
+      "children": [
+        "gaze-mode-art",
+        "gaze-mode-copy",
+        "gaze-mode-badge"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 88
+      },
+      "props": {
+        "slot": "headline"
+      }
+    },
+    {
+      "id": "gaze-mode",
+      "kind": "spatialui",
+      "component": "sui-list-item",
+      "children": [
+        "gaze-mode-row"
+      ],
+      "props": {
+        "ui": {
+          "container-color": "mintWash",
+          "headline-color": "forestInk"
+        }
+      },
+      "events": {
+        "click-action": "setup-gaze"
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "home-modes",
+      "kind": "layout",
+      "children": [
+        "rest-mode",
+        "butterfly-mode",
+        "gaze-mode"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 10
+      }
+    },
+    {
+      "id": "history-open-label",
+      "kind": "text",
+      "content": "休息足迹",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "History"
+      }
+    },
+    {
+      "id": "history-open-content",
+      "kind": "layout",
+      "children": [
+        "history-open-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "history-open",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "history-open-content"
+      ],
+      "events": {
+        "click-action": "history"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "settings-open-label",
+      "kind": "text",
+      "content": "声音与设置",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Settings"
+      }
+    },
+    {
+      "id": "settings-open-content",
+      "kind": "layout",
+      "children": [
+        "settings-open-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "settings-open",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "settings-open-content"
+      ],
+      "events": {
+        "click-action": "settings"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "help-open-label",
+      "kind": "text",
+      "content": "使用说明",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Help"
+      }
+    },
+    {
+      "id": "help-open-content",
+      "kind": "layout",
+      "children": [
+        "help-open-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "help-open",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "help-open-content"
+      ],
+      "events": {
+        "click-action": "help"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "home-tools",
+      "kind": "layout",
+      "children": [
+        "history-open",
+        "settings-open",
+        "help-open"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "justify": "space-between"
+      }
+    },
+    {
+      "id": "home-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "home-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "home-header-brand",
+      "kind": "layout",
+      "children": [
+        "home-header-logo",
+        "home-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "home-header-language-label",
+      "kind": "text",
+      "content": "English",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "中文"
+      }
+    },
+    {
+      "id": "home-header-language-content",
+      "kind": "layout",
+      "children": [
+        "home-header-language-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "home-header-language",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "home-header-language-content"
+      ],
+      "events": {
+        "click-action": "language"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "home-header",
+      "kind": "layout",
+      "children": [
+        "home-header-brand",
+        "home-header-language"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "home-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "home-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "home-root",
+      "kind": "layout",
+      "children": [
+        "home-header",
+        "home-hero",
+        "home-starts",
+        "home-modes",
+        "home-space",
+        "home-tools",
+        "home-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "welcome-art",
+      "kind": "media",
+      "assetId": "hero",
+      "layout": {
+        "mode": "column",
+        "widthDp": 600,
+        "heightDp": 260
+      }
+    },
+    {
+      "id": "welcome-body",
+      "kind": "text",
+      "content": "闭眼休息跟随语音即可；蝴蝶和小球训练需要眼动权限。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Close & rest is voice-guided. Following activities need eye tracking."
+      }
+    },
+    {
+      "id": "welcome-note",
+      "kind": "text",
+      "content": "记录只留在本机，语言可以在训练前切换。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Records stay on this device. Choose your language before training."
+      }
+    },
+    {
+      "id": "welcome-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "welcome-start-label",
+      "kind": "text",
+      "content": "了解并继续",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Continue"
+      }
+    },
+    {
+      "id": "welcome-start-content",
+      "kind": "layout",
+      "children": [
+        "welcome-start-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "welcome-start",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "welcome-start-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": true
+      },
+      "layout": {
+        "mode": "row",
+        "widthDp": 1036
+      }
+    },
+    {
+      "id": "welcome-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "welcome-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "welcome-header-brand",
+      "kind": "layout",
+      "children": [
+        "welcome-header-logo",
+        "welcome-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "welcome-header-language-label",
+      "kind": "text",
+      "content": "English",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "中文"
+      }
+    },
+    {
+      "id": "welcome-header-language-content",
+      "kind": "layout",
+      "children": [
+        "welcome-header-language-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "welcome-header-language",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "welcome-header-language-content"
+      ],
+      "events": {
+        "click-action": "language"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "welcome-header",
+      "kind": "layout",
+      "children": [
+        "welcome-header-brand",
+        "welcome-header-language"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "welcome-title",
+      "kind": "text",
+      "content": "给眼睛的一段留白",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "A little room to pause"
+      }
+    },
+    {
+      "id": "welcome-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "welcome",
+      "kind": "layout",
+      "children": [
+        "welcome-header",
+        "welcome-title",
+        "welcome-art",
+        "welcome-body",
+        "welcome-note",
+        "welcome-space",
+        "welcome-start",
+        "welcome-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "setup-mode",
+      "kind": "text",
+      "content": "三项休息，按自己的节奏完成。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Three activities, at your own pace."
+      }
+    },
+    {
+      "id": "plan-quick-label",
+      "kind": "text",
+      "content": "短练习",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Short"
+      }
+    },
+    {
+      "id": "plan-quick-content",
+      "kind": "layout",
+      "children": [
+        "plan-quick-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "plan-quick",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "plan-quick-content"
+      ],
+      "events": {
+        "click-action": "plan-quick"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": false,
+        "choice": {
+          "key": "plan",
+          "value": "QUICK"
+        }
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "plan-full-label",
+      "kind": "text",
+      "content": "完整练习",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Full"
+      }
+    },
+    {
+      "id": "plan-full-content",
+      "kind": "layout",
+      "children": [
+        "plan-full-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "plan-full",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "plan-full-content"
+      ],
+      "events": {
+        "click-action": "plan-full"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false,
+        "choice": {
+          "key": "plan",
+          "value": "FULL"
+        }
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "plan-row",
+      "kind": "layout",
+      "children": [
+        "plan-quick",
+        "plan-full"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "pace-comfort-label",
+      "kind": "text",
+      "content": "舒缓",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Comfortable"
+      }
+    },
+    {
+      "id": "pace-comfort-content",
+      "kind": "layout",
+      "children": [
+        "pace-comfort-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "pace-comfort",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "pace-comfort-content"
+      ],
+      "events": {
+        "click-action": "pace-comfort"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": false,
+        "choice": {
+          "key": "pace",
+          "value": "COMFORTABLE"
+        }
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "pace-standard-label",
+      "kind": "text",
+      "content": "标准",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Standard"
+      }
+    },
+    {
+      "id": "pace-standard-content",
+      "kind": "layout",
+      "children": [
+        "pace-standard-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "pace-standard",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "pace-standard-content"
+      ],
+      "events": {
+        "click-action": "pace-standard"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false,
+        "choice": {
+          "key": "pace",
+          "value": "STANDARD"
+        }
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "pace-row",
+      "kind": "layout",
+      "children": [
+        "pace-comfort",
+        "pace-standard"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "setup-pace-note",
+      "kind": "text",
+      "content": "舒缓：飞得慢一点，范围小一点。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Comfortable: slower movement and smaller paths.",
+        "paceContent": {
+          "COMFORTABLE": {
+            "zh": "舒缓：飞得慢一点，范围小一点。",
+            "en": "Comfortable: slower movement and smaller paths."
+          },
+          "STANDARD": {
+            "zh": "标准：使用熟悉的速度和范围。",
+            "en": "Standard: the familiar speed and movement range."
+          }
+        }
+      }
+    },
+    {
+      "id": "setup-dose",
+      "kind": "text",
+      "content": "闭眼3轮 · 蝴蝶30秒\n小球四组路径，各1轮",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "3 guided rounds · 30 seconds of butterfly\nFour target paths, one round each",
+        "planContent": {
+          "QUICK": {
+            "zh": "闭眼3轮 · 蝴蝶30秒\n小球四组路径，各1轮",
+            "en": "3 guided rounds · 30 seconds of butterfly\nFour target paths, one round each"
+          },
+          "FULL": {
+            "zh": "闭眼10轮 · 蝴蝶60秒\n左右/上下各10轮，顺逆圆各5轮",
+            "en": "10 guided rounds · 60 seconds of butterfly\n10 horizontal/vertical, 5 each circle"
+          }
+        }
+      }
+    },
+    {
+      "id": "setup-duration",
+      "kind": "text",
+      "content": "时长随跟随节奏变化，随时可以暂停。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Duration varies with your pace. Pause whenever you like."
+      }
+    },
+    {
+      "id": "setup-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "setup-begin-label",
+      "kind": "text",
+      "content": "准备好了，开始休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Begin my break"
+      }
+    },
+    {
+      "id": "setup-begin-content",
+      "kind": "layout",
+      "children": [
+        "setup-begin-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "setup-begin",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "setup-begin-content"
+      ],
+      "events": {
+        "click-action": "preparing"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": true
+      },
+      "layout": {
+        "mode": "row",
+        "widthDp": 1036
+      }
+    },
+    {
+      "id": "setup-back-label",
+      "kind": "text",
+      "content": "返回选择",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back to activities"
+      }
+    },
+    {
+      "id": "setup-back-content",
+      "kind": "layout",
+      "children": [
+        "setup-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "setup-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "setup-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "setup-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "setup-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "setup-header-brand",
+      "kind": "layout",
+      "children": [
+        "setup-header-logo",
+        "setup-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "setup-header-language-label",
+      "kind": "text",
+      "content": "English",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "中文"
+      }
+    },
+    {
+      "id": "setup-header-language-content",
+      "kind": "layout",
+      "children": [
+        "setup-header-language-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "setup-header-language",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "setup-header-language-content"
+      ],
+      "events": {
+        "click-action": "language"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "setup-header",
+      "kind": "layout",
+      "children": [
+        "setup-header-brand",
+        "setup-header-language"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "setup-title",
+      "kind": "text",
+      "content": "先选一个舒服的节奏",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Make yourself comfortable"
+      }
+    },
+    {
+      "id": "setup-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "setup",
+      "kind": "layout",
+      "children": [
+        "setup-header",
+        "setup-title",
+        "setup-mode",
+        "plan-row",
+        "pace-row",
+        "setup-pace-note",
+        "setup-dose",
+        "setup-duration",
+        "setup-space",
+        "setup-begin",
+        "setup-back",
+        "setup-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "blink-progress",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0.35,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      }
+    },
+    {
+      "id": "blink-count",
+      "kind": "text",
+      "content": "2 / 3",
+      "textStyle": {
+        "typography": "number",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "2 / 3"
+      }
+    },
+    {
+      "id": "blink-detail",
+      "kind": "text",
+      "content": "闭眼保持3秒，再慢慢睁眼",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Close for 3 seconds, then slowly open"
+      }
+    },
+    {
+      "id": "blink-clock",
+      "kind": "layout",
+      "children": [
+        "blink-count",
+        "blink-detail",
+        "blink-progress"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "heightDp": 280,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "blink-icon",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 76,
+        "heightDp": 76
+      }
+    },
+    {
+      "id": "blink-status",
+      "kind": "text",
+      "content": "正在休息",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "A moment of rest"
+      }
+    },
+    {
+      "id": "blink-chapter",
+      "kind": "layout",
+      "children": [
+        "blink-icon",
+        "blink-status"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "blink-main",
+      "kind": "text",
+      "content": "跟着语音，轻轻闭上眼睛。",
+      "textStyle": {
+        "typography": "title",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Follow the voice. Gently close your eyes."
+      }
+    },
+    {
+      "id": "blink-note",
+      "kind": "text",
+      "content": "慢慢来，感到不适时可以停止。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Take your time. Stop if you feel uncomfortable."
+      }
+    },
+    {
+      "id": "blink-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "blink-pause-label",
+      "kind": "text",
+      "content": "暂停",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Pause"
+      }
+    },
+    {
+      "id": "blink-pause-content",
+      "kind": "layout",
+      "children": [
+        "blink-pause-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "blink-pause",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "blink-pause-content"
+      ],
+      "events": {
+        "click-action": "pause"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "blink-finish-label",
+      "kind": "text",
+      "content": "结束休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Finish"
+      }
+    },
+    {
+      "id": "blink-finish-content",
+      "kind": "layout",
+      "children": [
+        "blink-finish-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "blink-finish",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "blink-finish-content"
+      ],
+      "events": {
+        "click-action": "exit"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "blink-actions",
+      "kind": "layout",
+      "children": [
+        "blink-pause",
+        "blink-finish"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "blink-home-label",
+      "kind": "text",
+      "content": "返回选择",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back to activities"
+      }
+    },
+    {
+      "id": "blink-home-content",
+      "kind": "layout",
+      "children": [
+        "blink-home-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "blink-home",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "blink-home-content"
+      ],
+      "events": {
+        "click-action": "exit-home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "blink-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "blink-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "blink-header-brand",
+      "kind": "layout",
+      "children": [
+        "blink-header-logo",
+        "blink-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "blink-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "blink-header-back-content",
+      "kind": "layout",
+      "children": [
+        "blink-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "blink-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "blink-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "blink-header",
+      "kind": "layout",
+      "children": [
+        "blink-header-brand",
+        "blink-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "blink-title",
+      "kind": "text",
+      "content": "闭眼休息",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Close & rest"
+      }
+    },
+    {
+      "id": "blink-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "blink",
+      "kind": "layout",
+      "children": [
+        "blink-header",
+        "blink-title",
+        "blink-chapter",
+        "blink-main",
+        "blink-clock",
+        "blink-note",
+        "blink-space",
+        "blink-actions",
+        "blink-home",
+        "blink-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "training-progress",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0.35,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      }
+    },
+    {
+      "id": "training-count",
+      "kind": "text",
+      "content": "12 / 30",
+      "textStyle": {
+        "typography": "number",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "12 / 30"
+      }
+    },
+    {
+      "id": "training-detail",
+      "kind": "text",
+      "content": "秒有效跟随",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "seconds of active following"
+      }
+    },
+    {
+      "id": "training-clock",
+      "kind": "layout",
+      "children": [
+        "training-count",
+        "training-detail",
+        "training-progress"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "heightDp": 280,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "training-icon",
+      "kind": "media",
+      "assetId": "butterfly",
+      "layout": {
+        "mode": "column",
+        "widthDp": 76,
+        "heightDp": 76
+      }
+    },
+    {
+      "id": "training-status",
+      "kind": "text",
+      "content": "正在休息",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "A moment of rest"
+      }
+    },
+    {
+      "id": "training-chapter",
+      "kind": "layout",
+      "children": [
+        "training-icon",
+        "training-status"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "training-main",
+      "kind": "text",
+      "content": "让目光轻轻跟随翅膀。",
+      "textStyle": {
+        "typography": "title",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Let your gaze follow the wings."
+      }
+    },
+    {
+      "id": "training-note",
+      "kind": "text",
+      "content": "慢慢来，感到不适时可以停止。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Take your time. Stop if you feel uncomfortable."
+      }
+    },
+    {
+      "id": "training-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "training-pause-label",
+      "kind": "text",
+      "content": "暂停",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Pause"
+      }
+    },
+    {
+      "id": "training-pause-content",
+      "kind": "layout",
+      "children": [
+        "training-pause-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "training-pause",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "training-pause-content"
+      ],
+      "events": {
+        "click-action": "pause"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "training-finish-label",
+      "kind": "text",
+      "content": "结束休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Finish"
+      }
+    },
+    {
+      "id": "training-finish-content",
+      "kind": "layout",
+      "children": [
+        "training-finish-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "training-finish",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "training-finish-content"
+      ],
+      "events": {
+        "click-action": "exit"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "training-actions",
+      "kind": "layout",
+      "children": [
+        "training-pause",
+        "training-finish"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "training-home-label",
+      "kind": "text",
+      "content": "返回选择",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back to activities"
+      }
+    },
+    {
+      "id": "training-home-content",
+      "kind": "layout",
+      "children": [
+        "training-home-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "training-home",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "training-home-content"
+      ],
+      "events": {
+        "click-action": "exit-home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "training-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "training-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "training-header-brand",
+      "kind": "layout",
+      "children": [
+        "training-header-logo",
+        "training-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "training-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "training-header-back-content",
+      "kind": "layout",
+      "children": [
+        "training-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "training-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "training-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "training-header",
+      "kind": "layout",
+      "children": [
+        "training-header-brand",
+        "training-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "training-title",
+      "kind": "text",
+      "content": "蝴蝶漫游",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Butterfly pursuit"
+      }
+    },
+    {
+      "id": "training-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "training",
+      "kind": "layout",
+      "children": [
+        "training-header",
+        "training-title",
+        "training-chapter",
+        "training-main",
+        "training-clock",
+        "training-note",
+        "training-space",
+        "training-actions",
+        "training-home",
+        "training-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "gaze-progress",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0.35,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      }
+    },
+    {
+      "id": "gaze-count",
+      "kind": "text",
+      "content": "1 / 4",
+      "textStyle": {
+        "typography": "number",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "1 / 4"
+      }
+    },
+    {
+      "id": "gaze-detail",
+      "kind": "text",
+      "content": "四组路径 · 允许自然转头",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Four paths · turn your head naturally"
+      }
+    },
+    {
+      "id": "gaze-clock",
+      "kind": "layout",
+      "children": [
+        "gaze-count",
+        "gaze-detail",
+        "gaze-progress"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "heightDp": 280,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "gaze-icon",
+      "kind": "media",
+      "assetId": "orbit",
+      "layout": {
+        "mode": "column",
+        "widthDp": 76,
+        "heightDp": 76
+      }
+    },
+    {
+      "id": "gaze-status",
+      "kind": "text",
+      "content": "正在休息",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "A moment of rest"
+      }
+    },
+    {
+      "id": "gaze-chapter",
+      "kind": "layout",
+      "children": [
+        "gaze-icon",
+        "gaze-status"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "gaze-main",
+      "kind": "text",
+      "content": "沿着小球，让目光缓缓移动。",
+      "textStyle": {
+        "typography": "title",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Let your eyes follow the orange target."
+      }
+    },
+    {
+      "id": "gaze-note",
+      "kind": "text",
+      "content": "慢慢来，感到不适时可以停止。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Take your time. Stop if you feel uncomfortable."
+      }
+    },
+    {
+      "id": "gaze-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "gaze-pause-label",
+      "kind": "text",
+      "content": "暂停",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Pause"
+      }
+    },
+    {
+      "id": "gaze-pause-content",
+      "kind": "layout",
+      "children": [
+        "gaze-pause-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "gaze-pause",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "gaze-pause-content"
+      ],
+      "events": {
+        "click-action": "pause"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "gaze-finish-label",
+      "kind": "text",
+      "content": "结束休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Finish"
+      }
+    },
+    {
+      "id": "gaze-finish-content",
+      "kind": "layout",
+      "children": [
+        "gaze-finish-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "gaze-finish",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "gaze-finish-content"
+      ],
+      "events": {
+        "click-action": "exit"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "gaze-actions",
+      "kind": "layout",
+      "children": [
+        "gaze-pause",
+        "gaze-finish"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "gaze-home-label",
+      "kind": "text",
+      "content": "返回选择",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back to activities"
+      }
+    },
+    {
+      "id": "gaze-home-content",
+      "kind": "layout",
+      "children": [
+        "gaze-home-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "gaze-home",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "gaze-home-content"
+      ],
+      "events": {
+        "click-action": "exit-home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "gaze-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "gaze-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "gaze-header-brand",
+      "kind": "layout",
+      "children": [
+        "gaze-header-logo",
+        "gaze-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "gaze-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "gaze-header-back-content",
+      "kind": "layout",
+      "children": [
+        "gaze-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "gaze-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "gaze-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "gaze-header",
+      "kind": "layout",
+      "children": [
+        "gaze-header-brand",
+        "gaze-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "gaze-title",
+      "kind": "text",
+      "content": "眼球运动",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Eye movements"
+      }
+    },
+    {
+      "id": "gaze-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "gaze",
+      "kind": "layout",
+      "children": [
+        "gaze-header",
+        "gaze-title",
+        "gaze-chapter",
+        "gaze-main",
+        "gaze-clock",
+        "gaze-note",
+        "gaze-space",
+        "gaze-actions",
+        "gaze-home",
+        "gaze-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "countdown",
+      "kind": "text",
+      "content": "3",
+      "textStyle": {
+        "typography": "number",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "3"
+      }
+    },
+    {
+      "id": "preparing-pause-label",
+      "kind": "text",
+      "content": "暂停",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Pause"
+      }
+    },
+    {
+      "id": "preparing-pause-content",
+      "kind": "layout",
+      "children": [
+        "preparing-pause-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "preparing-pause",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "preparing-pause-content"
+      ],
+      "events": {
+        "click-action": "pause"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "preparing-art",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 120,
+        "heightDp": 120
+      }
+    },
+    {
+      "id": "preparing-body",
+      "kind": "text",
+      "content": "放松坐好，倒计时后一起出发。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Sit comfortably. We begin after the countdown."
+      }
+    },
+    {
+      "id": "preparing-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "preparing-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "preparing-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "preparing-header-brand",
+      "kind": "layout",
+      "children": [
+        "preparing-header-logo",
+        "preparing-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "preparing-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "preparing-header-back-content",
+      "kind": "layout",
+      "children": [
+        "preparing-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "preparing-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "preparing-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "preparing-header",
+      "kind": "layout",
+      "children": [
+        "preparing-header-brand",
+        "preparing-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "preparing-title",
+      "kind": "text",
+      "content": "安静片刻，就开始。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "A moment to settle in."
+      }
+    },
+    {
+      "id": "preparing-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "preparing",
+      "kind": "layout",
+      "children": [
+        "preparing-header",
+        "preparing-title",
+        "preparing-art",
+        "preparing-body",
+        "preparing-space",
+        "countdown",
+        "preparing-pause",
+        "preparing-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "resume-label",
+      "kind": "text",
+      "content": "继续休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Resume"
+      }
+    },
+    {
+      "id": "resume-content",
+      "kind": "layout",
+      "children": [
+        "resume-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "resume",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "resume-content"
+      ],
+      "events": {
+        "click-action": "preparing"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": true
+      },
+      "layout": {
+        "mode": "row",
+        "widthDp": 1036
+      }
+    },
+    {
+      "id": "pause-exit-label",
+      "kind": "text",
+      "content": "结束休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Finish"
+      }
+    },
+    {
+      "id": "pause-exit-content",
+      "kind": "layout",
+      "children": [
+        "pause-exit-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "pause-exit",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "pause-exit-content"
+      ],
+      "events": {
+        "click-action": "exit"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "paused-art",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 120,
+        "heightDp": 120
+      }
+    },
+    {
+      "id": "paused-body",
+      "kind": "text",
+      "content": "准备好后点继续，我们会先倒计时。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Choose Resume when ready. A countdown comes first."
+      }
+    },
+    {
+      "id": "paused-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "paused-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "paused-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "paused-header-brand",
+      "kind": "layout",
+      "children": [
+        "paused-header-logo",
+        "paused-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "paused-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "paused-header-back-content",
+      "kind": "layout",
+      "children": [
+        "paused-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "paused-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "paused-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "paused-header",
+      "kind": "layout",
+      "children": [
+        "paused-header-brand",
+        "paused-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "paused-title",
+      "kind": "text",
+      "content": "这片安静，为你保留。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Your quiet moment is kept."
+      }
+    },
+    {
+      "id": "paused-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "paused",
+      "kind": "layout",
+      "children": [
+        "paused-header",
+        "paused-title",
+        "paused-art",
+        "paused-body",
+        "paused-space",
+        "resume",
+        "pause-exit",
+        "paused-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "tracking-exit-label",
+      "kind": "text",
+      "content": "结束休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Finish"
+      }
+    },
+    {
+      "id": "tracking-exit-content",
+      "kind": "layout",
+      "children": [
+        "tracking-exit-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "tracking-exit",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "tracking-exit-content"
+      ],
+      "events": {
+        "click-action": "exit"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "tracking-art",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 120,
+        "heightDp": 120
+      }
+    },
+    {
+      "id": "tracking-body",
+      "kind": "text",
+      "content": "目光准备好后继续，进度已保留。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "We continue when tracking is ready. Your progress is kept."
+      }
+    },
+    {
+      "id": "tracking-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "tracking-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "tracking-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "tracking-header-brand",
+      "kind": "layout",
+      "children": [
+        "tracking-header-logo",
+        "tracking-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "tracking-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "tracking-header-back-content",
+      "kind": "layout",
+      "children": [
+        "tracking-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "tracking-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "tracking-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "tracking-header",
+      "kind": "layout",
+      "children": [
+        "tracking-header-brand",
+        "tracking-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "tracking-title",
+      "kind": "text",
+      "content": "先调整一下佩戴。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Take a moment to adjust."
+      }
+    },
+    {
+      "id": "tracking-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "tracking",
+      "kind": "layout",
+      "children": [
+        "tracking-header",
+        "tracking-title",
+        "tracking-art",
+        "tracking-body",
+        "tracking-space",
+        "tracking-exit",
+        "tracking-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "permission-enable-label",
+      "kind": "text",
+      "content": "开启眼动",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Enable eye tracking"
+      }
+    },
+    {
+      "id": "permission-enable-content",
+      "kind": "layout",
+      "children": [
+        "permission-enable-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "permission-enable",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "permission-enable-content"
+      ],
+      "events": {
+        "click-action": "preparing"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": true
+      },
+      "layout": {
+        "mode": "row",
+        "widthDp": 1036
+      }
+    },
+    {
+      "id": "permission-rest-label",
+      "kind": "text",
+      "content": "先做闭眼休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Try guided rest"
+      }
+    },
+    {
+      "id": "permission-rest-content",
+      "kind": "layout",
+      "children": [
+        "permission-rest-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "permission-rest",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "permission-rest-content"
+      ],
+      "events": {
+        "click-action": "setup-rest"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "permission-art",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 120,
+        "heightDp": 120
+      }
+    },
+    {
+      "id": "permission-body",
+      "kind": "text",
+      "content": "这项训练需要眼动权限。闭眼语音休息无需眼动权限。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "This activity needs eye tracking. Voice-guided rest does not."
+      }
+    },
+    {
+      "id": "permission-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "permission-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "permission-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "permission-header-brand",
+      "kind": "layout",
+      "children": [
+        "permission-header-logo",
+        "permission-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "permission-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "permission-header-back-content",
+      "kind": "layout",
+      "children": [
+        "permission-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "permission-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "permission-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "permission-header",
+      "kind": "layout",
+      "children": [
+        "permission-header-brand",
+        "permission-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "permission-title",
+      "kind": "text",
+      "content": "让目光连接小岛。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Let your gaze find the island."
+      }
+    },
+    {
+      "id": "permission-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "permission",
+      "kind": "layout",
+      "children": [
+        "permission-header",
+        "permission-title",
+        "permission-art",
+        "permission-body",
+        "permission-space",
+        "permission-enable",
+        "permission-rest",
+        "permission-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "retry-label",
+      "kind": "text",
+      "content": "再试一次",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Retry"
+      }
+    },
+    {
+      "id": "retry-content",
+      "kind": "layout",
+      "children": [
+        "retry-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "retry",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "retry-content"
+      ],
+      "events": {
+        "click-action": "preparing"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": true
+      },
+      "layout": {
+        "mode": "row",
+        "widthDp": 1036
+      }
+    },
+    {
+      "id": "skip-label",
+      "kind": "text",
+      "content": "跳过本轮",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Skip round"
+      }
+    },
+    {
+      "id": "skip-content",
+      "kind": "layout",
+      "children": [
+        "skip-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "skip",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "skip-content"
+      ],
+      "events": {
+        "click-action": "preparing"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "incomplete-art",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 120,
+        "heightDp": 120
+      }
+    },
+    {
+      "id": "incomplete-body",
+      "kind": "text",
+      "content": "可以再试一次，或跳过这一轮。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Try again, or move on to the next round."
+      }
+    },
+    {
+      "id": "incomplete-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "incomplete-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "incomplete-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "incomplete-header-brand",
+      "kind": "layout",
+      "children": [
+        "incomplete-header-logo",
+        "incomplete-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "incomplete-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "incomplete-header-back-content",
+      "kind": "layout",
+      "children": [
+        "incomplete-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "incomplete-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "incomplete-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "incomplete-header",
+      "kind": "layout",
+      "children": [
+        "incomplete-header-brand",
+        "incomplete-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "incomplete-title",
+      "kind": "text",
+      "content": "没跟上，也没关系。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Missed it? That is okay."
+      }
+    },
+    {
+      "id": "incomplete-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "incomplete",
+      "kind": "layout",
+      "children": [
+        "incomplete-header",
+        "incomplete-title",
+        "incomplete-art",
+        "incomplete-body",
+        "incomplete-space",
+        "retry",
+        "skip",
+        "incomplete-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "entering-pause-label",
+      "kind": "text",
+      "content": "暂停",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Pause"
+      }
+    },
+    {
+      "id": "entering-pause-content",
+      "kind": "layout",
+      "children": [
+        "entering-pause-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "entering-pause",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "entering-pause-content"
+      ],
+      "events": {
+        "click-action": "pause"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "entering-exit-label",
+      "kind": "text",
+      "content": "结束休息",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Finish"
+      }
+    },
+    {
+      "id": "entering-exit-content",
+      "kind": "layout",
+      "children": [
+        "entering-exit-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "entering-exit",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "entering-exit-content"
+      ],
+      "events": {
+        "click-action": "returning"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "entering-art",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 120,
+        "heightDp": 120
+      }
+    },
+    {
+      "id": "entering-body",
+      "kind": "text",
+      "content": "抵达中央后开始训练，先轻轻看着它。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Training begins after arrival. Gently watch it approach."
+      }
+    },
+    {
+      "id": "entering-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "entering-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "entering-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "entering-header-brand",
+      "kind": "layout",
+      "children": [
+        "entering-header-logo",
+        "entering-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "entering-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "entering-header-back-content",
+      "kind": "layout",
+      "children": [
+        "entering-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "entering-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "entering-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "entering-header",
+      "kind": "layout",
+      "children": [
+        "entering-header-brand",
+        "entering-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "entering-title",
+      "kind": "text",
+      "content": "小岛的伙伴，来陪你了。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "A friend from the island."
+      }
+    },
+    {
+      "id": "entering-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "entering",
+      "kind": "layout",
+      "children": [
+        "entering-header",
+        "entering-title",
+        "entering-art",
+        "entering-body",
+        "entering-space",
+        "entering-pause",
+        "entering-exit",
+        "entering-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "returning-art",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 120,
+        "heightDp": 120
+      }
+    },
+    {
+      "id": "returning-body",
+      "kind": "text",
+      "content": "这次休息已经保存，伙伴正在回岛。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Your session is saved. Your companion is returning."
+      }
+    },
+    {
+      "id": "returning-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "returning-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "returning-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "returning-header-brand",
+      "kind": "layout",
+      "children": [
+        "returning-header-logo",
+        "returning-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "returning-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "returning-header-back-content",
+      "kind": "layout",
+      "children": [
+        "returning-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "returning-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "returning-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "returning-header",
+      "kind": "layout",
+      "children": [
+        "returning-header-brand",
+        "returning-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "returning-title",
+      "kind": "text",
+      "content": "送它回小岛。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back to the island."
+      }
+    },
+    {
+      "id": "returning-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "returning",
+      "kind": "layout",
+      "children": [
+        "returning-header",
+        "returning-title",
+        "returning-art",
+        "returning-body",
+        "returning-space",
+        "returning-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "summary-eyebrow",
+      "kind": "text",
+      "content": "这一次，慢了下来",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "YOUR LITTLE PAUSE"
+      }
+    },
+    {
+      "id": "summary-title",
+      "kind": "text",
+      "content": "谢谢自己，\n停下来一会儿。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "A little pause,\njust for you."
+      }
+    },
+    {
+      "id": "summary-copy",
+      "kind": "layout",
+      "children": [
+        "summary-eyebrow",
+        "summary-title"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 12,
+        "grow": 1
+      }
+    },
+    {
+      "id": "summary-art",
+      "kind": "media",
+      "assetId": "hero",
+      "layout": {
+        "mode": "column",
+        "widthDp": 340,
+        "heightDp": 220
+      }
+    },
+    {
+      "id": "summary-hero",
+      "kind": "layout",
+      "children": [
+        "summary-copy",
+        "summary-art"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 240
+      }
+    },
+    {
+      "id": "stat-done-v",
+      "kind": "text",
+      "content": "3",
+      "textStyle": {
+        "typography": "stat",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "3"
+      }
+    },
+    {
+      "id": "stat-done-l",
+      "kind": "text",
+      "content": "完成",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Complete"
+      }
+    },
+    {
+      "id": "stat-done",
+      "kind": "layout",
+      "children": [
+        "stat-done-v",
+        "stat-done-l"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "stat-miss-v",
+      "kind": "text",
+      "content": "0",
+      "textStyle": {
+        "typography": "stat",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "0"
+      }
+    },
+    {
+      "id": "stat-miss-l",
+      "kind": "text",
+      "content": "未完成",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Incomplete"
+      }
+    },
+    {
+      "id": "stat-miss",
+      "kind": "layout",
+      "children": [
+        "stat-miss-v",
+        "stat-miss-l"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "stat-skip-v",
+      "kind": "text",
+      "content": "0",
+      "textStyle": {
+        "typography": "stat",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "0"
+      }
+    },
+    {
+      "id": "stat-skip-l",
+      "kind": "text",
+      "content": "跳过",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Skipped"
+      }
+    },
+    {
+      "id": "stat-skip",
+      "kind": "layout",
+      "children": [
+        "stat-skip-v",
+        "stat-skip-l"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "stat-pause-v",
+      "kind": "text",
+      "content": "0",
+      "textStyle": {
+        "typography": "stat",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "0"
+      }
+    },
+    {
+      "id": "stat-pause-l",
+      "kind": "text",
+      "content": "中断",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Pauses"
+      }
+    },
+    {
+      "id": "stat-pause",
+      "kind": "layout",
+      "children": [
+        "stat-pause-v",
+        "stat-pause-l"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "summary-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "summary-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "summary-header-brand",
+      "kind": "layout",
+      "children": [
+        "summary-header-logo",
+        "summary-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "summary-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "summary-header-back-content",
+      "kind": "layout",
+      "children": [
+        "summary-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "summary-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "summary-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "summary-header",
+      "kind": "layout",
+      "children": [
+        "summary-header-brand",
+        "summary-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "summary-stats",
+      "kind": "layout",
+      "children": [
+        "stat-done",
+        "stat-miss",
+        "stat-skip",
+        "stat-pause"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 170
+      }
+    },
+    {
+      "id": "summary-saved",
+      "kind": "text",
+      "content": "这次休息已保存在本机。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Your break is saved on this device."
+      }
+    },
+    {
+      "id": "summary-note",
+      "kind": "text",
+      "content": "闭眼休息记录语音流程，不检测眼睛开合。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Guided rest records the sequence; eye closure is not measured."
+      }
+    },
+    {
+      "id": "summary-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "summary-finish-label",
+      "kind": "text",
+      "content": "结束休息，送它回岛",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Finish & return to island"
+      }
+    },
+    {
+      "id": "summary-finish-content",
+      "kind": "layout",
+      "children": [
+        "summary-finish-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "summary-finish",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "summary-finish-content"
+      ],
+      "events": {
+        "click-action": "returning"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": true
+      },
+      "layout": {
+        "mode": "row",
+        "widthDp": 1036
+      }
+    },
+    {
+      "id": "summary-home-label",
+      "kind": "text",
+      "content": "返回小岛",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back to the island"
+      }
+    },
+    {
+      "id": "summary-home-content",
+      "kind": "layout",
+      "children": [
+        "summary-home-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "summary-home",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "summary-home-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "summary-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "summary-root",
+      "kind": "layout",
+      "children": [
+        "summary-header",
+        "summary-hero",
+        "summary-stats",
+        "summary-saved",
+        "summary-note",
+        "summary-space",
+        "summary-finish",
+        "summary-home",
+        "summary-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "history-overview",
+      "kind": "text",
+      "content": "今天已休息2次",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "2 breaks today"
+      }
+    },
+    {
+      "id": "history-stats-label",
+      "kind": "text",
+      "content": "七天统计",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Last 7 days"
+      }
+    },
+    {
+      "id": "history-stats-content",
+      "kind": "layout",
+      "children": [
+        "history-stats-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "history-stats",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "history-stats-content"
+      ],
+      "events": {
+        "click-action": "statistics"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "history-top",
+      "kind": "layout",
+      "children": [
+        "history-overview",
+        "history-stats"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "justify": "space-between"
+      }
+    },
+    {
+      "id": "history-row-1",
+      "kind": "text",
+      "content": "今天 14:20 · 快速休息 · 完成\n语音引导与目光跟随组合",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Today 14:20 · Quick session · Complete\nGuided rest and gaze following"
+      }
+    },
+    {
+      "id": "history-row-2",
+      "kind": "text",
+      "content": "昨天 20:10 · 闭眼休息 · 退出\n已完成2轮语音引导",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Yesterday 20:10 · Guided rest · Exited\n2 guided rounds complete"
+      }
+    },
+    {
+      "id": "history-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "history-prev-label",
+      "kind": "text",
+      "content": "上一页",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Previous"
+      }
+    },
+    {
+      "id": "history-prev-content",
+      "kind": "layout",
+      "children": [
+        "history-prev-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "history-prev",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "history-prev-content"
+      ],
+      "events": {
+        "click-action": "history"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "history-page",
+      "kind": "text",
+      "content": "1 / 1",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "1 / 1"
+      }
+    },
+    {
+      "id": "history-next-label",
+      "kind": "text",
+      "content": "下一页",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Next"
+      }
+    },
+    {
+      "id": "history-next-content",
+      "kind": "layout",
+      "children": [
+        "history-next-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "history-next",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "history-next-content"
+      ],
+      "events": {
+        "click-action": "history"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "history-pages",
+      "kind": "layout",
+      "children": [
+        "history-prev",
+        "history-page",
+        "history-next"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "history-delete-label",
+      "kind": "text",
+      "content": "删除本机记录…",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Delete local records…"
+      }
+    },
+    {
+      "id": "history-delete-content",
+      "kind": "layout",
+      "children": [
+        "history-delete-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "history-delete",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "history-delete-content"
+      ],
+      "events": {
+        "click-action": "delete-confirm"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "history-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "history-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "history-header-brand",
+      "kind": "layout",
+      "children": [
+        "history-header-logo",
+        "history-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "history-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "history-header-back-content",
+      "kind": "layout",
+      "children": [
+        "history-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "history-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "history-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "history-header",
+      "kind": "layout",
+      "children": [
+        "history-header-brand",
+        "history-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "history-title",
+      "kind": "text",
+      "content": "我的休息足迹",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "My little pauses"
+      }
+    },
+    {
+      "id": "history-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "history",
+      "kind": "layout",
+      "children": [
+        "history-header",
+        "history-title",
+        "history-top",
+        "history-row-1",
+        "history-row-2",
+        "history-space",
+        "history-pages",
+        "history-delete",
+        "history-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "day-0-bar",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0.15,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      },
+      "layout": {
+        "mode": "row",
+        "grow": 1
+      }
+    },
+    {
+      "id": "day-0-date",
+      "kind": "text",
+      "content": "11/21",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "11/21"
+      }
+    },
+    {
+      "id": "day-0-value",
+      "kind": "text",
+      "content": "0.8分",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "0.8 min"
+      }
+    },
+    {
+      "id": "day-0",
+      "kind": "layout",
+      "children": [
+        "day-0-date",
+        "day-0-bar",
+        "day-0-value"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 44
+      }
+    },
+    {
+      "id": "day-1-bar",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      },
+      "layout": {
+        "mode": "row",
+        "grow": 1
+      }
+    },
+    {
+      "id": "day-1-date",
+      "kind": "text",
+      "content": "11/22",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "11/22"
+      }
+    },
+    {
+      "id": "day-1-value",
+      "kind": "text",
+      "content": "0分",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "0 min"
+      }
+    },
+    {
+      "id": "day-1",
+      "kind": "layout",
+      "children": [
+        "day-1-date",
+        "day-1-bar",
+        "day-1-value"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 44
+      }
+    },
+    {
+      "id": "day-2-bar",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0.35,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      },
+      "layout": {
+        "mode": "row",
+        "grow": 1
+      }
+    },
+    {
+      "id": "day-2-date",
+      "kind": "text",
+      "content": "11/23",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "11/23"
+      }
+    },
+    {
+      "id": "day-2-value",
+      "kind": "text",
+      "content": "1.8分",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "1.8 min"
+      }
+    },
+    {
+      "id": "day-2",
+      "kind": "layout",
+      "children": [
+        "day-2-date",
+        "day-2-bar",
+        "day-2-value"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 44
+      }
+    },
+    {
+      "id": "day-3-bar",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0.5,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      },
+      "layout": {
+        "mode": "row",
+        "grow": 1
+      }
+    },
+    {
+      "id": "day-3-date",
+      "kind": "text",
+      "content": "11/24",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "11/24"
+      }
+    },
+    {
+      "id": "day-3-value",
+      "kind": "text",
+      "content": "2.5分",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "2.5 min"
+      }
+    },
+    {
+      "id": "day-3",
+      "kind": "layout",
+      "children": [
+        "day-3-date",
+        "day-3-bar",
+        "day-3-value"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 44
+      }
+    },
+    {
+      "id": "day-4-bar",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0.1,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      },
+      "layout": {
+        "mode": "row",
+        "grow": 1
+      }
+    },
+    {
+      "id": "day-4-date",
+      "kind": "text",
+      "content": "11/25",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "11/25"
+      }
+    },
+    {
+      "id": "day-4-value",
+      "kind": "text",
+      "content": "0.5分",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "0.5 min"
+      }
+    },
+    {
+      "id": "day-4",
+      "kind": "layout",
+      "children": [
+        "day-4-date",
+        "day-4-bar",
+        "day-4-value"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 44
+      }
+    },
+    {
+      "id": "day-5-bar",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0.65,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      },
+      "layout": {
+        "mode": "row",
+        "grow": 1
+      }
+    },
+    {
+      "id": "day-5-date",
+      "kind": "text",
+      "content": "11/26",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "11/26"
+      }
+    },
+    {
+      "id": "day-5-value",
+      "kind": "text",
+      "content": "3.2分",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "3.2 min"
+      }
+    },
+    {
+      "id": "day-5",
+      "kind": "layout",
+      "children": [
+        "day-5-date",
+        "day-5-bar",
+        "day-5-value"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 44
+      }
+    },
+    {
+      "id": "day-6-bar",
+      "kind": "spatialui",
+      "component": "sui-linear-progress",
+      "props": {
+        "ui": {
+          "value": 0.8,
+          "size": "regular",
+          "track-color": "mintWash",
+          "progress-color": "deepForest"
+        }
+      },
+      "layout": {
+        "mode": "row",
+        "grow": 1
+      }
+    },
+    {
+      "id": "day-6-date",
+      "kind": "text",
+      "content": "11/27",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "11/27"
+      }
+    },
+    {
+      "id": "day-6-value",
+      "kind": "text",
+      "content": "4.0分",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "4.0 min"
+      }
+    },
+    {
+      "id": "day-6",
+      "kind": "layout",
+      "children": [
+        "day-6-date",
+        "day-6-bar",
+        "day-6-value"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 44
+      }
+    },
+    {
+      "id": "stats-today",
+      "kind": "text",
+      "content": "今天2次 · 4.0分钟",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Today 2 breaks · 4.0 min"
+      }
+    },
+    {
+      "id": "stats-week",
+      "kind": "text",
+      "content": "近七天共9次 · 12.8分钟有效练习",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "7 days: 9 breaks · 12.8 active minutes"
+      }
+    },
+    {
+      "id": "stats-bars",
+      "kind": "layout",
+      "children": [
+        "day-0",
+        "day-1",
+        "day-2",
+        "day-3",
+        "day-4",
+        "day-5",
+        "day-6"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 12
+      }
+    },
+    {
+      "id": "stats-categories",
+      "kind": "text",
+      "content": "语音引导3次 · 目光跟随2次 · 组合4次",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Guided 3 · Gaze 2 · Combined 4"
+      }
+    },
+    {
+      "id": "stats-note",
+      "kind": "text",
+      "content": "只统计本机有效练习，不表示佩戴时长或效果。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Local active practice only, not wear time or benefit."
+      }
+    },
+    {
+      "id": "stats-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "stats-back-label",
+      "kind": "text",
+      "content": "返回足迹",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back to history"
+      }
+    },
+    {
+      "id": "stats-back-content",
+      "kind": "layout",
+      "children": [
+        "stats-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "stats-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "stats-back-content"
+      ],
+      "events": {
+        "click-action": "history"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "statistics-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "statistics-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "statistics-header-brand",
+      "kind": "layout",
+      "children": [
+        "statistics-header-logo",
+        "statistics-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "statistics-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "statistics-header-back-content",
+      "kind": "layout",
+      "children": [
+        "statistics-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "statistics-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "statistics-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "statistics-header",
+      "kind": "layout",
+      "children": [
+        "statistics-header-brand",
+        "statistics-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "statistics-title",
+      "kind": "text",
+      "content": "把休息，留在日常。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Make room for little pauses."
+      }
+    },
+    {
+      "id": "statistics-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "statistics",
+      "kind": "layout",
+      "children": [
+        "statistics-header",
+        "statistics-title",
+        "stats-today",
+        "stats-week",
+        "stats-bars",
+        "stats-categories",
+        "stats-note",
+        "stats-space",
+        "stats-back",
+        "statistics-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "setting-music-label",
+      "kind": "text",
+      "content": "背景音乐",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Music"
+      }
+    },
+    {
+      "id": "setting-music-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "music-minus-label",
+      "kind": "text",
+      "content": "−",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "−"
+      }
+    },
+    {
+      "id": "music-minus-content",
+      "kind": "layout",
+      "children": [
+        "music-minus-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "music-minus",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "music-minus-content"
+      ],
+      "events": {
+        "click-action": "volume-down"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "music-value",
+      "kind": "text",
+      "content": "25%",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "25%"
+      }
+    },
+    {
+      "id": "music-plus-label",
+      "kind": "text",
+      "content": "+",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "+"
+      }
+    },
+    {
+      "id": "music-plus-content",
+      "kind": "layout",
+      "children": [
+        "music-plus-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "music-plus",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "music-plus-content"
+      ],
+      "events": {
+        "click-action": "volume-up"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "setting-music",
+      "kind": "layout",
+      "children": [
+        "setting-music-label",
+        "setting-music-space",
+        "music-minus",
+        "music-value",
+        "music-plus"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "setting-voice-label",
+      "kind": "text",
+      "content": "引导语音",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Voice"
+      }
+    },
+    {
+      "id": "setting-voice-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "voice-minus-label",
+      "kind": "text",
+      "content": "−",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "−"
+      }
+    },
+    {
+      "id": "voice-minus-content",
+      "kind": "layout",
+      "children": [
+        "voice-minus-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "voice-minus",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "voice-minus-content"
+      ],
+      "events": {
+        "click-action": "volume-down"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "voice-value",
+      "kind": "text",
+      "content": "70%",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "70%"
+      }
+    },
+    {
+      "id": "voice-plus-label",
+      "kind": "text",
+      "content": "+",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "+"
+      }
+    },
+    {
+      "id": "voice-plus-content",
+      "kind": "layout",
+      "children": [
+        "voice-plus-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "voice-plus",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "voice-plus-content"
+      ],
+      "events": {
+        "click-action": "volume-up"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "setting-voice",
+      "kind": "layout",
+      "children": [
+        "setting-voice-label",
+        "setting-voice-space",
+        "voice-minus",
+        "voice-value",
+        "voice-plus"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "setting-effects-label",
+      "kind": "text",
+      "content": "提示音",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Effects"
+      }
+    },
+    {
+      "id": "setting-effects-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "effects-minus-label",
+      "kind": "text",
+      "content": "−",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "−"
+      }
+    },
+    {
+      "id": "effects-minus-content",
+      "kind": "layout",
+      "children": [
+        "effects-minus-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "effects-minus",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "effects-minus-content"
+      ],
+      "events": {
+        "click-action": "volume-down"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "effects-value",
+      "kind": "text",
+      "content": "40%",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "40%"
+      }
+    },
+    {
+      "id": "effects-plus-label",
+      "kind": "text",
+      "content": "+",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "+"
+      }
+    },
+    {
+      "id": "effects-plus-content",
+      "kind": "layout",
+      "children": [
+        "effects-plus-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "effects-plus",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "effects-plus-content"
+      ],
+      "events": {
+        "click-action": "volume-up"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "setting-effects",
+      "kind": "layout",
+      "children": [
+        "setting-effects-label",
+        "setting-effects-space",
+        "effects-minus",
+        "effects-value",
+        "effects-plus"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "settings-intro",
+      "kind": "text",
+      "content": "让环境轻一点，让引导清楚一点。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Keep the ambience gentle and the voice clear."
+      }
+    },
+    {
+      "id": "mute-label",
+      "kind": "text",
+      "content": "全部静音",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Mute all"
+      }
+    },
+    {
+      "id": "mute-content",
+      "kind": "layout",
+      "children": [
+        "mute-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "mute",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "mute-content"
+      ],
+      "events": {
+        "click-action": "mute"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "preview-voice-label",
+      "kind": "text",
+      "content": "试听女声",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Preview voice"
+      }
+    },
+    {
+      "id": "preview-voice-content",
+      "kind": "layout",
+      "children": [
+        "preview-voice-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "preview-voice",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "preview-voice-content"
+      ],
+      "events": {
+        "click-action": "voice-preview"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "settings-actions",
+      "kind": "layout",
+      "children": [
+        "mute",
+        "preview-voice"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center"
+      }
+    },
+    {
+      "id": "settings-reminder",
+      "kind": "text",
+      "content": "佩戴累计提醒暂未开放。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Wear-time reminders are not available yet."
+      }
+    },
+    {
+      "id": "settings-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "settings-back-label",
+      "kind": "text",
+      "content": "返回小岛",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back to the island"
+      }
+    },
+    {
+      "id": "settings-back-content",
+      "kind": "layout",
+      "children": [
+        "settings-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "settings-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "settings-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "settings-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "settings-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "settings-header-brand",
+      "kind": "layout",
+      "children": [
+        "settings-header-logo",
+        "settings-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "settings-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "settings-header-back-content",
+      "kind": "layout",
+      "children": [
+        "settings-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "settings-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "settings-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "settings-header",
+      "kind": "layout",
+      "children": [
+        "settings-header-brand",
+        "settings-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "settings-title",
+      "kind": "text",
+      "content": "声音，也按你的节奏。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "A soundscape of your own."
+      }
+    },
+    {
+      "id": "settings-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "settings",
+      "kind": "layout",
+      "children": [
+        "settings-header",
+        "settings-title",
+        "settings-intro",
+        "setting-music",
+        "setting-voice",
+        "setting-effects",
+        "settings-actions",
+        "settings-reminder",
+        "settings-space",
+        "settings-back",
+        "settings-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "help-1",
+      "kind": "text",
+      "content": "闭眼休息听语音即可。蝴蝶和小球训练需要眼动权限。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Follow the voice for guided rest. Butterfly and target activities need eye tracking."
+      }
+    },
+    {
+      "id": "help-2",
+      "kind": "text",
+      "content": "可以自然转头。跟不上时，小球会等你；感到不适请停止。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Turn your head naturally. The target waits when you lose it. Stop if uncomfortable."
+      }
+    },
+    {
+      "id": "help-3",
+      "kind": "text",
+      "content": "虚拟远近不代表真实调焦；不测闭眼力度。记录只保存在本机，可随时删除。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "Virtual depth is not real accommodation; eyelid force is not measured. Records stay local and can be deleted."
+      }
+    },
+    {
+      "id": "help-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "help-back-label",
+      "kind": "text",
+      "content": "返回小岛",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back to the island"
+      }
+    },
+    {
+      "id": "help-back-content",
+      "kind": "layout",
+      "children": [
+        "help-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "help-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "help-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "help-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "help-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "help-header-brand",
+      "kind": "layout",
+      "children": [
+        "help-header-logo",
+        "help-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "help-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "help-header-back-content",
+      "kind": "layout",
+      "children": [
+        "help-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "help-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "help-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "help-header",
+      "kind": "layout",
+      "children": [
+        "help-header-brand",
+        "help-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "help-title",
+      "kind": "text",
+      "content": "在小岛，轻松一点。",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "A gentle way around the island."
+      }
+    },
+    {
+      "id": "help-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "help",
+      "kind": "layout",
+      "children": [
+        "help-header",
+        "help-title",
+        "help-1",
+        "help-2",
+        "help-3",
+        "help-space",
+        "help-back",
+        "help-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "delete-cancel-label",
+      "kind": "text",
+      "content": "保留记录",
+      "textStyle": {
+        "typography": "button",
+        "color": "paperWhite"
+      },
+      "props": {
+        "english": "Keep my history"
+      }
+    },
+    {
+      "id": "delete-cancel-content",
+      "kind": "layout",
+      "children": [
+        "delete-cancel-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "delete-cancel",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "delete-cancel-content"
+      ],
+      "events": {
+        "click-action": "history"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "deepForest",
+          "content-color": "paperWhite"
+        },
+        "contentInsetDp": 24,
+        "stretch": true
+      },
+      "layout": {
+        "mode": "row",
+        "widthDp": 1036
+      }
+    },
+    {
+      "id": "delete-confirm-action-label",
+      "kind": "text",
+      "content": "确认删除记录",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Delete records"
+      }
+    },
+    {
+      "id": "delete-confirm-action-content",
+      "kind": "layout",
+      "children": [
+        "delete-confirm-action-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "delete-confirm-action",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "delete-confirm-action-content"
+      ],
+      "events": {
+        "click-action": "history"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "delete-art",
+      "kind": "media",
+      "assetId": "leaf",
+      "layout": {
+        "mode": "column",
+        "widthDp": 120,
+        "heightDp": 120
+      }
+    },
+    {
+      "id": "delete-body",
+      "kind": "text",
+      "content": "语言和声音设置会保留。删除后无法在应用内恢复。",
+      "textStyle": {
+        "typography": "body",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Language and audio preferences stay. This cannot be undone in the app."
+      }
+    },
+    {
+      "id": "delete-space",
+      "kind": "layout",
+      "children": [],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "grow": 1
+      }
+    },
+    {
+      "id": "delete-header-logo",
+      "kind": "media",
+      "assetId": "brand",
+      "layout": {
+        "mode": "column",
+        "widthDp": 48,
+        "heightDp": 48
+      }
+    },
+    {
+      "id": "delete-header-name",
+      "kind": "text",
+      "content": "眨眨岛",
+      "textStyle": {
+        "typography": "brand",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Blink Blink Island"
+      }
+    },
+    {
+      "id": "delete-header-brand",
+      "kind": "layout",
+      "children": [
+        "delete-header-logo",
+        "delete-header-name"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "grow": 1
+      }
+    },
+    {
+      "id": "delete-header-back-label",
+      "kind": "text",
+      "content": "返回",
+      "textStyle": {
+        "typography": "button",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Back"
+      }
+    },
+    {
+      "id": "delete-header-back-content",
+      "kind": "layout",
+      "children": [
+        "delete-header-back-label"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 0,
+        "heightDp": 80,
+        "align": "center",
+        "justify": "center"
+      }
+    },
+    {
+      "id": "delete-header-back",
+      "kind": "spatialui",
+      "component": "sui-button",
+      "children": [
+        "delete-header-back-content"
+      ],
+      "events": {
+        "click-action": "home"
+      },
+      "props": {
+        "ui": {
+          "size": "max",
+          "container-color": "transparent",
+          "content-color": "forestInk"
+        },
+        "contentInsetDp": 24,
+        "stretch": false
+      },
+      "layout": {
+        "mode": "row"
+      }
+    },
+    {
+      "id": "delete-header",
+      "kind": "layout",
+      "children": [
+        "delete-header-brand",
+        "delete-header-back"
+      ],
+      "layout": {
+        "mode": "row",
+        "gapDp": 16,
+        "align": "center",
+        "heightDp": 80
+      }
+    },
+    {
+      "id": "delete-title",
+      "kind": "text",
+      "content": "删除本机休息记录？",
+      "textStyle": {
+        "typography": "headline",
+        "color": "forestInk"
+      },
+      "props": {
+        "english": "Delete local history?"
+      }
+    },
+    {
+      "id": "delete-foot",
+      "kind": "text",
+      "content": "感到不适时，请停下来，摘下头显休息。",
+      "textStyle": {
+        "typography": "note",
+        "color": "mutedInk"
+      },
+      "props": {
+        "english": "If uncomfortable, stop and remove the headset."
+      }
+    },
+    {
+      "id": "delete",
+      "kind": "layout",
+      "children": [
+        "delete-header",
+        "delete-title",
+        "delete-art",
+        "delete-body",
+        "delete-space",
+        "delete-cancel",
+        "delete-confirm-action",
+        "delete-foot"
+      ],
+      "layout": {
+        "mode": "column",
+        "gapDp": 16,
+        "paddingDp": 32,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "paper-surface",
+      "kind": "media",
+      "assetId": "paper",
+      "appearance": {
+        "fill": "paperWhite"
+      },
+      "layout": {
+        "mode": "column",
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "home-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "home-root"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "welcome-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "welcome"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "setup-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "setup"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "blink-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "blink"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "training-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "training"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "gaze-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "gaze"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "preparing-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "preparing"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "paused-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "paused"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "tracking-paused-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "tracking"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "permission-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "permission"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "incomplete-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "incomplete"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "entering-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "entering"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "returning-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "returning"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "summary-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "summary-root"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "history-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "history"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "statistics-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "statistics"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "settings-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "settings"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "help-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "help"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    },
+    {
+      "id": "delete-confirm-surface",
+      "kind": "layout",
+      "children": [
+        "paper-surface",
+        "delete"
+      ],
+      "layout": {
+        "mode": "overlay",
+        "gapDp": 16,
+        "widthDp": 1100,
+        "heightDp": 1120
+      }
+    }
+  ],
+  "responsiveRules": [],
+  "assets": [
+    {
+      "id": "hero",
+      "kind": "image",
+      "src": "design-assets/hero-island.png",
+      "purpose": "Generated quiet watercolor welcome/result vignette; never a gaze target"
+    },
+    {
+      "id": "brand",
+      "kind": "image",
+      "src": "design-assets/brand.png",
+      "purpose": "Existing approved brand identity"
+    },
+    {
+      "id": "butterfly",
+      "kind": "image",
+      "src": "design-assets/butterfly.png",
+      "purpose": "Existing butterfly mode illustration"
+    },
+    {
+      "id": "orbit",
+      "kind": "image",
+      "src": "design-assets/orbit.svg",
+      "purpose": "Existing eye-motion mode illustration"
+    },
+    {
+      "id": "leaf",
+      "kind": "image",
+      "src": "design-assets/leaf.svg",
+      "purpose": "Existing quiet rest state accent"
+    },
+    {
+      "id": "paper",
+      "kind": "image",
+      "src": "design-assets/paper.svg",
+      "purpose": "Bounded opaque paper backdrop of the existing Stage attachment"
+    }
+  ]
+}

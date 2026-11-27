@@ -25,7 +25,7 @@ for folder in [root / 'app/build/outputs/apk/debug', root / 'native/app/build/ou
 assert choices, 'Build the current version before packaging; refusing a stale debug APK'
 shutil.copy2(max(choices, key=lambda p: p.stat().st_mtime), apk)
 archive = dest / 'Blink_Blink_Island_Native_Dev_Source.zip'
-excluded = {'.gradle', '.kotlin', '.scratch', '.idea', 'build', 'builds', '__pycache__', '.git', 'captures'}
+excluded = {'.gradle', '.kotlin', '.scratch', '.idea', 'build', 'builds', '__pycache__', '.git', 'captures', 'runs', '.tripo'}
 files = [root / name for name in ['README.md', 'gradlew', 'gradlew.bat', 'gradle.properties', 'settings.gradle.kts', 'build.gradle.kts', 'docs/superpowers/plans/2026-11-11-native-app.md']]
 for folder in ['gradle', 'native', 'handoff', 'content', 'review', 'reports', 'scripts']:
     for path in (root / folder).rglob('*'):
@@ -33,10 +33,10 @@ for folder in ['gradle', 'native', 'handoff', 'content', 'review', 'reports', 's
             continue
         if folder == 'reports' and path.suffix != '.md' and path.name != 'DEVICE_OBSERVATIONS.json':
             continue
-        if path.name in {'local.properties', 'pico-mcp.mjs'} or path.suffix in {'.apk', '.keystore', '.jks'}:
+        if path.name in {'local.properties', 'pico-mcp.mjs', 'task.json', 'submission.stdout.json', 'submission.stderr.log', 'submission.started.json'} or path.suffix in {'.apk', '.keystore', '.jks'}:
             continue
         files.append(path)
-files.extend(path for path in (root / 'docs/superpowers').rglob('*.md') if path not in files)
+files.extend(path for path in (root / 'docs').rglob('*.md') if path not in files)
 inventory = []
 with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
     for path in sorted(files):

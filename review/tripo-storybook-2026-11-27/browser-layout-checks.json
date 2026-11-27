@@ -1,0 +1,180 @@
+{
+  "method": "CUA navigation + read-only DOM outer bounds of every [data-node] under #app",
+  "scope": "Review HTML only; no native or eye-tracking validation",
+  "renderedPanelPx": {
+    "width": 752,
+    "height": 765.6727294921875
+  },
+  "results": [
+    {
+      "language": "zh",
+      "state": "home",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "welcome",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "setup",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "blink",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "training",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "gaze",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "preparing",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "paused",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "tracking-paused",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "permission",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "incomplete",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "summary",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "history",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "statistics",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "settings",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "help",
+      "outsidePanel": []
+    },
+    {
+      "language": "zh",
+      "state": "delete-confirm",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "home",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "welcome",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "setup",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "blink",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "training",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "gaze",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "preparing",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "paused",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "tracking-paused",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "permission",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "incomplete",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "summary",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "history",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "statistics",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "settings",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "help",
+      "outsidePanel": []
+    },
+    {
+      "language": "en",
+      "state": "delete-confirm",
+      "outsidePanel": []
+    }
+  ]
+}
