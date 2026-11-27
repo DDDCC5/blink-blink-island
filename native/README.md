@@ -1,6 +1,6 @@
 # 眨眨岛原生开发版
 
-这是 Android/Kotlin PICO Spatial 应用，独立于浏览器审阅稿及能力探针。开发身份 `com.example.blinkblinkisland.dev`，入口 `.platform.LaunchActivity`，Spatial BOM **6.1.9**。当前版本 **1.0.3 / versionCode 4**，仍为开发测试包，尚未完成产品验收。
+这是 Android/Kotlin PICO Spatial 应用，独立于浏览器审阅稿及能力探针。开发身份 `com.example.blinkblinkisland.dev`，入口 `.platform.LaunchActivity`，Spatial BOM **6.1.9**。当前版本 **1.0.4 / versionCode 5**，仍为开发测试包，尚未完成产品验收。1.0.4仅优化图标为统一浅奶油黄底，去掉外绿内黄的双重底色与圆盘阴影。
 
 系统名称已本地化：中文系统“眨眨岛”，英文系统“Blink Blink Island”。启动图标已用交接SVG经PICO官方App Identity Configurator生成普通图标、两层空间图标和SDF；身份修复证据见 `reports/identity/IDENTITY_FIX.md`（工作区根目录下）。
 

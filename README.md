@@ -1,10 +1,10 @@
 # 眨眨岛 / Blink Blink Island
 
-<img src="review/identity/app_icon_square_green.png" width="160" alt="眨眨岛：绿色铺满的方形提交图标">
+<img src="review/identity/app_icon_square_cream.png" width="160" alt="眨眨岛：浅奶油黄底的蝴蝶与岛屿图标">
 
 这是 PICO Swan 上运行的 Android/Kotlin Spatial 原生开发版，使用 SDK BOM 6.1.9，不是浏览器原型。已实现双语界面、三维岛屿、目光跟随与训练判定、自然女声配音、蝴蝶飞行动画、十轮闭眼语音引导及离线记录统计。闭眼休息按用户最新决定采用语音引导，不检测眼睛开合。后台佩戴累计等能力仍待接入与验证，尚非正式完成版。
 
-当前开发版：**1.0.3（versionCode 4）**，2026-11-26。新增十轮闭眼语音引导，支持暂停、恢复倒计时和独立记录；合入自然插画界面。详见 [1.0.3版本说明](reports/native/RELEASE_1_0_3.md)。面板保持左侧固定位置、四角圆角、完整内容和返回入口；蝴蝶与小球训练允许自然转头。佩戴累计提醒仍未开放。历史安装包见 [1.0.1 Release](https://github.com/DDDCC5/blink-blink-island/releases/tag/v1.0.1)。
+当前开发版：**1.0.4（versionCode 5）**，2026-11-27。图标统一为浅奶油黄底，去掉外绿内黄的双重底色与圆盘阴影，同步普通图标、空间图标背景和提交素材。详见 [1.0.4版本说明](reports/native/RELEASE_1_0_4.md)。保留1.0.3的十轮闭眼语音引导、自然插画界面、本地记录和目光跟随训练。佩戴累计提醒仍未开放。历史安装包见 [1.0.1 Release](https://github.com/DDDCC5/blink-blink-island/releases/tag/v1.0.1)。
 
 应用源码在 `native/app/`，仓库根目录已提供云构建入口。准备 JDK21 与 Android SDK（API35）后，在根目录运行：
 
